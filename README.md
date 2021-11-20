@@ -81,28 +81,9 @@
 ## ■画面遷移図
 https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 [![Image from Gyazo](https://i.gyazo.com/f2d7ca9b011ef2c6692bbb907e815d6a.png)](https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1)  
-診断判定のみの実装では、ユーザー画面は2ページのみにしました。
 
-<br>
+- ユーザー(User)画面  
+診断判定のみの実装ではTOPページと、Resultページのみにしました。
 
-## ■テーブル設計
-[![Image from Gyazo](https://i.gyazo.com/af0796cdadf8028c949b60eef9f43f18.png)](https://gyazo.com/af0796cdadf8028c949b60eef9f43f18)  
-
-今後のアップデートの参考にする情報を記録するためにAnalysesテーブルを用意しました。
-
-### ■Analysesテーブル
-- emotion  
-怒り・軽蔑・嫌悪・恐怖・幸福・無表情・悲しみ・驚きのうち、ベースになっている感情を記録します。
-- score  
-「○○人がひよった！」の〇〇人を記録します。  
-
-→判定に偏りが発生していないかチェックします。
-
-- twitter_post  
-Twitterに投稿したか否かを記録します。
-- twitter_with_photo  
-撮影写真付きでTwitterに投稿したか否かを記録します。
-- created_at  
-投稿日時を記録します。
-
-→利用者数、顔出し投稿できる割合をチェックします。
+- 管理者（Adomin）画面  
+利用状況を分析するためのページです。
