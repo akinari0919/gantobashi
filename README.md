@@ -75,3 +75,15 @@
 ある日「溝上さんって(営業していて)舐められやすいじゃないですか〜^^」
 と言われたことがありました。「誰にでも優しいってゆう意味ですよ//」とフォローはされましたが、確かに時には自身の意見を貫き通すために”舐められない”という要素は必要だと考えさせられました。
 そこで同じように人から舐められやすいかも？と感じている方向けに、睨みを効かせる相手にも動揺せず、負けずと睨み返すくらいの強い心を養えるサービスを作りたいと思いました。
+
+<br>
+
+## ■画面遷移図
+https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
+[![Image from Gyazo](https://i.gyazo.com/f2d7ca9b011ef2c6692bbb907e815d6a.png)](https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1)
+
+- ユーザー(User)画面  
+診断判定のみの実装ではTOPページと、Resultページのみにしました。
+
+- 管理者（Adomin）画面  
+利用状況を分析するためのページです。
