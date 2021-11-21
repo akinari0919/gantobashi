@@ -80,10 +80,14 @@
 
 ## ■画面遷移図
 https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
-[![Image from Gyazo](https://i.gyazo.com/f2d7ca9b011ef2c6692bbb907e815d6a.png)](https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1)
+[![Image from Gyazo](https://i.gyazo.com/813b42566280c670ba5cd71f2d9e2d88.png)](https://gyazo.com/813b42566280c670ba5cd71f2d9e2d88)
 
 - ユーザー(User)画面  
-診断判定のみの実装ではTOPページと、Resultページのみにしました。
+  - 基本の診断用のページ遷移
+  - テーマ別練習用のページ遷移（Traning）
+  - 100人切りチャレンジ用のページ遷移（Challenge）
+  - ログイン後の他ユーザー挑戦用のページ遷移（login）
 
 - 管理者（Adomin）画面  
-利用状況を分析するためのページです。
+  - 利用状況を分析する用のページ（Top）
+  - 仮想ユーザーを作成、編集する用のページ遷移
