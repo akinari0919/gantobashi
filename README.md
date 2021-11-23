@@ -91,3 +91,11 @@ https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 - 管理者（Adomin）画面  
   - 利用状況を分析する用のページ（Top）
   - 仮想ユーザーを作成、編集する用のページ遷移
+
+（補足追加）
+- ユーザー編集画面で登録した写真のシェアONOFFの機能を追加
+- 100人切り達成するとユーザー登録した画像がそのまま殿堂入り写真として反映  
+（※写真を変更する場合は戦績がリセット）
+- 非表示設定もユーザー編集画面が可能
+
+[![Image from Gyazo](https://i.gyazo.com/566e1399720401290c2edbdc3acb25f4.png)](https://gyazo.com/566e1399720401290c2edbdc3acb25f4)
