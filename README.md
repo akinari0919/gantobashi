@@ -118,7 +118,7 @@ https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 
 ---
 ## ■テーブル設計
-[![Image from Gyazo](https://i.gyazo.com/e136288aac1815ca4774bbf86d09be9a.png)](https://gyazo.com/e136288aac1815ca4774bbf86d09be9a)
+[![Image from Gyazo](https://i.gyazo.com/e86cc4b9afb4ee91529d0c44a5462feb.png)](https://gyazo.com/e86cc4b9afb4ee91529d0c44a5462feb)
 
 ### 【Statusesテーブル】
 →後々機能拡張の際に汎用性を持たせるために独立させています。
