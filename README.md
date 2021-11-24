@@ -85,6 +85,7 @@ FaceAPIでは怒り・軽蔑・嫌悪・恐怖・幸福・無表情・悲しみ�
 
 <br>
 
+---
 ## ■画面遷移図
 https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 
@@ -109,24 +110,27 @@ https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 
 [![Image from Gyazo](https://i.gyazo.com/341abe67521d7ebae4958f3677144226.png)](https://gyazo.com/341abe67521d7ebae4958f3677144226)
 
-※診断判定のみの実装では、ユーザー画面は以下のイメージになります。
+※診断判定のみの実装では、以下のイメージになります。
 [![Image from Gyazo](https://i.gyazo.com/f2d7ca9b011ef2c6692bbb907e815d6a.png)](https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1)  
+
 
 <br>
 
+---
 ## ■テーブル設計
-[![Image from Gyazo](https://i.gyazo.com/af0796cdadf8028c949b60eef9f43f18.png)](https://gyazo.com/af0796cdadf8028c949b60eef9f43f18)  
+[![Image from Gyazo](https://i.gyazo.com/e136288aac1815ca4774bbf86d09be9a.png)](https://gyazo.com/e136288aac1815ca4774bbf86d09be9a)
 
-今後のアップデートの参考にする情報を記録するためにAnalysesテーブルを用意しました。
-
-### ■Analysesテーブル
+### 【Statusesテーブル】
+→後々機能拡張の際に汎用性を持たせるために独立させています。
+- score  
+「○○人がひよった！」の〇〇人を記録します。 
 - emotion  
 怒り・軽蔑・嫌悪・恐怖・幸福・無表情・悲しみ・驚きのうち、ベースになっている感情を記録します。
-- score  
-「○○人がひよった！」の〇〇人を記録します。  
+- gaze  
+検討中ですが上目遣いか下目遣いか睨み方を記録します。
 
-→判定に偏りが発生していないかチェックします。
-
+### 【Analysesテーブル】
+→今後のアップデートの参考にする情報を記録するため、利用者数や顔出し投稿できる割合をチェック＋判定に偏りが発生していないかチェックします。
 - twitter_post  
 Twitterに投稿したか否かを記録します。
 - twitter_with_photo  
@@ -134,4 +138,35 @@ Twitterに投稿したか否かを記録します。
 - created_at  
 投稿日時を記録します。
 
-→利用者数、顔出し投稿できる割合をチェックします。
+<br>
+
+（以下機能拡張する際に追加予定のテーブルです。）
+
+### 【Fictional_usersテーブル】
+→仮装ユーザーを登録するためのテーブルです。
+
+### 【Usersテーブル】
+→ログイン機能実装の際に作成するテーブルです。
+- user_photo_show  
+ユーザーイメージ画像の表示非表示の設定を管理します。
+- image_count  
+ユーザーイメージの登録可能数を管理します  
+（デフォルト1枚で殿堂入りする毎に1枚追加させる予定）
+- role  
+管理者(Admin)権限を管理します。
+- challenge_record  
+100人切りの戦績を記録します。
+- battle_record  
+他ユーザーとの戦績を記録します。
+
+### 【User_photosテーブル】
+→ ユーザーイメージを登録するテーブルで、複数登録出来るようにするため分離しました。
+- king  
+殿堂入りしている写真なのかを管理します。
+
+### 【Flinchesテーブル】
+→ 他ユーザーの画像にlikeボタン的ビビるボタンを押した管理をするための中間テーブルです。
+
+<br>
+
+---
