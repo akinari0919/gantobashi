@@ -117,8 +117,8 @@ https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 <br>
 
 ---
-## ■テーブル設計
-[![Image from Gyazo](https://i.gyazo.com/e86cc4b9afb4ee91529d0c44a5462feb.png)](https://gyazo.com/e86cc4b9afb4ee91529d0c44a5462feb)
+## ■テーブル設計・ER図
+[![Image from Gyazo](https://i.gyazo.com/ca6d30b7650bf92f1ec4950f538c5d31.png)](https://gyazo.com/ca6d30b7650bf92f1ec4950f538c5d31)
 
 ### 【Statusesテーブル】
 →後々機能拡張の際に汎用性を持たせるために独立させています。
@@ -135,8 +135,6 @@ https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 Twitterに投稿したか否かを記録します。
 - twitter_with_photo  
 撮影写真付きでTwitterに投稿したか否かを記録します。
-- created_at  
-投稿日時を記録します。
 
 <br>
 
