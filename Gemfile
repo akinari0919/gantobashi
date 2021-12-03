@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-i18n'
 # slim
 gem 'slim-rails'
+# 環境変数を使う
+gem 'dotenv-rails'

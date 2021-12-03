@@ -10,7 +10,7 @@ class TestController < ApplicationController
     params = { url: "https://i.gyazo.com/17ddb3ed59a19a0c9b01407224f03f7c.jpg" }
     headers = { 
       "Content-Type" => "application/json", 
-      "Ocp-Apim-Subscription-Key" => "7cdc69350b194d509669f3bd3b6f88bb" 
+      "Ocp-Apim-Subscription-Key" => ENV['API_KEY']
     }
     response = http.post(uri, params.to_json, headers)
     
