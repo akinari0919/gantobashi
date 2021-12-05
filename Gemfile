@@ -60,7 +60,3 @@ gem 'rails-i18n'
 gem 'slim-rails'
 # 環境変数を使う
 gem 'dotenv-rails'
-# 画像アップデート
-gem 'carrierwave'
-# 画像リサイズ
-gem 'mini_magick'
