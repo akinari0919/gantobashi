@@ -10,7 +10,6 @@ class TestController < ApplicationController
     
     # 画像データをバイナリ化
     body = params[:image].read
-    binding.pry
     
     # バイナリ形式でリクエスト
     headers = { 
