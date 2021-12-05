@@ -4,5 +4,5 @@ h1
   | メンチキッター
 
 = form_with url: test_path do |f|
-  = f.file_field :image, accept: 'image/*', onchange: 'submitImage()'
+  = f.file_field :image
   = f.submit 'ガン飛ばす'
