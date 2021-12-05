@@ -6,17 +6,18 @@ class TestController < ApplicationController
     })
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = uri.scheme === "https"
-
-    params = { url: "https://i.gyazo.com/17ddb3ed59a19a0c9b01407224f03f7c.jpg" }
-    headers = { 
-      "Content-Type" => "application/json", 
-      "Ocp-Apim-Subscription-Key" => ENV['API_KEY']
-    }
-    response = http.post(uri, params.to_json, headers)
     
-    # render json: response.body
+    # 画像データをバイナリ化
+    body = Base64.strict_encode64(params[:image].read)
+    headers = { 
+      "Content-Type" => "application/octet-stream", # バイナリ形式でリクエスト
+      "Ocp-Apim-Subscription-Key" => ENV["API_KEY"]
+    }
+    # POSTした引数データのレスポンスを代入
+    response = http.post(uri, body, headers)
+    
+    # JSON形式でレスポンスを確認
+    render json: response.body
 
-    hash = JSON.parse(response.body)
-    @result  = hash[0]["faceAttributes"]["emotion"]
   end
 end

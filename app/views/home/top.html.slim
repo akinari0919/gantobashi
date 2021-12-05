@@ -1,4 +1,8 @@
 p
-  | 別にひよってる訳ではないけど、何故か人からよく舐められるので負けじと
+  | Let's ☆ ガン飛ばし
 h1
-  | ガン飛ばしタッター
+  | メンチキッター
+
+= form_with url: test_path do |f|
+  = f.file_field :image, accept: 'image/*', onchange: 'submitImage()'
+  = f.submit 'ガン飛ばす'
