@@ -26,7 +26,7 @@ class TestController < ApplicationController
     hash = JSON.parse(response.body)
     @result  = hash[0]["faceAttributes"]["emotion"]
 
-    # # URL
+    # # URLでリクエストする場合
     # uri = URI.parse("https://japanwest.api.cognitive.microsoft.com/face/v1.0/detect")
     # uri.query = URI.encode_www_form({
     #   "returnFaceAttributes" => "emotion"
