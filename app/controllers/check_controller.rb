@@ -1,4 +1,4 @@
-class TestController < ApplicationController
+class CheckController < ApplicationController
   def result
     # URI指定
     uri = URI.parse("https://japanwest.api.cognitive.microsoft.com/face/v1.0/detect")
@@ -8,7 +8,7 @@ class TestController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = uri.scheme === "https"
     
-    # 画像データをバイナリ化
+    # 画像データをバイナリで渡す
     body = params[:image].read
     
     # バイナリ形式でリクエスト
@@ -23,8 +23,10 @@ class TestController < ApplicationController
     # # JSON形式でレスポンスを確認
     # render json: response.body
 
+    # JSONをviewで扱える形に代入
     hash = JSON.parse(response.body)
     @result  = hash[0]["faceAttributes"]["emotion"]
+
 
     # # URLでリクエストする場合
     # uri = URI.parse("https://japanwest.api.cognitive.microsoft.com/face/v1.0/detect")
@@ -42,6 +44,5 @@ class TestController < ApplicationController
     # response = http.post(uri, body.to_json, headers)
 
     # render json: response.body
-
   end
 end
