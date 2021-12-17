@@ -5,11 +5,13 @@ class CheckController < ApplicationController
     uri.query = URI.encode_www_form({
       "returnFaceAttributes" => "emotion"
     })
+
+    # https通信の準備
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = uri.scheme === "https"
     
     # 画像データをバイナリで渡す
-    body = params[:image].read
+    body = Base64.decode64(params[:image])
     
     # バイナリ形式でリクエスト
     headers = { 
@@ -19,13 +21,13 @@ class CheckController < ApplicationController
 
     # POSTした引数データのレスポンスを代入
     response = http.post(uri, body, headers)
-    
+
     # # JSON形式でレスポンスを確認
-    # render json: response.body
+    render json: response.body
 
     # JSONをviewで扱える形に代入
     hash = JSON.parse(response.body)
-    @result  = hash[0]["faceAttributes"]["emotion"]
+    @result = hash[0]["faceAttributes"]["emotion"]
 
 
     # # URLでリクエストする場合
