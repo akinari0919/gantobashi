@@ -3,7 +3,7 @@ class CheckController < ApplicationController
     # URI指定
     uri = URI.parse("https://japanwest.api.cognitive.microsoft.com/face/v1.0/detect")
     uri.query = URI.encode_www_form({
-      "returnFaceAttributes" => "emotion"
+      "returnFaceAttributes" => ["blur,exposure,noise,age,gender,facialhair,glasses,hair,makeup,accessories,occlusion,headpose,emotion,smile"]
     })
 
     # https通信の準備
@@ -25,9 +25,9 @@ class CheckController < ApplicationController
     # # JSON形式でレスポンスを確認
     render json: response.body
 
-    # JSONをviewで扱える形に代入
-    hash = JSON.parse(response.body)
-    @result = hash[0]["faceAttributes"]["emotion"]
+    # # JSONをviewで扱える形に代入
+    # hash = JSON.parse(response.body)
+    # @result = hash[0]["faceAttributes"]["emotion"]
 
 
     # # URLでリクエストする場合
