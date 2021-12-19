@@ -1,10 +1,87 @@
 <h1>メンチキッター</h1>
 
-<video id="camera" width="300" height="400"></video>
-<canvas id="picture" width="300" height="400"></canvas>
-
-<%= javascript_pack_tag 'home/top' %>
-
+<video id="video" autoplay playsinline with="300" height="400"></video>
+<canvas id="canvas" with="300" height="400"></canvas>
+<div id="label-container">-</div>
 <br>
+<button type="button" onclick="init()">ガン飛ばす</button>
 
-<button type="button" id="shutter">check</button>
+<script>
+  /** カメラ設定 */
+  const constraints = {
+    video: {
+      width: 300,
+      height: 400,
+      facingMode: "user"   // フロントカメラを利用する
+      // facingMode: { exact: "environment" }  // リアカメラを利用する場合
+    }
+  };
+
+  /**
+   * カメラを<video>と同期
+   */
+  navigator.mediaDevices.getUserMedia(constraints)
+  .then( (stream) => {
+    video.srcObject = stream;
+    video.onloadedmetadata = (e) => {
+      video.play();
+    };
+  })
+  .catch( (err) => {
+    console.log(err.name + ": " + err.message);
+  });
+
+  const URL = "https://teachablemachine.withgoogle.com/models/3tSiNOSPs/";
+
+  let model, labelContainer, maxPredictions;
+
+  async function init() {
+    // 演出的な目的で一度映像を止める
+    video.pause();    // 映像を停止
+    setTimeout( () => {
+      video.play();    // 0.5秒後にカメラ再開
+    }, 500);
+    
+    //canvasに静止画を入れる
+    var canvas =document.getElementById("canvas")
+    canvas.getContext("2d").drawImage(video, 0, 0, 300, 400)
+
+    //teachablemachineのモデルURLを読み込む
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+
+    //モデルのイメージを格納する
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    //結果を出す為のlavelcontainerをDOMに要素追加する
+    labelContainer = document.getElementById("label-container");
+    window.requestAnimationFrame(loop);
+  }
+
+  async function loop() {
+
+    //予測は、画像、ビデオ、またはキャンバスのhtml要素を取り込むことができます
+    const prediction = await model.predict(canvas);
+
+    //predictionの数値によって結果を変える
+    if ( prediction[0].probability.toFixed(2)> 0.0) {
+      labelContainer.innerHTML = "失敗";
+    }
+
+    if ( prediction[0].probability.toFixed(2)> 0.1) {
+      labelContainer.innerHTML = "成功";
+      const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
+      $.ajax({
+      url: '/check',
+      type: 'POST',
+      data: {
+          image: base64
+        },
+      headers: {
+          'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+        },
+      });
+    }
+  }
+</script>

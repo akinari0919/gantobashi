@@ -3,7 +3,7 @@ class CheckController < ApplicationController
     # URI指定
     uri = URI.parse("https://japanwest.api.cognitive.microsoft.com/face/v1.0/detect")
     uri.query = URI.encode_www_form({
-      "returnFaceAttributes" => ["blur,exposure,noise,age,gender,facialhair,glasses,hair,makeup,accessories,occlusion,headpose,emotion,smile"]
+      "returnFaceAttributes" => "blur,exposure,noise,glasses,accessories,occlusion,emotion,smile"
     })
 
     # https通信の準備
