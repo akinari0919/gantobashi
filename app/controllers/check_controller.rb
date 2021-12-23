@@ -85,7 +85,7 @@ class CheckController < ApplicationController
     # http.use_ssl = uri.scheme === "https"
     
     # # 画像データをバイナリで渡す
-    # body = Base64.decode64(params[:image])
+    # body = params[:image].read
     
     # # バイナリ形式でリクエスト
     # headers = { 
