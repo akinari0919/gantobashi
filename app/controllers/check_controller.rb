@@ -74,6 +74,15 @@ class CheckController < ApplicationController
     # # https通信の準備
     # http = Net::HTTP.new(uri.host, uri.port)
     # http.use_ssl = uri.scheme === "https"
+    # URI指定
+    # uri = URI.parse("https://japanwest.api.cognitive.microsoft.com/face/v1.0/detect")
+    # uri.query = URI.encode_www_form({
+    #   "returnFaceAttributes" => "blur,exposure,noise,glasses,accessories,occlusion,emotion,smile"
+    # })
+
+    # # https通信の準備
+    # http = Net::HTTP.new(uri.host, uri.port)
+    # http.use_ssl = uri.scheme === "https"
     
     # # 画像データをバイナリで渡す
     # body = Base64.decode64(params[:image])

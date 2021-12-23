@@ -58,6 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-i18n'
 # slim
 gem 'slim-rails'
+gem 'html2slim'
 # 環境変数を使う
 gem 'dotenv-rails'
 # AWS
