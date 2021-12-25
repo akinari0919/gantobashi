@@ -12,9 +12,9 @@ class CheckController < ApplicationController
       },
       attributes: ['ALL']
     }
-    response = client.detect_faces attrs
+    @response = client.detect_faces attrs
 
-    response.face_details.each do |face_detail|
+    @response.face_details.each do |face_detail|
       puts "------------"
       puts ""
       puts "The detected face is between: #{face_detail.age_range.low} and #{face_detail.age_range.high} years old"
@@ -23,6 +23,21 @@ class CheckController < ApplicationController
       puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
       puts "  smile.value:            #{face_detail.smile.value}"
       puts "  smile.confidence:       #{face_detail.smile.confidence}"
+      puts ""
+      puts "------------"
+      puts ""
+      puts "  eyeglasses.value:       #{face_detail.eyeglasses.value}"
+      puts "  eyeglasses.confidence:  #{face_detail.eyeglasses.confidence}"
+      puts "  sunglasses.value:       #{face_detail.sunglasses.value}"
+      puts "  sunglasses.confidence:  #{face_detail.sunglasses.confidence}"
+      puts "  mouth_open.value:       #{face_detail.mouth_open.value}"
+      puts "  mouth_open.confidence:  #{face_detail.mouth_open.confidence}"
+      puts ""
+      puts "------------"
+      puts ""
+      puts "  quality.brightness:     #{face_detail.quality.brightness}"
+      puts "  quality.sharpness:      #{face_detail.quality.sharpness}"
+      puts "  confidence:             #{face_detail.confidence}"
       puts ""
       puts "------------"
       puts ""
@@ -45,21 +60,17 @@ class CheckController < ApplicationController
       puts ""
       puts "------------"
       puts ""
-      puts "  eyeglasses.value:       #{face_detail.eyeglasses.value}"
-      puts "  eyeglasses.confidence:  #{face_detail.eyeglasses.confidence}"
-      puts "  sunglasses.value:       #{face_detail.sunglasses.value}"
-      puts "  sunglasses.confidence:  #{face_detail.sunglasses.confidence}"
-      puts "  mouth_open.value:       #{face_detail.mouth_open.value}"
-      puts "  mouth_open.confidence:  #{face_detail.mouth_open.confidence}"
-      puts ""
-      puts "------------"
-      puts ""
-      puts "  quality.brightness:     #{face_detail.quality.brightness}"
-      puts "  quality.sharpness:      #{face_detail.quality.sharpness}"
-      puts "  confidence:             #{face_detail.confidence}"
-      puts ""
-      puts "------------"
-      puts ""
+      
+      if face_detail.eyes_open.value == true && face_detail.smile.value == false
+        result =
+                face_detail.emotions[0].confidence
+              + face_detail.emotions[1].confidence
+              + face_detail.emotions[2].confidence
+        @comment = "#{result.floor}人がビビった"
+        render body: @comment
+      else
+        render body: "失敗"
+      end
     end
 
 
