@@ -9,8 +9,8 @@
   <h2></h2>
 </div>
 <div class="camera">
-  <video id="video" autoplay playsinline width="400" height="300"></video>
-  <canvas id="canvas" width="300" height="400"></canvas>
+  <video id="video" autoplay width="400" height="400"></video>
+  <canvas id="canvas" width="400" height="400"></canvas>
 </div>  
 <div class="btn">
   <button type="button" id="shatter" onclick="init()">ガン飛ばす</button>
@@ -32,7 +32,7 @@
   const constraints = {
     video: {
       width: 400,
-      height: 300,
+      height: 400,
       facingMode: "user"   // フロントカメラを利用する
     }
   };
@@ -61,7 +61,7 @@
     
     // canvasに静止画を入れる
     var canvas = document.getElementById("canvas")
-    canvas.getContext("2d").drawImage(video, 0, 0, 300, 400)
+    canvas.getContext("2d").drawImage(video, 0, 0, 400, 400)
 
     // teachablemachineのモデルURLを読み込む
     const modelURL = URL + "model.json";
