@@ -12,19 +12,16 @@
 <script>
   $('#canvas').hide();
   $('#reload').hide();
-  /** カメラ設定 */
+  // カメラ設定
   const constraints = {
     video: {
       width: 300,
       height: 400,
       facingMode: "user"   // フロントカメラを利用する
-      // facingMode: { exact: "environment" }  // リアカメラを利用する場合
     }
   };
 
-  /**
-   * カメラを<video>と同期
-   */
+  // カメラを<video>と同期
   navigator.mediaDevices.getUserMedia(constraints)
   .then( (stream) => {
     video.srcObject = stream;
@@ -45,11 +42,6 @@
     $('#video').hide();
     $('#canvas').show();
     $(this).html( $(this).data('loading-text') );
-    // // 演出的な目的で一度映像を止める
-    // video.pause();    // 映像を停止
-    // setTimeout( () => {
-    //   video.play();    // 0.5秒後にカメラ再開
-    // }, 500);
     
     // canvasに静止画を入れる
     var canvas = document.getElementById("canvas")
@@ -69,7 +61,6 @@
   }
 
   async function loop() {
-
     // 予測は、画像、ビデオ、またはキャンバスのhtml要素を取り込むことができます
     const prediction = await model.predict(canvas);
 
@@ -89,7 +80,7 @@
             $(result).append(data);
           }
       })
-    } else if (prediction[0].probability.toFixed(2)> 0.0) {
+    } else {
       $(labelContainer).html('失敗')
     }
     $('#shatter').hide();
