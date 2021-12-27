@@ -138,6 +138,18 @@ footer {
   50% { transform: scale(1.1); }
 }
 
+.button-42 {
+  background-color: #606060;
+  color: #ffffff;
+  width: 100px;
+  height: 100px;
+  line-height: 90px;
+  border-radius: 50%;
+  border: double 4px #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
 .button-40 {
   background-color: #000000;
   border-radius: .75rem;

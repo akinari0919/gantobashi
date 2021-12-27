@@ -12,6 +12,7 @@
   </div>  
   <div class="btn">
     <a class="button-41" role="button" id="shatter" onclick="init()">ガン飛ばす</a>
+    <a class="button-42" id="dummy">ガン飛ばす</a>
     <a class="button-40" role="button" id="reload" onclick="window.location.reload();">撮り直す</a>
   </div>
   <div class="comment">
@@ -25,6 +26,7 @@
 
 <script>
   $('#canvas').hide();
+  $('#dummy').hide();
   $('#reload').hide();
   // カメラ設定
   const constraints = {
@@ -54,7 +56,9 @@
   async function init() {
     document.getElementById('shatter').disabled = true;
     $('#video').hide();
+    $('#shatter').hide();
     $('#canvas').show();
+    $('#dummy').show();
     $(this).html( $(this).data('loading-text') );
     
     // canvasに静止画を入れる
@@ -97,7 +101,7 @@
     } else {
       $(labelContainer).html('失敗')
     }
-    $('#shatter').hide();
+    $('#dummy').hide();
     $('#reload').show();
   }
 
