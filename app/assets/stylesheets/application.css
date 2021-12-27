@@ -38,7 +38,7 @@ header {
   height: 70px;
   position: fixed;
   top: 0;
-  width: 120%;
+  width: 100%;
   background-image: url('header4.jpg');
   background-size: cover;
 }
@@ -54,12 +54,6 @@ header {
 
 main {
   flex: 1;
-}
-
-a {	
-  text-decoration: none;
-  color: #FFFFFF;
-  text-shadow: 0 5px 9px #c4b59d, 0px -1px 1px #fff;
 }
 
 .padding {
@@ -172,8 +166,7 @@ a {
 }
 
 footer {
-  max-width: 100%;
-  min-width: 400px;
+  width: 100%;
   height: 50px;
   bottom: 0; /*下に固定*/
   display: flex;
@@ -182,5 +175,4 @@ footer {
   background-image: url('header4.jpg');
   background-size: cover;
   color: #FFFFFF;
-  text-shadow: 0 5px 9px #c4b59d, 0px -1px 1px #fff;
 }
