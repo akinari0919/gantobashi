@@ -37,9 +37,8 @@ a {
 header {
   height: 70px;
   position: fixed;
-  display: flex;
   top: 0;
-  width: 100%;
+  width: 120%;
   background-image: url('header4.jpg');
   background-size: cover;
 }
