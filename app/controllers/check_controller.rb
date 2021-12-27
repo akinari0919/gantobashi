@@ -17,14 +17,38 @@ class CheckController < ApplicationController
     response = client.detect_faces attrs
     response.face_details.each do |face_detail|
       if face_detail.eyes_open.value == true && face_detail.smile.value == false
-        result =
-                face_detail.emotions[0].confidence
-              + face_detail.emotions[1].confidence
-              + face_detail.emotions[2].confidence
-        @comment = "#{result.floor}人がひよった！"
-        render body: @comment
+        # 感情値の取得
+        (0..7).each do |i|
+          if face_detail.emotions[i].type == 'ANGRY'
+            @angry = face_detail.emotions[i].confidence
+          end
+          if face_detail.emotions[i].type == 'CONFUSED'
+            @confused = face_detail.emotions[i].confidence
+          end
+        end
+
+        # 怒りの感情を優遇 
+        if @angry > @confused
+          result = @angry.ceil * @confused.ceil * 1.1
+        else
+          result = @angry.ceil * @confused.ceil * 0.5
+        end
+
+        # 補正
+        if result > 1000
+          result *= 0.1
+        end
+        
+        # 結果を反映
+        if result.floor > 0
+          @comment = "#{result.floor}人がひよった！"
+          render body: @comment
+        else
+          @comment = "誰一人ひよらない、、"
+          render body: @comment
+        end
       else
-        render body: "失敗"
+        render body: "なっとらん！"
       end
 
       # レスポンス確認用
