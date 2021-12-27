@@ -45,11 +45,12 @@ header {
 }
 
 .icon {
-  max-width: 150px;
+  max-width: 160px;
   max-height: 100%;
   position: absolute;
   top: 50%;
-  transform: translate(10%, -50%);
+  transform: translate(0, -50%);
+  padding-left: 10px;
 }
 
 main {
