@@ -121,14 +121,13 @@ footer {
 }
 
 .button-41 {
-  display: inline-block;
+  background-color: #000000;
+  color: #ffffff;
   width: 100px;
   height: 100px;
-  line-height: 100px;
-  background: linear-gradient(#0e0d0d, #0e0d0d);
+  line-height: 90px;
   border-radius: 50%;
-  color: #fff;
-  text-decoration: none;
+  border: double 4px #ffffff;
   text-align: center;
   cursor: pointer;
 }
@@ -140,7 +139,7 @@ footer {
 }
 
 .button-40 {
-  background-color: #111827;
+  background-color: #000000;
   border-radius: .75rem;
   cursor: pointer;
   flex: 0 0 auto;
@@ -152,6 +151,7 @@ footer {
   transition-property: background-color,border-color,color,fill,stroke;
   touch-action: manipulation;
   width: 300px;
+  border: double 4px #ffffff;
 }
 
 .button-40:hover {
