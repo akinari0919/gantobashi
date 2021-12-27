@@ -28,6 +28,13 @@ body {
   min-height: 100vh;
 }
 
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* The hack for Safari */
+    height: -webkit-fill-available;
+  }
+}
+
 a {	
   text-decoration: none;
   color: #FFFFFF;
@@ -54,6 +61,8 @@ header {
 
 main {
   flex: 1;
+  height:100vh;
+  height: -webkit-fill-available;
 }
 
 .padding {
