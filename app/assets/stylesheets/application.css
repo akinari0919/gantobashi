@@ -99,13 +99,6 @@ main {
   line-height: 1.5rem;
 }
 
-.btn-2 {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .button-40 {
   background-color: #000000;
   border-radius: .75rem;
