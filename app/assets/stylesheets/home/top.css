@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: rgba(00,00,00,0.1);
+  background-color: rgba(00,00,00,0.2);
   display: flex;
   flex-flow: column;
   min-height: 100vh;
@@ -75,6 +75,19 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+/* 
+.camera-bd {
+  border: 4px solid #111827;
+  border-radius: 240px 15px 185px 15px / 15px 200px 15px 185px;
+  padding: 1em;
+} */
+
+/* .camera-bd {
+	position: relative;
+	padding: .3em .7em;
+	border-top: solid 3px #000000;
+	border-bottom: solid 3px #000000;
+} */
 
 .btn {
   margin-top: 50px;
@@ -105,6 +118,25 @@ footer {
   background-size: cover;
   color: #FFFFFF;
   text-shadow: 0 5px 9px #c4b59d, 0px -1px 1px #fff;
+}
+
+.button-41 {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background: linear-gradient(#0e0d0d, #0e0d0d);
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+.button-41:hover {
+  animation: scale .3s ease-in-out;
+}
+@keyframes scale {
+  50% { transform: scale(1.1); }
 }
 
 .button-40 {
