@@ -45,11 +45,11 @@ header {
 }
 
 .icon {
-  max-width: 200px;
+  max-width: 150px;
   max-height: 100%;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(10%, -50%);
 }
 
 main {
@@ -74,7 +74,7 @@ a {
 
 .logo {
   max-width: 80%;
-  min-width: 400px;
+  min-width: 350px;
   height: auto;
   display: block;
   margin-left: auto;
