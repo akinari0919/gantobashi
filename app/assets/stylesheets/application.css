@@ -13,3 +13,169 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('background.jpeg');
+  background-size: cover;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+a {	
+  text-decoration: none;
+  color: #FFFFFF;
+  text-shadow: 0 5px 9px #c4b59d, 0px -1px 1px #fff;
+}
+
+header {
+  height: 70px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-image: url('header4.jpg');
+  background-size: cover;
+}
+
+.icon {
+  width: auto;
+  height: 70px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  flex: 1;
+}
+
+a {	
+  text-decoration: none;
+  color: #FFFFFF;
+  text-shadow: 0 5px 9px #c4b59d, 0px -1px 1px #fff;
+}
+
+.padding {
+  height: 70px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.camera {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment {
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.btn-2 {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-40 {
+  background-color: #000000;
+  border-radius: .75rem;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: .75rem 1.2rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  touch-action: manipulation;
+  width: 300px;
+  border: double 4px #ffffff;
+}
+.button-40:hover {
+  background-color: #374151;
+}
+.button-40:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+@media (min-width: 768px) {
+  .button-40 {
+    padding: .75rem 1.5rem;
+  }
+}
+
+.button-41 {
+  background-color: #000000;
+  color: #ffffff;
+  width: 100px;
+  height: 100px;
+  line-height: 90px;
+  border-radius: 50%;
+  border: double 4px #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+.button-41:hover {
+  animation: scale .3s ease-in-out;
+}
+@keyframes scale {
+  50% { transform: scale(1.1); }
+}
+
+.button-42 {
+  background-color: #606060;
+  color: #ffffff;
+  width: 100px;
+  height: 100px;
+  line-height: 90px;
+  border-radius: 50%;
+  border: double 4px #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  bottom: 0; /*下に固定*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('header4.jpg');
+  background-size: cover;
+  color: #FFFFFF;
+  text-shadow: 0 5px 9px #c4b59d, 0px -1px 1px #fff;
+}
