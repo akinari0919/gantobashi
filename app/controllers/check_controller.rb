@@ -21,7 +21,7 @@ class CheckController < ApplicationController
                 face_detail.emotions[0].confidence
               + face_detail.emotions[1].confidence
               + face_detail.emotions[2].confidence
-        @comment = "#{result.floor}人がビビった"
+        @comment = "#{result.floor}人がひよった！"
         render body: @comment
       else
         render body: "失敗"
