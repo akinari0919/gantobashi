@@ -57,20 +57,21 @@ nav {
   height: 70px;
 }
 
-.main-visual {
-  height: 50px;
+/* .main-visual {
+  height: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-h2 {
+/* h2 {
   margin: 0;
   font-size: 30px;
   font-weight: normal;
-}
+} */
 
 .camera {
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,21 +91,27 @@ h2 {
 } */
 
 .btn {
-  margin-top: 50px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .comment {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.5rem;
+}
+
+.btn-2 {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
