@@ -53,8 +53,15 @@ main {
   background-size: cover;
 }
 
-.content {
+.contents {
   height: 500px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 100%
+}
+
+.content {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
