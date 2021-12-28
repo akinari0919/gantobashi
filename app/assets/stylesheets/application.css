@@ -54,9 +54,11 @@ main {
 }
 
 .content {
+  height: 500px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
+  width: 100%
 }
 
 .logo {
@@ -77,7 +79,7 @@ main {
 }
 
 .btn {
-  padding: 10px;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +96,7 @@ main {
 }
 
 .btn-2 {
-  padding: 20px;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
