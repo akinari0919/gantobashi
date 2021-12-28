@@ -24,6 +24,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-image: url('background.jpeg');
+  background-size: cover;
 }
 
 a {	
@@ -38,7 +40,7 @@ header {
   background-image: url('header4.jpg');
   background-size: cover;
   z-index: 999;/*最前面へ*/
-  box-shadow:0 7px 10px 2px #747272;
+  box-shadow:0 7px 20px 1px rgba(0,0,0,0.5);
 }
 
 .header-logo {
@@ -51,9 +53,6 @@ header {
 
 main {
   flex: 1;
-  background-image: url('background.jpeg');
-  background-size: cover;
-  overflow: auto; 
 }
 
 .top-contents {
@@ -179,9 +178,10 @@ footer {
   bottom: 0;
   width: 100%;
   height: 50px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.3);
   background-size: cover;
   z-index: 999;/*最前面へ*/
+  box-shadow: 0 0 15px 20px rgba(0,0,0,0.3);
 }
 
 footer p {
@@ -189,5 +189,4 @@ footer p {
   display: flex;
   color: #FFFFFF;
   justify-content: center;
-  align-items: center;
 }
