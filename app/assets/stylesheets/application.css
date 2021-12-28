@@ -89,13 +89,14 @@ main {
 }
 
 .btn {
-  padding-top: 25px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .comment {
+  padding-top: 15px;
   height: 10px;
   display: flex;
   justify-content: center;
@@ -106,7 +107,7 @@ main {
 }
 
 .btn-2 {
-  padding-top: 30px;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
