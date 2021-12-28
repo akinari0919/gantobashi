@@ -36,7 +36,6 @@ a {
 
 header {
   height: 70px;
-  position: fixed;
   top: 0;
   width: 100%;
   background-image: url('header4.jpg');
@@ -44,12 +43,11 @@ header {
   z-index: 999;/*最前面へ*/
 }
 
-.icon {
+.header-logo {
   max-width: 160px;
   max-height: 100%;
   position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
+  top: 20px;
   padding-left: 10px;
 }
 
