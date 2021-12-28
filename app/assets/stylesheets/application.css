@@ -16,6 +16,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E","ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
 }
 
 body {
@@ -38,10 +39,6 @@ body:before{
   background-size: cover;
 }
 
-p {
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E","ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
-}
-
 header {
   position: fixed;
   height: 70px;
@@ -50,6 +47,12 @@ header {
   background-size: cover;
   z-index: 999;/*最前面へ*/
   box-shadow:0 7px 20px 1px rgba(0,0,0,0.5);
+}
+
+.contents {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header-logo {
@@ -69,6 +72,12 @@ main {
   top: 50%;
   transform: translate(0, -50%);
   width: 100%
+}
+
+.top-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .create-contents {
