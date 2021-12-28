@@ -63,11 +63,11 @@ header {
 }
 
 .header-logo {
-  max-width: 160px;
+  max-width: 180px;
   max-height: 100%;
   position: absolute;
   top: 20px;
-  padding-left: 10px;
+  padding-left: 30px;
 }
 
 main {
@@ -264,14 +264,14 @@ header a {
 
 @media (max-width: 768px) {
 
-  .header-logo {
+  /* .header-logo {
     max-width: 160px;
     max-height: 100%;
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translate(-50%,0);
-  }
+  } */
 
   .pc {
     display: none;
