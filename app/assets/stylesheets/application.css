@@ -173,4 +173,5 @@ footer {
   background-size: cover;
   color: #FFFFFF;
   z-index: 999;/*最前面へ*/
+  bottom: calc(env(safe-area-inset-bottom) + 44px);
 }
