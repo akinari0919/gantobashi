@@ -28,9 +28,8 @@ body {
   background-size: cover;
 }
 
-a {	
-  text-decoration: none;
-  color: #FFFFFF;
+p {
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E","ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
 }
 
 header {
@@ -104,7 +103,7 @@ main {
 }
 
 .comment {
-  padding-top: 15px;
+  padding-top: 25px;
   height: 10px;
   display: flex;
   justify-content: center;
@@ -115,13 +114,14 @@ main {
 }
 
 .btn-2 {
-  padding-top: 40px;
+  padding-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .button-40 {
+  color: #ffffff;
   background-color: #000000;
   border-radius: .75rem;
   cursor: pointer;
