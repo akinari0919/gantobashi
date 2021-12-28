@@ -39,7 +39,6 @@ body:before{
 }
 
 p {
-  text-decoration: none;
   font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E","ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
 }
 
@@ -132,6 +131,7 @@ main {
 }
 
 .button-40 {
+  text-decoration: none;
   color: #ffffff;
   background-color: #000000;
   border-radius: .75rem;
