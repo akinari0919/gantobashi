@@ -188,7 +188,7 @@ footer {
   width: 100%;
   background-size: cover;
   z-index: 999;/*最前面へ*/
-  box-shadow: 0 0 50px 30px rgba(0,0,0,0.7);
+  box-shadow: 0 0 50px 30px rgba(0,0,0,0.8);
   min-width: 200px;
   display: flex;
   color: #FFFFFF;
