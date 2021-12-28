@@ -26,7 +26,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
 }
 
 a {	
@@ -36,7 +35,6 @@ a {
 
 header {
   height: 70px;
-  top: 0;
   width: 100%;
   background-image: url('header4.jpg');
   background-size: cover;
@@ -164,11 +162,9 @@ main {
 
 footer {
   height: 50px;
-  padding-bottom: env(safe-area-inset-bottom);
   background-image: url('header4.jpg');
   background-size: cover;
   z-index: 999;/*最前面へ*/
-  bottom: calc(env(safe-area-inset-bottom) + 44px);
 }
 
 footer p {
