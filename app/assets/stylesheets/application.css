@@ -24,9 +24,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-image: url('background.jpeg');
+  background: url("background.jpeg") center no-repeat;
   background-size: cover;
-  background-attachment: fixed;
 }
 
 p {
@@ -53,6 +52,9 @@ header {
 
 main {
   flex: 1;
+  background-image: url('background.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .top-contents {
