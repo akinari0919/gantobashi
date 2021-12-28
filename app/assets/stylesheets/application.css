@@ -89,7 +89,7 @@ main {
 }
 
 .btn {
-  padding-top: 15px;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +106,7 @@ main {
 }
 
 .btn-2 {
-  padding-top: 25px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
