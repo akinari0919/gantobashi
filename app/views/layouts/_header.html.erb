@@ -2,7 +2,52 @@
   <%= link_to root_path do %>
     <%= image_tag 'logo_white.png', class:'header-logo' %>
   <% end %>
-  <%= link_to 'お問い合わせ', '/info' %>
-  <%= link_to '利用規約', '/service' %>
-  <%= link_to 'プライバシーポリシー', '/privacy' %>
+
+<!--▽▽ハンバーガーメニュー▽▽-->
+  <div id="hamburger">
+      <div class="icon">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </div>
+<!--△△ハンバーガーメニュー△△-->
+
+<!--▽▽ハンバーガーメニューのリスト▽▽-->
+  <nav class="sm">
+    <ul>
+      <li><%= link_to 'トップページ', '/', class:"link" %></li>
+      <li><%= link_to 'お問い合わせ', '/info', class:"link" %></li>
+      <li><%= link_to '利用規約', '/service', class:"link" %></li>
+      <li><%= link_to 'プライバシーポリシー', '/privacy', class:"link" %></li>
+    </ul>
+  </nav>
+<!--△△ハンバーガーメニューのリスト△△-->
+
+<!--▽▽ヘッダーリスト▽▽-->
+  <nav class="pc">  <!--pcクラスを追記-->
+    <ul>
+      <li>
+        <%= link_to 'お問い合わせ', '/info', class:"link" %>
+      </li>
+      <li>
+        <%= link_to '利用規約', '/service', class:"link"  %>
+      </li>
+      <li>
+        <%= link_to 'プライバシーポリシー', '/privacy', class:"link" %>
+      <li>
+    </ul>
+  </nav>
+<!--△△ヘッダーリスト△△-->
+
+
+<!--▽▽jQuery▽▽-->
+  <script src="jquery-3.5.1.min.js"></script>
+  <script>
+    $('#hamburger').on('click', function(){
+    $('.icon').toggleClass('close');
+    $('.sm').slideToggle();
+    });
+  </script>
+<!--△△jQuery△△-->
 </header>

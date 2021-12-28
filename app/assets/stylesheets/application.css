@@ -49,8 +49,15 @@ header {
   box-shadow:0 7px 20px 1px rgba(0,0,0,0.5);
 }
 
+.link {
+  text-decoration: none;
+  padding-left: 20px;
+  color:rgb(255,255,255);
+}
+
 .contents {
   width: 90%;
+  margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -222,4 +229,111 @@ footer p {
   display: flex;
   color: #FFFFFF;
   justify-content: center;
+}
+
+/* ヘッダーメニュー */
+
+nav {
+  margin: 0 0 0 auto;
+}
+
+header ul {
+  display: flex;
+  justify-content: right;
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+}
+
+header a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  line-height: 70px;
+  padding: 0 0 0 0;
+}
+
+.sm {
+  display: none;
+}
+
+
+/**********************************　
+以下、ハンバーガーメニューの設定　
+************************************/
+
+@media (max-width: 768px) {
+
+  .header-logo {
+    max-width: 160px;
+    max-height: 100%;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%,0);
+  }
+
+  .pc {
+    display: none;
+  }
+
+  #hamburger {
+    position: relative;
+    cursor: pointer;
+    margin: 5px 0 0 auto;
+    height: 60px;
+    width: 60px;
+  }
+
+  .icon span {
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 8px;
+    transition: ease 0.75s;
+  }
+
+  .icon span:nth-of-type(1) {
+    top: 16px;
+  }
+  .icon span:nth-of-type(2) {
+    top: 28px;
+  }
+  .icon span:nth-of-type(3) {
+    bottom: 16px;
+  }
+
+  .close span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 28px;
+  }
+
+  .close span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  .close span:nth-of-type(3) {
+      transform: rotate(-45deg);
+      top: 28px;
+  }
+
+  .sm {
+      top: 70px;
+      left: 0px;
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow:0 15px 15px 15px rgba(0,0,0,0.5);
+  }
+
+  header ul {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .link {
+    text-align: center; 
+  }
 }
