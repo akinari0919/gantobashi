@@ -88,6 +88,14 @@ main {
   align-items: center;
 }
 
+.camera-bd {
+  position: absolute;
+  width: 310px;
+  height: 310px;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+}
+
 .btn {
   padding-top: 20px;
   display: flex;
