@@ -121,7 +121,7 @@ main {
   border-bottom: 3px solid #000;
 }
 
-.btn {
+.submit-btn {
   padding-top: 20px;
   display: flex;
   justify-content: center;
