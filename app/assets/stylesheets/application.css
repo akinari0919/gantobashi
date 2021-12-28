@@ -24,6 +24,16 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+body:before{
+  content:"";
+  display:block;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+  width:100%;
+  height:100vh;
   background: url("background.jpeg") center no-repeat;
   background-size: cover;
 }
@@ -52,9 +62,6 @@ header {
 
 main {
   flex: 1;
-  background-image: url('background.jpeg');
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 .top-contents {
