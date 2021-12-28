@@ -21,8 +21,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('background.jpeg');
-  background-size: cover;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -51,6 +49,8 @@ header {
 
 main {
   flex: 1;
+  background-image: url('background.jpeg');
+  background-size: cover;
 }
 
 .content {
