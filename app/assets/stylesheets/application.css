@@ -24,21 +24,14 @@ body {
   background-image: url('background.jpeg');
   background-size: cover;
   display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
-
-@supports (-webkit-touch-callout: none) {
-  body {
-    /* The hack for Safari */
-    height: -webkit-fill-available;
-  }
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 
 a {	
   text-decoration: none;
   color: #FFFFFF;
-  text-shadow: 0 5px 9px #c4b59d, 0px -1px 1px #fff;
 }
 
 header {
@@ -62,12 +55,6 @@ header {
 
 main {
   flex: 1;
-  height:100vh;
-  height: -webkit-fill-available;
-}
-
-.padding {
-  height: 70px;
 }
 
 .content {
