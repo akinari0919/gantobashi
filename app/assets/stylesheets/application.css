@@ -330,10 +330,10 @@ header a {
 
   header ul {
     flex-direction: column;
-    margin: 0;
   }
 
   .link {
     text-align: center; 
+    padding: 0;
   }
 }
