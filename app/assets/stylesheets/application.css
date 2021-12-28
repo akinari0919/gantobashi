@@ -48,6 +48,7 @@ header {
   width: 100%;
   background-image: url('header4.jpg');
   background-size: cover;
+  z-index: 999;/*最前面へ*/
 }
 
 .icon {
@@ -186,4 +187,5 @@ footer {
   background-image: url('header4.jpg');
   background-size: cover;
   color: #FFFFFF;
+  z-index: 999;/*最前面へ*/
 }
