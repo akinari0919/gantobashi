@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   def info; end
   def service; end
   def privacy; end
+  def check; end
   def create; end
 end
