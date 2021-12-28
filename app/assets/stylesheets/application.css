@@ -53,7 +53,7 @@ main {
   background-size: cover;
 }
 
-.contents {
+.main-contents {
   height: 500px;
   position: absolute;
   top: 50%;
@@ -62,6 +62,7 @@ main {
 }
 
 .content {
+  height: 500px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
@@ -79,7 +80,8 @@ main {
 }
 
 .camera {
-  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
