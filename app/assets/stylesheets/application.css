@@ -66,12 +66,13 @@ header {
 }
 
 .how_to {
-  margin-top: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 90%;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  
 }
 
 .header-logo {
