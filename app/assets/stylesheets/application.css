@@ -52,7 +52,10 @@ header {
 .link {
   text-decoration: none;
   padding-left: 20px;
-  color:rgb(255,255,255);
+  color:rgb(255,255,255, 0.8);
+}
+.link:hover {
+  color:rgb(255,255,255)
 }
 
 .contents {
@@ -166,7 +169,7 @@ main {
   border: double 4px #ffffff;
 }
 .button-40:hover {
-  background-color: #374151;
+  background-color: #2e2e2e;
 }
 .button-40:focus {
   box-shadow: none;
@@ -334,6 +337,5 @@ header a {
 
   .link {
     text-align: center; 
-    padding: 0;
   }
 }
