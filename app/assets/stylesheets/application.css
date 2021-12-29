@@ -251,6 +251,12 @@ footer p {
   align-items: center;
 }
 
+btn-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ヘッダーメニュー */
 
 nav {
