@@ -75,6 +75,13 @@ header {
   flex-direction: column;
 }
 
+.spot {
+  font-size: 30px;
+  font-weight: 700;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .header-logo {
   max-width: 170px;
   max-height: 100%;
@@ -285,9 +292,9 @@ header a {
 }
 
 
-/**********************************　
-以下、ハンバーガーメニューの設定　
-************************************/
+/***********
+スマホ画面対応
+************/
 
 @media (max-width: 768px) {
 
@@ -302,6 +309,11 @@ header a {
 
   .top-btn {
     margin-top: 60px;
+  }
+
+  .spot {
+    font-size: 18px;
+    padding: 0;
   }
 
   .pc {
