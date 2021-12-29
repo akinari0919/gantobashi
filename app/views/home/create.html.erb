@@ -11,12 +11,12 @@
       <p class="button-41" id="shatter" onclick="init()">ガン飛ばす</p>
       <p class="button-42" id="dummy">解析中...</p>
     </div>
-    <div class="comment">
+    <div class="comment" id="comment">
       <p id="label-container"></p>
       <p id="result"></p>
     </div>
     <div class="btn-2">
-      <p class="button-40" id="reload" onclick="window.location.reload();">撮り直す</p>
+      <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
       <p class="button-40" id="detail" onclick="window.location.reload();">判定詳細</p>
     </div>
   </div>
@@ -27,7 +27,7 @@
 <script>
   $('#canvas').hide();
   $('#dummy').hide();
-  $('#reload').hide();
+  $('#retry').hide();
   $('#detail').hide();
   // カメラ設定
   const constraints = {
@@ -102,8 +102,21 @@
     } else {
       $(labelContainer).html('それじゃいかん！')
     }
+    $('#comment').show();
     $('#dummy').hide();
-    $('#reload').show();
+    $('#retry').show();
     $('#detail').show();
+  }
+
+  function retry(){
+    $('#video').show();
+    $('#shatter').show();
+    $('#canvas').hide();
+    $('#dummy').hide();
+    $('#label-container').empty();
+    $('#result').empty();
+    $('#comment').hide();
+    $('#retry').hide();
+    $('#detail').hide();
   }
 </script>
