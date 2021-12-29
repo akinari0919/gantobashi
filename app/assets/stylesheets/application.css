@@ -65,6 +65,15 @@ header {
   margin-right: auto;
 }
 
+.how_to {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
 .header-logo {
   max-width: 170px;
   max-height: 100%;
@@ -81,7 +90,7 @@ main {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  width: 100%
+  width: 100%;
 }
 
 .top-text {
@@ -95,7 +104,7 @@ main {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  width: 100%
+  width: 100%;
 }
 
 .logo {
