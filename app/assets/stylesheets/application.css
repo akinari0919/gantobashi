@@ -52,7 +52,7 @@ header {
 .link {
   text-decoration: none;
   padding-left: 20px;
-  color:rgb(255,255,255, 0.8);
+  color:rgba(255,255,255, 0.8);
 }
 .link:hover {
   color:rgb(255,255,255)
