@@ -124,13 +124,6 @@ main {
   border-bottom: 3px solid #000;
 }
 
-.submit-btn {
-  padding-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .comment {
   padding-top: 15px;
   height: 10px;
@@ -140,6 +133,36 @@ main {
   font-size: 30px;
   font-weight: 600;
   line-height: 1.5rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-size: cover;
+  z-index: 999;/*最前面へ*/
+  box-shadow: 0 0 50px 30px rgba(0,0,0,0.9);
+  min-width: 200px;
+  display: flex;
+  color: #FFFFFF;
+  justify-content: center;
+}
+
+footer p {
+  position: fixed;
+  bottom: 0;
+  min-width: 200px;
+  display: flex;
+  color: #FFFFFF;
+  justify-content: center;
+}
+
+/* ボタン */
+
+.btn-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-2 {
@@ -212,26 +235,11 @@ main {
   cursor: pointer;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-size: cover;
-  z-index: 999;/*最前面へ*/
-  box-shadow: 0 0 50px 30px rgba(0,0,0,0.9);
-  min-width: 200px;
+.submit-btn {
+  padding-top: 30px;
   display: flex;
-  color: #FFFFFF;
   justify-content: center;
-}
-
-footer p {
-  position: fixed;
-  bottom: 0;
-  min-width: 200px;
-  display: flex;
-  color: #FFFFFF;
-  justify-content: center;
+  align-items: center;
 }
 
 /* ヘッダーメニュー */
@@ -275,6 +283,10 @@ header a {
     left: 50%;
     transform: translate(-50%,0);
   } */
+
+  .top-btn {
+    margin-top: 60px;
+  }
 
   .pc {
     display: none;

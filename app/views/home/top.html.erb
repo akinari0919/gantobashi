@@ -1,17 +1,21 @@
 <%= render 'layouts/header' %>
 
 <main>
-  <div class="top-contents mt-5">
-    <%= image_tag 'logo.png', class:'logo' %>
-    <div class="btn-2 mt-4">
-      <%= link_to "さっそくガン飛ばす", '/select', class:"button-40 link" %>
+  <div class="top-contents">
+    <div class="mt-5 py-4">
+      <%= image_tag 'logo.png', class:'logo' %>
     </div>
-    <div class="btn-2 mt-2">
-      <%= link_to "　はじめての方へ　", '/about', class:"button-40 link" %>
-    </div>
-    <div class="top-text mt-4">
-      <p>※このサービスはWEBカメラを使用します。</p>
-    </div>
+    <div class="top-btn">
+      <div class="top-text">
+        <p>※このサービスはWEBカメラを使用します。</p>
+      </div>
+      <div class="btn-1 mt-1">
+        <%= link_to "さっそくガン飛ばす", '/select', class:"button-40 link" %>
+      </div>
+      <div class="btn-1 mt-3">
+        <%= link_to "　　　遊び方　　　", '/about', class:"button-40 link" %>
+      </div>
+    <div>
   </div>
 </main>
 
