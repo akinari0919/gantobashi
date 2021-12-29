@@ -51,7 +51,7 @@ header {
 
 .link {
   text-decoration: none;
-  padding-left: 20px;
+  margin-left: 20px;
   color:rgba(255,255,255, 0.8);
 }
 .link:hover {
@@ -350,5 +350,6 @@ header a {
   .link {
     text-align: center; 
     color:rgb(255,255,255);
+    margin: 0px;
   }
 }
