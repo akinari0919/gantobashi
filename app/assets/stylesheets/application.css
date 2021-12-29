@@ -105,6 +105,15 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 40px;
+  font-weight: 700;
+  padding-bottom: 30px;
+}
+
+.select-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .create-contents {
@@ -259,7 +268,7 @@ footer p {
   align-items: center;
 }
 
-btn-3 {
+.btn-3 {
   display: flex;
   justify-content: center;
   align-items: center;
