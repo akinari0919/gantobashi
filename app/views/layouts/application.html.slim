@@ -4,8 +4,7 @@ html
     title
       | Gantobashi
     meta[name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"]
-    link[rel="icon" type="image/x-icon" href="icon.png"]
-    link[rel="apple-touch-icon" sizes="180x180" href="icon.png"]
+    = favicon_link_tag "icon.ico"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
