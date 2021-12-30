@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'select', to: 'home#select'
   get 'create', to: 'home#create'
   post 'check', to: 'check#result'
+  get 'show', to: 'check#show'
 end
