@@ -31,18 +31,26 @@ class CheckController < ApplicationController
             end
           end
 
-          result = @angry.ceil + @confused.ceil * 0.3 + @sad.ceil * 0.1
+          result = @angry.ceil * 1.5 + @confused.ceil * 0.3 + @sad.ceil * 0.1
 
           if result.floor > 0
-            @comment = "#{result.floor}人がひよった！"
+            @comment = { 
+              body: "#{result.floor}人がひよった！",
+              text: "もっとがんばれ",
+              star: "★★★★☆"
+            }
           else
-            @comment = "誰一人ひよらない、、"
+            @comment = {
+              body: "誰一人ひよらない、、"
+            }
           end
         else
-          @comment = "ガン飛んでない、、"
+          @comment = {
+            body: "ガン飛んでない、、"
+          }
         end
 
-        render body: @comment
+        render json: @comment
 
         # レスポンス確認用
         puts "------------"

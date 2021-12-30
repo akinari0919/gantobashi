@@ -1,7 +1,7 @@
 <%= render 'layouts/header' %>
 
 <main>
-  <div class="create-contents">
+  <div class="create-contents" id="create-contents">
     <div class="camera">
       <div class="camera-bd"></div>
       <video id="video" autoplay playsinline width="300" height="300"></video>
@@ -19,7 +19,6 @@
       <p class="button-40" id="detail" onclick="detail();">判定詳細</p>
     </div>
   </div>
-</main>
 
 <%= render 'layouts/footer' %>
 
@@ -97,7 +96,7 @@
           },
       })
         .then(
-          data => $('#result').append(data),
+          data => $('#result').append(data.body),
           error => $('#result').append('解析失敗m(_ _)m')
         );
     } else {
@@ -120,7 +119,7 @@
   }
 
   function detail(){
-    alert(data);
+    $('create-contents').hide();
     // window.location.href = '/show';
     // $('#canvas').show();
     // $('#comment').show();
