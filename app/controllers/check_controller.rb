@@ -100,7 +100,9 @@ class CheckController < ApplicationController
         puts ""
       end
     else
-      render body: '解析失敗m(_ _)m'
+      render json: {
+        body: '解析失敗m(_ _)m'
+      }
     end
   end
 
