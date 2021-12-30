@@ -14,7 +14,6 @@
     <div class="comment" id="comment">
       <p id="label-container"></p>
       <p id="result"></p>
-      <p id="miss"></p>
     </div>
     <div class="btn-2">
       <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
@@ -85,21 +84,6 @@
     // 予測は、画像、ビデオ、またはキャンバスのhtml要素を取り込むことができます
     const prediction = await model.predict(canvas);
 
-    const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
-      $.ajax({
-        url: '/check',
-        type: 'POST',
-        data: {
-            image: base64
-          },
-        headers: {
-            'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
-          },
-      })
-        .then(
-          data => $('#result').append(data),
-          error => $('#result').append('解析失敗m(_ _)m')
-        );
     // predictionの数値によって結果を変える
     if (prediction[0].probability.toFixed(2)> 0.1) {
       const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
