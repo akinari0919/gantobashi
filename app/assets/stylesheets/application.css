@@ -161,6 +161,15 @@ main {
   line-height: 1.5rem;
 }
 
+.result {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 footer {
   position: fixed;
   bottom: 0;

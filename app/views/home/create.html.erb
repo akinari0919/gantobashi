@@ -1,7 +1,7 @@
 <%= render 'layouts/header' %>
 
 <main>
-  <div class="create-contents" id="create-contents">
+  <div class="create-contents">
     <div class="camera">
       <div class="camera-bd"></div>
       <video id="video" autoplay playsinline width="300" height="300"></video>
@@ -17,11 +17,11 @@
     <div class="btn-2">
       <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
       <%= form_with url: '/show' do |f| %>
-        <%= f.hidden_field :body, id: "body", value: ""  %>
-        <%= f.hidden_field :text, id: "text", value: ""  %>
-        <%= f.hidden_field :star, id: "star", value: ""  %>
-        <%= f.hidden_field :photo, id: "photo", value: ""  %>
-        <%= f.submit "判定詳細", class:"button-40", id:"detail" %>
+        <%= f.hidden_field :body, id: "body", value: "" %>
+        <%= f.hidden_field :text, id: "text", value: "" %>
+        <%= f.hidden_field :star, id: "star", value: "" %>
+        <%= f.hidden_field :photo, id: "photo", value: "" %>
+        <p><%= f.submit "判定詳細", class:"button-40", id:"detail" %></p>
       <% end %>
     </div>
   </div>
