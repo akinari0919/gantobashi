@@ -106,5 +106,10 @@ class CheckController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @body = params[:body]
+    @text = params[:text]
+    @star = params[:star]
+    @photo = params[:photo]
+  end
 end

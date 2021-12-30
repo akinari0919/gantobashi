@@ -16,7 +16,13 @@
     </div>
     <div class="btn-2">
       <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
-      <p class="button-40" id="detail" onclick="detail();">判定詳細</p>
+      <%= form_with url: '/show' do |f| %>
+        <%= f.hidden_field :body, id: "body", value: ""  %>
+        <%= f.hidden_field :text, id: "text", value: ""  %>
+        <%= f.hidden_field :star, id: "star", value: ""  %>
+        <%= f.hidden_field :photo, id: "photo", value: ""  %>
+        <%= f.submit "判定詳細", class:"button-40", id:"detail" %>
+      <% end %>
     </div>
   </div>
 
@@ -85,6 +91,7 @@
     // predictionの数値によって結果を変える
     if (prediction[0].probability.toFixed(2)> 0.1) {
       const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
+      document.getElementById('photo').value = base64;
       $.ajax({
         url: '/check',
         type: 'POST',
@@ -96,6 +103,9 @@
           },
         success: function(data) {
             $('#result').append(data.body)
+            document.getElementById('body').value = data.body;
+            document.getElementById('text').value = data.text;
+            document.getElementById('star').value = data.star;
           },
         error: function() {
             $('#result').append('解析失敗m(_ _)m')
@@ -119,12 +129,5 @@
     $('#result').empty();
     $('#retry').hide();
     $('#detail').hide();
-  }
-
-  function detail(){
-    $('create-contents').hide();
-    // window.location.href = '/show';
-    // $('#canvas').show();
-    // $('#comment').show();
   }
 </script>

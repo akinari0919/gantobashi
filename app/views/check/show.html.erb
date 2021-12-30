@@ -1,1 +1,16 @@
-<canvas id="canvas" width="300" height="300"></canvas>
+<%= render 'layouts/header' %>
+
+<div class="contents">
+  <img src="data:image/jpeg;base64,<%="#{@photo}"%>"/>
+  <p><%= @body %></p>
+  <p><%= @text %></p>
+  <p><%= @star %></p>
+  <a href="https://twitter.com/intent/tweet?text=<%="#{@body}"%>%0d%0dhttps://gantobashi.herokuapp.com/%0d&hashtags=メンチキッター,ガン飛ばし" target="_blank" rel="noopener noreferrer">
+    Twitterへ投稿
+  </a>
+  <div class="btn-3">
+    <%= link_to "取り直す", '/create', class:"button-40 link" %>
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>
