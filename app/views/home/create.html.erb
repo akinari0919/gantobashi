@@ -11,8 +11,7 @@
       <p class="button-41" id="shatter" onclick="init()">ガン飛ばす</p>
       <p class="button-42" id="dummy">解析中...</p>
     </div>
-    <div class="comment" id="comment">
-      <p id="label-container"></p>
+    <div class="comment">
       <p id="result"></p>
     </div>
     <div class="btn-2">
@@ -102,9 +101,9 @@
           error => $('#result').append('解析失敗m(_ _)m')
         );
     } else {
-      $('#labelContainer').html('それじゃいかん！')
-    }
-    $('#comment').show();
+      $('#result').html('それじゃいかん！')
+    };
+    $('#result').show();
     $('#dummy').hide();
     $('#retry').show();
     $('#detail').show();
@@ -115,9 +114,7 @@
     $('#shatter').show();
     $('#canvas').hide();
     $('#dummy').hide();
-    $('#label-container').empty();
     $('#result').empty();
-    $('#comment').hide();
     $('#retry').hide();
     $('#detail').hide();
   }
