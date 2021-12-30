@@ -33,26 +33,13 @@ class CheckController < ApplicationController
 
           result = @angry.ceil + @confused.ceil * 0.3 + @sad.ceil * 0.1
 
-          # # 怒りの感情を優遇 
-          # if @angry > @confused
-          #   result = @angry.ceil * @confused.ceil * 1.1
-          # else
-          #   result = @angry.ceil * @confused.ceil * 0.5
-          # end
-
-          # # 補正
-          # if result > 1000
-          #   result *= 0.1
-          # end
-          
-          # 結果を反映
           if result.floor > 0
             @comment = "#{result.floor}人がひよった！"
           else
             @comment = "誰一人ひよらない、、"
           end
         else
-          @comment =　"ガン飛んでない、、"
+          @comment = "ガン飛んでない、、"
         end
 
         render body: @comment
