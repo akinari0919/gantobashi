@@ -52,7 +52,7 @@ class CheckController < ApplicationController
             @comment = "誰一人ひよらない、、"
           end
         else
-          @comment =　"なっとらん！"
+          @comment =　"ガン飛んでない、、"
         end
 
         render body: @comment
