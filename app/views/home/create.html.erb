@@ -94,11 +94,14 @@
         headers: {
             'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
           },
+        success: function(data) {
+            $('#result').append(data.body)
+          },
+        error: function() {
+            $('#result').append('解析失敗m(_ _)m')
+          }
       })
-        .then(
-          data => $('#result').append(data.body),
-          error => $('#result').append('解析失敗m(_ _)m')
-        );
+
     } else {
       $('#result').html('それは違う！')
     };
