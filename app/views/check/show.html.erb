@@ -1,20 +1,28 @@
 <%= render 'layouts/header' %>
 
 <div class="create-contents">
-  <div class="camera">
+  <div class="result-size">
+    <div class="photo-bd"></div>
     <img src="data:image/jpeg;base64,<%="#{@photo}"%>"　 width="100" height="100"　/>
     <div class="result">
-      <p class="mx-3"><%= @body %></p>
-      <p><%= @text %></p>
+      <div class="result-body">
+        <p class="mx-3"><%= @body %></p>
+      </div>
     </div>
   </div>
   <div class="result">
-    <p><%= @star %></p>
+    <div class="star">
+      <p><%= @star %></p>
+    </div>
+    <p>『<%= @text %>』</p>
+    <p>眼力：</p>
+    <p>感情値：</p>
+    <p>アドバイス：</p>
     <a href="https://twitter.com/intent/tweet?text=<%="#{@body}"%>%0d%0dhttps://gantobashi.herokuapp.com/%0d&hashtags=メンチキッター,ガン飛ばし" target="_blank" rel="noopener noreferrer">
       Twitterへ投稿
     </a>
   </div>
-  <div class="btn-3">
+  <div class="btn-3 mt-3">
     <%= link_to "撮り直す", '/create', class:"button-40 link" %>
   </div>
 </div>

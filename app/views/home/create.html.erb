@@ -88,10 +88,11 @@
     // 予測は、画像、ビデオ、またはキャンバスのhtml要素を取り込むことができます
     const prediction = await model.predict(canvas);
 
+    const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
+    document.getElementById('photo').value = base64;
+
     // predictionの数値によって結果を変える
     if (prediction[0].probability.toFixed(2)> 0.1) {
-      const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
-      document.getElementById('photo').value = base64;
       $.ajax({
         url: '/check',
         type: 'POST',
@@ -109,11 +110,17 @@
           },
         error: function() {
             $('#result').append('解析失敗m(_ _)m')
+            document.getElementById('body').value = "解析失敗m(_ _)m";
+            document.getElementById('text').value = "予期せぬエラー";
+            document.getElementById('star').value = "☆☆☆☆☆";
           }
       })
 
     } else {
       $('#result').html('それは違う！')
+      document.getElementById('body').value = "それは違う！";
+      document.getElementById('text').value = "基本を抑えよう！";
+      document.getElementById('star').value = "☆☆☆☆☆";
     };
     $('#result').show();
     $('#dummy').hide();

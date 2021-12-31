@@ -33,20 +33,44 @@ class CheckController < ApplicationController
 
           result = @angry.ceil * 1.5 + @confused.ceil * 0.3 + @sad.ceil * 0.1
 
+          if result >= 100
+            @text = "オマエに託す!!"
+            @star = "★★★★★★"
+          elsif result >= 80
+            @text = "暴力は守る為に使えよ"
+            @star = "★★★★★"
+          elsif result >= 60
+            @text = "オマエ、負けてねえよ"
+            @star = "★★★★☆"
+          elsif result >= 40
+            @text = "上等上等"
+            @star = "★★★☆☆"
+          elsif result >= 20
+            @text = "ハンデいる？"
+            @star = "★★☆☆☆"
+          else
+            @text = "そんな日もある"
+            @star = "★☆☆☆☆"
+          end
+
           if result.floor > 0
             @comment = { 
               body: "#{result.floor}人がひよった！",
-              text: "もっとがんばれ",
-              star: "★★★★☆"
+              text: @text,
+              star: @star
             }
           else
             @comment = {
-              body: "誰一人ひよらない、、"
+              body: "誰一人ひよらない、、",
+              text: "オマエを除名にする",
+              star: "☆☆☆☆☆"
             }
           end
         else
           @comment = {
-            body: "ガン飛んでない、、"
+            body: "ガン飛んでない、、",
+            text: "オマエはダセェ!!",
+            star: "☆☆☆☆☆"
           }
         end
 
@@ -101,7 +125,9 @@ class CheckController < ApplicationController
       end
     else
       render json: {
-        body: '解析失敗m(_ _)m'
+        body: '解析失敗m(_ _)m',
+        text: "!!!???",
+        star: "☆☆☆☆☆"
       }
     end
   end
