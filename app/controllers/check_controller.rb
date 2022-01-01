@@ -50,10 +50,14 @@ class CheckController < ApplicationController
             @eye_result = "★★☆☆☆"
             @eye_level = 1.5
             @eye_star = 2
-          else
+          elsif eye_power >= 80
             @eye_result = "★☆☆☆☆"
             @eye_level = 1
             @eye_star = 1
+          else
+            @eye_result = "☆☆☆☆☆"
+            @eye_level = 0
+            @eye_star = 0
           end
 
           # 感情値の取得
@@ -73,7 +77,10 @@ class CheckController < ApplicationController
           end
 
           emotion_power = (@angry + @sad + @confused + @calm) / 4
-          if emotion_power >= 24
+          if emotion_power >= 24.9
+            @emotion_result = "★★★★★"
+            @emotion_star = 5
+          elsif emotion_power >= 24
             @emotion_result = "★★★★★"
             @emotion_star = 5
             emotion_power = 20
@@ -89,10 +96,14 @@ class CheckController < ApplicationController
             @emotion_result = "★★☆☆☆"
             @emotion_star = 2
             emotion_power = 5
-          else
+          elsif emotion_power >= 1
             @emotion_result = "★☆☆☆☆"
             @emotion_star = 1
             emotion_power = 1
+          else
+            @emotion_result = "☆☆☆☆☆"
+            @emotion_star = 0
+            emotion_power = 0
           end
 
           # 総合値の取得
@@ -102,20 +113,41 @@ class CheckController < ApplicationController
             @star = "★★★★★"
           elsif result_star >= 4
             @star = "★★★★☆"
+            @rank = "隊長クラス"
           elsif result_star >= 3
             @star = "★★★☆☆"
+            @rank = "副隊長クラス"
           elsif result_star >= 2
             @star = "★★☆☆☆"
+            @rank = "特攻隊クラス"
           else
             @star = "★☆☆☆☆"
+            @rank = "旗持ちクラス"
           end
 
-          if result.floor >= 1
+          if result.floor > 100
+            @comment = { 
+              body: "#{result.floor}人をひよらせた!!",
+              star: @star,
+              point1: "眼力：#{@eye_result}",
+              point2: "感情値：#{@emotion_result}",
+              rank: "総長クラス"
+            }
+          elsif result.floor == 100
+            @comment = { 
+              body: "#{result.floor}人をひよらせた!!",
+              star: @star,
+              point1: "眼力：#{@eye_result}",
+              point2: "感情値：#{@emotion_result}",
+              rank: "副総長クラス"
+            }
+          elsif result.floor >= 1
             @comment = { 
               body: "#{result.floor}人をひよらせた！",
               star: @star,
-              point1:"眼力：#{@eye_result}",
-              point2:"感情値：#{@emotion_result}",
+              point1: "眼力：#{@eye_result}",
+              point2: "感情値：#{@emotion_result}",
+              rank: @rank
             }
           else
             @comment = {
@@ -123,14 +155,16 @@ class CheckController < ApplicationController
               star: "☆☆☆☆☆",
               point1:"眼力：☆☆☆☆☆",
               point2:"感情値：☆☆☆☆☆",
+              rank: "雑魚クラス"
             }
           end
         else
           @comment = {
-            body: "ガン飛んでない、、",
+            body: "ガン飛んでないorz",
             star: "☆☆☆☆☆",
             point1:"目閉じてない？",
             point2:"笑ってない？",
+            rank: "モブ以下"
           }
         end
 
@@ -190,22 +224,20 @@ class CheckController < ApplicationController
     else
       render json: {
         body: '解析失敗m(_ _)m',
-        text: "下記チェック！",
-        star: "☆☆☆☆☆",
-        point1:"",
-        point2:"誰も写ってないとか？",
-        point3:"1人で写ってねー！"
+        star: "下記ご確認ください。",
+        point1:"2人以上写っている場合や、",
+        point2:"誰も写ってない場合など。",
+        rank:"撮影不備の可能性あり"
       }
     end
   end
 
   def show
     @body = params[:body]
-    @text = params[:text]
     @star = params[:star]
     @photo = params[:photo]
     @point1 = params[:point1]
     @point2 = params[:point2]
-    @point3 = params[:point3]
+    @rank = params[:rank]
   end
 end

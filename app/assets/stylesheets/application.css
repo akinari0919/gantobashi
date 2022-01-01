@@ -179,7 +179,7 @@ main {
   padding-top: 20px;
   width: 260px;
   height: 70px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   text-align:center
 }
@@ -195,6 +195,11 @@ main {
 .star {
   margin-top: 30px;
   font-size: 30px;
+}
+
+.rank {
+  font-size: 30px;
+  font-weight: 600;
 }
 
 footer {
