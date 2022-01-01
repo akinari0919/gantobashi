@@ -1,4 +1,6 @@
 class CheckController < ApplicationController
+  before_action :not_user, {only: :show}
+
   def result
     # AWSレスポンス取得
     credentials = Aws::Credentials.new(
@@ -239,5 +241,11 @@ class CheckController < ApplicationController
     @point1 = params[:point1]
     @point2 = params[:point2]
     @rank = params[:rank]
+  end
+
+  def not_user
+    if params[:body] == nil
+      redirect_to("/select")
+    end
   end
 end
