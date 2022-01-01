@@ -14,10 +14,10 @@
     <div class="star">
       <p><%= @star %></p>
     </div>
-    <p>『<%= @text %>』</p>
-    <p>眼力：</p>
-    <p>感情値：</p>
-    <p>アドバイス：</p>
+    <ul>
+      <li><%= @point1 %></li>
+      <li><%= @point2 %></li>
+    </ul>
     <a href="https://twitter.com/intent/tweet?text=<%="#{@body}"%>%0d%0dhttps://gantobashi.herokuapp.com/%0d&hashtags=メンチキッター,ガン飛ばし" target="_blank" rel="noopener noreferrer">
       Twitterへ投稿
     </a>

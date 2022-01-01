@@ -21,6 +21,9 @@
         <%= f.hidden_field :text, id: "text", value: "" %>
         <%= f.hidden_field :star, id: "star", value: "" %>
         <%= f.hidden_field :photo, id: "photo", value: "" %>
+        <%= f.hidden_field :point1, id: "point1", value: "" %>
+        <%= f.hidden_field :point2, id: "point2", value: "" %>
+        <%= f.hidden_field :point3, id: "point3", value: "" %>
         <p><%= f.submit "判定詳細", class:"button-40", id:"detail" %></p>
       <% end %>
     </div>
@@ -90,38 +93,40 @@
 
     const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
     document.getElementById('photo').value = base64;
+    // alert(base64);
 
-    // predictionの数値によって結果を変える
-    if (prediction[0].probability.toFixed(2)> 0.1) {
-      $.ajax({
-        url: '/check',
-        type: 'POST',
-        data: {
-            image: base64
-          },
-        headers: {
-            'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
-          },
-        success: function(data) {
-            $('#result').append(data.body)
-            document.getElementById('body').value = data.body;
-            document.getElementById('text').value = data.text;
-            document.getElementById('star').value = data.star;
-          },
-        error: function() {
-            $('#result').append('解析失敗m(_ _)m')
-            document.getElementById('body').value = "解析失敗m(_ _)m";
-            document.getElementById('text').value = "予期せぬエラー";
-            document.getElementById('star').value = "☆☆☆☆☆";
-          }
-      })
+    const eye_power = prediction[0].probability * 100
+    // alert(eye_power);
+    $.ajax({
+      url: '/check',
+      type: 'POST',
+      data: {
+          image: base64,
+          base: eye_power
+        },
+      headers: {
+          'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+        },
+      success: function(data) {
+          $('#result').append(data.body)
+          document.getElementById('body').value = data.body;
+          document.getElementById('text').value = data.text;
+          document.getElementById('star').value = data.star;
+          document.getElementById('point1').value = data.point1;
+          document.getElementById('point2').value = data.point2;
+          document.getElementById('point3').value = data.point3;
+        },
+      error: function() {
+          $('#result').append('解析失敗m(_ _)m')
+          document.getElementById('body').value = "解析失敗m(_ _)m";
+          document.getElementById('text').value = "予期せぬエラー";
+          document.getElementById('star').value = "☆☆☆☆☆";
+          document.getElementById('point1').value = "もう一度";
+          document.getElementById('point2').value = "何度もエラーになれば";
+          document.getElementById('point3').value = "問い合わせ下さい";
+        }
+    });
 
-    } else {
-      $('#result').html('それは違う！')
-      document.getElementById('body').value = "それは違う！";
-      document.getElementById('text').value = "基本を抑えよう！";
-      document.getElementById('star').value = "☆☆☆☆☆";
-    };
     $('#result').show();
     $('#dummy').hide();
     $('#retry').show();

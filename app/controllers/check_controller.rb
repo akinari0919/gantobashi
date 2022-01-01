@@ -1,5 +1,6 @@
 class CheckController < ApplicationController
   def result
+    # AWSレスポンス取得
     credentials = Aws::Credentials.new(
       ENV['AWS_ACCESS_KEY_ID'],
       ENV['AWS_SECRET_ACCESS_KEY']
@@ -13,64 +14,123 @@ class CheckController < ApplicationController
       attributes: ['ALL']
     }
 
-    # 判定ロジック
     response = client.detect_faces attrs
+    # 判定ロジック
+
+    # 顔写真が撮れているか
     if response.face_details != []
       response.face_details.each do |face_detail|
+
+        # 目が開いているかつ笑顔ではない
         if face_detail.eyes_open.value == true && face_detail.smile.value == false
+
+          # 眼力値の取得
+          eye_power = params[:base].to_f
+          if eye_power >= 99.99
+            @eye_result = "★★★★★"
+            @eye_level = 5
+            @eye_star = 5
+          elsif eye_power >= 99.9
+            @eye_result = "★★★★☆"
+            @eye_level = 4
+            @eye_star = 4
+          elsif eye_power >= 99.5
+            @eye_result = "★★★☆☆"
+            @eye_level = 3.5
+            @eye_star = 4
+          elsif eye_power >= 99
+            @eye_result = "★★★☆☆"
+            @eye_level = 3
+            @eye_star = 4
+          elsif eye_power >= 95
+            @eye_result = "★★★☆☆"
+            @eye_level = 2
+            @eye_star = 3
+          elsif eye_power >= 90
+            @eye_result = "★★☆☆☆"
+            @eye_level = 1.5
+            @eye_star = 2
+          else
+            @eye_result = "★☆☆☆☆"
+            @eye_level = 1
+            @eye_star = 1
+          end
+
           # 感情値の取得
           (0..7).each do |i|
             if face_detail.emotions[i].type == 'ANGRY'
               @angry = face_detail.emotions[i].confidence
             end
-            if face_detail.emotions[i].type == 'CONFUSED'
-              @confused = face_detail.emotions[i].confidence
-            end
             if face_detail.emotions[i].type == 'SAD'
               @sad = face_detail.emotions[i].confidence
             end
+            if face_detail.emotions[i].type == 'CONFUSED'
+              @confused = face_detail.emotions[i].confidence
+            end
+            if face_detail.emotions[i].type == 'CALM'
+              @calm = face_detail.emotions[i].confidence * 0.1
+            end
           end
 
-          result = @angry.ceil * 1.5 + @confused.ceil * 0.3 + @sad.ceil * 0.1
+          emotion_power = (@angry + @sad + @confused + @calm) / 4
+          if emotion_power >= 24
+            @emotion_result = "★★★★★"
+            @emotion_star = 5
+            emotion_power = 20
+          elsif emotion_power >= 20
+            @emotion_result = "★★★★☆"
+            @emotion_star = 4
+            emotion_power = 15
+          elsif emotion_power >= 15
+            @emotion_result = "★★★☆☆"
+            @emotion_star = 3
+            emotion_power = 10
+          elsif emotion_power >= 5
+            @emotion_result = "★★☆☆☆"
+            @emotion_star = 2
+            emotion_power = 5
+          else
+            @emotion_result = "★☆☆☆☆"
+            @emotion_star = 1
+            emotion_power = 1
+          end
 
-          if result >= 100
-            @text = "オマエに託す!!"
-            @star = "★★★★★★"
-          elsif result >= 80
-            @text = "暴力は守る為に使えよ"
+          # 総合値の取得
+          result = @eye_level * emotion_power
+          result_star = (@eye_star + @emotion_star) / 2
+          if result_star >= 5
             @star = "★★★★★"
-          elsif result >= 60
-            @text = "オマエ、負けてねえよ"
+          elsif result_star >= 4
             @star = "★★★★☆"
-          elsif result >= 40
-            @text = "上等上等"
+          elsif result_star >= 3
             @star = "★★★☆☆"
-          elsif result >= 20
-            @text = "ハンデいる？"
+          elsif result_star >= 2
             @star = "★★☆☆☆"
           else
-            @text = "そんな日もある"
             @star = "★☆☆☆☆"
           end
 
-          if result.floor > 0
+          if result.floor >= 1
             @comment = { 
-              body: "#{result.floor}人がひよった！",
-              text: @text,
-              star: @star
+              body: "#{result.floor}人をひよらせた！",
+              star: @star,
+              point1:"眼力：#{@eye_result}",
+              point2:"感情値：#{@emotion_result}",
             }
           else
             @comment = {
-              body: "誰一人ひよらない、、",
-              text: "オマエを除名にする",
-              star: "☆☆☆☆☆"
+              body: "誰一人ひよらない(泣)",
+              star: "☆☆☆☆☆",
+              point1:"眼力：☆☆☆☆☆",
+              point2:"感情値：☆☆☆☆☆",
             }
           end
         else
           @comment = {
             body: "ガン飛んでない、、",
-            text: "オマエはダセェ!!",
-            star: "☆☆☆☆☆"
+            star: "☆☆☆☆☆",
+            point1:"目閉じてない？",
+            point2:"笑ってない？",
           }
         end
 
@@ -120,14 +180,21 @@ class CheckController < ApplicationController
         puts "  【#{face_detail.emotions[7].type}】"
         puts "    #{face_detail.emotions[7].confidence}"
         puts ""
+        puts eye_power
+        puts @eye_result
+        puts emotion_power
+        puts @emotion_result
         puts "------------"
         puts ""
       end
     else
       render json: {
         body: '解析失敗m(_ _)m',
-        text: "!!!???",
-        star: "☆☆☆☆☆"
+        text: "下記チェック！",
+        star: "☆☆☆☆☆",
+        point1:"",
+        point2:"誰も写ってないとか？",
+        point3:"1人で写ってねー！"
       }
     end
   end
@@ -137,5 +204,8 @@ class CheckController < ApplicationController
     @text = params[:text]
     @star = params[:star]
     @photo = params[:photo]
+    @point1 = params[:point1]
+    @point2 = params[:point2]
+    @point3 = params[:point3]
   end
 end
