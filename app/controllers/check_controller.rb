@@ -30,36 +30,28 @@ class CheckController < ApplicationController
           eye_power = params[:base].to_f
           if eye_power >= 99.99
             @eye_result = "★★★★★"
-            eye_power = 5
             @eye_star = 5
+            eye_power = 10
           elsif eye_power >= 99.9
             @eye_result = "★★★★☆"
-            eye_power = 4
             @eye_star = 4
-          elsif eye_power >= 99.5
-            @eye_result = "★★★☆☆"
-            eye_power = 3.5
-            @eye_star = 3
+            eye_power = 8
           elsif eye_power >= 99
             @eye_result = "★★★☆☆"
-            eye_power = 3
             @eye_star = 3
-          elsif eye_power >= 95
-            @eye_result = "★★★☆☆"
-            eye_power = 2
-            @eye_star = 3
+            eye_power = 7
           elsif eye_power >= 90
             @eye_result = "★★☆☆☆"
-            eye_power = 1.5
             @eye_star = 2
+            eye_power = 4
           elsif eye_power >= 80
             @eye_result = "★☆☆☆☆"
-            eye_power = 1
             @eye_star = 1
+            eye_power = 1
           else
             @eye_result = "☆☆☆☆☆"
-            eye_power = 0.5
             @eye_star = 0
+            eye_power = 0.5
           end
 
           # 感情値の取得
@@ -82,23 +74,23 @@ class CheckController < ApplicationController
           if emotion_power >= 24.9
             @emotion_result = "★★★★★"
             @emotion_star = 5
-            emotion_power = 25
+            emotion_power = 12
           elsif emotion_power >= 24
             @emotion_result = "★★★★★"
             @emotion_star = 5
-            emotion_power = 20
+            emotion_power = 10
           elsif emotion_power >= 20
             @emotion_result = "★★★★☆"
             @emotion_star = 4
-            emotion_power = 15
+            emotion_power = 9
           elsif emotion_power >= 16
             @emotion_result = "★★★☆☆"
             @emotion_star = 3
-            emotion_power = 10
+            emotion_power = 8
           elsif emotion_power >= 13
             @emotion_result = "★★☆☆☆"
             @emotion_star = 2
-            emotion_power = 5
+            emotion_power = 4
           elsif emotion_power >= 10
             @emotion_result = "★☆☆☆☆"
             @emotion_star = 1
@@ -111,22 +103,58 @@ class CheckController < ApplicationController
 
           # 総合値の取得
           result = eye_power * emotion_power
-          result_star = (@eye_star + @emotion_star) / 2
+          result_star = (@eye_star + @emotion_star) / 2          
+
           if result_star >= 5
             @star = "★★★★★"
           elsif result_star >= 4
             @star = "★★★★☆"
-            @rank = "隊長クラス"
+            if result == 70
+              @rank = "参謀クラス"
+            elsif result == 72
+              @rank = "隊長クラス"
+            elsif result == 80
+              @rank = "(仮)総長クラス"  
+            else
+              @rank = "総長代理クラス"
+            end
           elsif result_star >= 3
             @star = "★★★☆☆"
-            @rank = "副隊長クラス"
+            if result <= 30
+              result = 32
+            end
+            if result < 40
+              @rank = "特攻隊長クラス"
+            elsif result < 50
+              @rank = "隊長代理クラス"
+            elsif result < 60
+              @rank = "副隊長クラス"  
+            else
+              @rank = "患部クラス"
+            end
           elsif result_star >= 2
             @star = "★★☆☆☆"
-            @rank = "特攻隊クラス"
+            if result <= 5
+              result *= 3
+            elsif result <= 10
+              result *= 2
+            end
+            if result <= 20
+              @rank = "特攻隊クラス"
+            else
+              @rank = "親衛隊長クラス"
+            end
           elsif result_star >= 1
             @star = "★☆☆☆☆"
-            @rank = "旗持ちクラス"
-            result = 1
+            if @eye_star > @emotion_star
+              @rank = "隊員クラス"
+              result *= 2
+            elsif @eye_star == @emotion_star
+              @rank = "旗持ちクラス"
+            else
+              @rank = "親衛隊クラス"
+              result *= 2
+            end
           elsif
             @star = "☆☆☆☆☆"
             @rank = "雑魚クラス"
