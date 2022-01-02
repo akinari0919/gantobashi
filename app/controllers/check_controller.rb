@@ -58,7 +58,7 @@ class CheckController < ApplicationController
             @eye_star = 1
           else
             @eye_result = "☆☆☆☆☆"
-            eye_power = 0
+            eye_power = 0.5
             @eye_star = 0
           end
 
@@ -91,22 +91,22 @@ class CheckController < ApplicationController
             @emotion_result = "★★★★☆"
             @emotion_star = 4
             emotion_power = 15
-          elsif emotion_power >= 15
+          elsif emotion_power >= 16
             @emotion_result = "★★★☆☆"
             @emotion_star = 3
             emotion_power = 10
-          elsif emotion_power >= 5
+          elsif emotion_power >= 13
             @emotion_result = "★★☆☆☆"
             @emotion_star = 2
             emotion_power = 5
-          elsif emotion_power >= 1
+          elsif emotion_power >= 10
             @emotion_result = "★☆☆☆☆"
             @emotion_star = 1
             emotion_power = 1
           else
             @emotion_result = "☆☆☆☆☆"
             @emotion_star = 0
-            emotion_power = 0
+            emotion_power = 0.5
           end
 
           # 総合値の取得
@@ -123,9 +123,13 @@ class CheckController < ApplicationController
           elsif result_star >= 2
             @star = "★★☆☆☆"
             @rank = "特攻隊クラス"
-          else
+          elsif result_star >= 1
             @star = "★☆☆☆☆"
             @rank = "旗持ちクラス"
+            result = 1
+          elsif
+            @star = "☆☆☆☆☆"
+            @rank = "雑魚クラス"
           end
 
           if result.floor > 100
@@ -155,10 +159,10 @@ class CheckController < ApplicationController
           else
             @comment = {
               body: "誰一人ひよらない(泣)",
-              star: "☆☆☆☆☆",
-              point1:"眼力：☆☆☆☆☆",
-              point2:"感情値：☆☆☆☆☆",
-              rank: "雑魚クラス"
+              star: @star,
+              point1: "眼力：#{@eye_result}",
+              point2: "感情値：#{@emotion_result}",
+              rank: @rank
             }
           end
         else
