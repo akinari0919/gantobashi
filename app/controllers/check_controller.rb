@@ -132,6 +132,7 @@ class CheckController < ApplicationController
             @rank = "雑魚クラス"
           end
 
+          #　結果を反映
           if result.floor > 100
             @comment = { 
               body: "#{result.floor}人をひよらせた!!!",
