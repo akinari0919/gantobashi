@@ -30,35 +30,35 @@ class CheckController < ApplicationController
           eye_power = params[:base].to_f
           if eye_power >= 99.99
             @eye_result = "★★★★★"
-            @eye_level = 5
+            eye_power = 5
             @eye_star = 5
           elsif eye_power >= 99.9
             @eye_result = "★★★★☆"
-            @eye_level = 4
+            eye_power = 4
             @eye_star = 4
           elsif eye_power >= 99.5
             @eye_result = "★★★☆☆"
-            @eye_level = 3.5
-            @eye_star = 4
+            eye_power = 3.5
+            @eye_star = 3
           elsif eye_power >= 99
             @eye_result = "★★★☆☆"
-            @eye_level = 3
-            @eye_star = 4
+            eye_power = 3
+            @eye_star = 3
           elsif eye_power >= 95
             @eye_result = "★★★☆☆"
-            @eye_level = 2
+            eye_power = 2
             @eye_star = 3
           elsif eye_power >= 90
             @eye_result = "★★☆☆☆"
-            @eye_level = 1.5
+            eye_power = 1.5
             @eye_star = 2
           elsif eye_power >= 80
             @eye_result = "★☆☆☆☆"
-            @eye_level = 1
+            eye_power = 1
             @eye_star = 1
           else
             @eye_result = "☆☆☆☆☆"
-            @eye_level = 0
+            eye_power = 0
             @eye_star = 0
           end
 
@@ -82,6 +82,7 @@ class CheckController < ApplicationController
           if emotion_power >= 24.9
             @emotion_result = "★★★★★"
             @emotion_star = 5
+            emotion_power = 25
           elsif emotion_power >= 24
             @emotion_result = "★★★★★"
             @emotion_star = 5
@@ -109,7 +110,7 @@ class CheckController < ApplicationController
           end
 
           # 総合値の取得
-          result = @eye_level * emotion_power
+          result = eye_power * emotion_power
           result_star = (@eye_star + @emotion_star) / 2
           if result_star >= 5
             @star = "★★★★★"
@@ -129,7 +130,7 @@ class CheckController < ApplicationController
 
           if result.floor > 100
             @comment = { 
-              body: "#{result.floor}人をひよらせた!!",
+              body: "#{result.floor}人をひよらせた!!!",
               star: @star,
               point1: "眼力：#{@eye_result}",
               point2: "感情値：#{@emotion_result}",
@@ -216,7 +217,7 @@ class CheckController < ApplicationController
         puts "  【#{face_detail.emotions[7].type}】"
         puts "    #{face_detail.emotions[7].confidence}"
         puts ""
-        puts eye_power
+        puts params[:base].to_f
         puts @eye_result
         puts emotion_power
         puts @emotion_result
