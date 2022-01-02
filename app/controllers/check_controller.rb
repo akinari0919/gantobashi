@@ -231,7 +231,7 @@ class CheckController < ApplicationController
     else
       render json: {
         body: '解析失敗m(_ _)m',
-        star: "ご確認ください。",
+        star: "↓要確認↓",
         point1:"2人以上写っている場合や、",
         point2:"誰も写ってない場合など。",
         rank:"撮影不備の可能性あり"

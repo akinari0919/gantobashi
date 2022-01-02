@@ -20,7 +20,7 @@
       <p>“<%= @rank %>”<p>
     </div>
 
-    <p class="mt-2"><%= @point1 %></p>
+    <p class="mt-1"><%= @point1 %></p>
     <p><%= @point2 %></p>
     <% if @body != "解析失敗m(_ _)m" %>
       <a href="https://twitter.com/intent/tweet?text=私のガン飛ばしは“<%="#{@rank}"%>”%0d<%="#{@body}"%>%0d%0dhttps://gantobashi.herokuapp.com/%0d&hashtags=メンチキッター,ガン飛ばし" target="_blank" rel="noopener noreferrer">
@@ -29,7 +29,7 @@
     <% end %>
   </div>
 
-  <div class="btn-3 mt-3">
+  <div class="btn-3 mt-4">
     <%= link_to "撮り直す", '/create', class:"button-40 link" %>
   </div>
 </div>
