@@ -28,23 +28,23 @@ class CheckController < ApplicationController
 
           # 眼力値の取得
           eye_power = params[:base].to_f
-          if eye_power > 99.99
+          if eye_power > 99.98
             @eye_result = "★★★★★"
             @eye_star = 5
             eye_power = 10
-          elsif eye_power > 99.9
+          elsif eye_power > 99.8
             @eye_result = "★★★★☆"
             @eye_star = 4
             eye_power = 8
-          elsif eye_power > 99.5
+          elsif eye_power > 98.5
             @eye_result = "★★★☆☆"
             @eye_star = 3
             eye_power = 7
-          elsif eye_power > 99
+          elsif eye_power > 97.5
             @eye_result = "★★☆☆☆"
             @eye_star = 2
             eye_power = 4
-          elsif eye_power > 98
+          elsif eye_power > 75
             @eye_result = "★☆☆☆☆"
             @eye_star = 1
             eye_power = 1
@@ -75,11 +75,11 @@ class CheckController < ApplicationController
             @emotion_result = "★★★★★"
             @emotion_star = 5
             @emotion_power = 12
-          elsif emotion_power > 24.3
+          elsif emotion_power > 24.7
             @emotion_result = "★★★★★"
             @emotion_star = 5
             @emotion_power = 10
-          elsif emotion_power > 20
+          elsif emotion_power > 24
             @emotion_result = "★★★★☆"
             @emotion_star = 4
             @emotion_power = 9
