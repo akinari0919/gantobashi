@@ -2,11 +2,11 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'メンチキッター',
-      title: 'メンチキッター',
+      title: 'メンチキッター 〜ガン飛ばしてちょいワル気分〜',
       reverse: true,
       charset: 'utf-8',
-      description: 'ちょっと悪ぶりたい人の為のガン飛ばしアプリ',
-      keywords: 'メンチキッター,ガン飛ばし',
+      description: 'カメラに向かってガン飛ばすだけ！「たまにはちょっと悪ぶりたい(-"-#)」そんな少しやんちゃな想いを叶えるサービスです◎',
+      keywords: 'メンチキッター,ガン飛ばし,ちょいワル気分',
       canonical: request.original_url,
       separator: '|',
       viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
@@ -25,7 +25,6 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@runmizzo',
       }
     }
   end
