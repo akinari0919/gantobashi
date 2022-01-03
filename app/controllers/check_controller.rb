@@ -138,12 +138,13 @@ class CheckController < ApplicationController
             end
           elsif result_star >= 2
             @star = "★★☆☆☆"
+            if result == 6 && @emotion_star > @eye_star
+              result = 20
+            end
             if result <= 5
               result *= 3
             elsif result <= 10
               result *= 2
-            elsif result == 12 && @emotion_star > @eye_star
-              result = 20
             end
             if result < 20
               @rank = "特攻隊クラス"
