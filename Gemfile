@@ -63,3 +63,5 @@ gem 'html2slim'
 gem 'dotenv-rails'
 # AWS
 gem 'aws-sdk-rekognition'
+#meta
+gem 'meta-tags'

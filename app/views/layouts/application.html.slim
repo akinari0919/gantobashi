@@ -3,13 +3,7 @@ html
   head
     title
       | Gantobashi
-    meta[name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"]
-    | <link href="
-    = image_path("180smart_icon.png")
-    | " rel="apple-touch-icon" sizes="180x180" type="image/png" /> <link href="
-    = image_path("192smart_icon.png")
-    | " rel="icon" sizes="192x192" type="image/png" /> 
-    = favicon_link_tag "icon.ico"
+    = display_meta_tags default_meta_tags
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
