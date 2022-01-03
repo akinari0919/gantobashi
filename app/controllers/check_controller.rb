@@ -103,7 +103,7 @@ class CheckController < ApplicationController
 
           # 総合値の取得
           result = eye_power * @emotion_power
-          result_star = (@eye_star + @emotion_star) / 2          
+          result_star = (@eye_star + @emotion_star) / 2
 
           if result_star >= 5
             @star = "★★★★★"
