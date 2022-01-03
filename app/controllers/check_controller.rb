@@ -24,27 +24,27 @@ class CheckController < ApplicationController
       response.face_details.each do |face_detail|
 
         # 目が開いているかつ笑顔ではない
-        if face_detail.eyes_open.value == true && face_detail.smile.value == false
+        if face_detail.eyes_open.value == true && face_detail.emotions[0].type != 'HAPPY'
 
           # 眼力値の取得
           eye_power = params[:base].to_f
-          if eye_power >= 99.99
+          if eye_power > 99.99
             @eye_result = "★★★★★"
             @eye_star = 5
             eye_power = 10
-          elsif eye_power >= 99.9
+          elsif eye_power > 99.9
             @eye_result = "★★★★☆"
             @eye_star = 4
             eye_power = 8
-          elsif eye_power >= 99
+          elsif eye_power > 99.5
             @eye_result = "★★★☆☆"
             @eye_star = 3
             eye_power = 7
-          elsif eye_power >= 90
+          elsif eye_power > 99
             @eye_result = "★★☆☆☆"
             @eye_star = 2
             eye_power = 4
-          elsif eye_power >= 80
+          elsif eye_power > 98
             @eye_result = "★☆☆☆☆"
             @eye_star = 1
             eye_power = 1
@@ -71,38 +71,38 @@ class CheckController < ApplicationController
           end
 
           emotion_power = (@angry + @sad + @confused + @calm) / 4
-          if emotion_power >= 24.9
+          if emotion_power > 24.9
             @emotion_result = "★★★★★"
             @emotion_star = 5
-            emotion_power = 12
-          elsif emotion_power >= 24
+            @emotion_power = 12
+          elsif emotion_power > 24.3
             @emotion_result = "★★★★★"
             @emotion_star = 5
-            emotion_power = 10
-          elsif emotion_power >= 20
+            @emotion_power = 10
+          elsif emotion_power > 20
             @emotion_result = "★★★★☆"
             @emotion_star = 4
-            emotion_power = 9
-          elsif emotion_power >= 16
+            @emotion_power = 9
+          elsif emotion_power > 18
             @emotion_result = "★★★☆☆"
             @emotion_star = 3
-            emotion_power = 8
-          elsif emotion_power >= 13
+            @emotion_power = 8
+          elsif emotion_power > 15
             @emotion_result = "★★☆☆☆"
             @emotion_star = 2
-            emotion_power = 4
-          elsif emotion_power >= 10
+            @emotion_power = 4
+          elsif emotion_power > 8
             @emotion_result = "★☆☆☆☆"
             @emotion_star = 1
-            emotion_power = 1
+            @emotion_power = 1
           else
             @emotion_result = "☆☆☆☆☆"
             @emotion_star = 0
-            emotion_power = 0.5
+            @emotion_power = 0.5
           end
 
           # 総合値の取得
-          result = eye_power * emotion_power
+          result = eye_power * @emotion_power
           result_star = (@eye_star + @emotion_star) / 2          
 
           if result_star >= 5
@@ -114,7 +114,11 @@ class CheckController < ApplicationController
             elsif result == 72
               @rank = "隊長クラス"
             elsif result == 80
-              @rank = "(仮)総長クラス"  
+              @rank = "(仮)総長クラス"
+            elsif result == 84
+              @rank = "総参謀クラス" 
+            elsif result == 96
+              @rank = "裏総長クラス" 
             else
               @rank = "総長代理クラス"
             end
@@ -138,9 +142,13 @@ class CheckController < ApplicationController
               result *= 3
             elsif result <= 10
               result *= 2
+            elsif result == 12 && @emotion_star > @eye_star
+              result = 20
             end
-            if result <= 20
+            if result < 20
               @rank = "特攻隊クラス"
+            elsif result == 20
+              @rank = "相談役クラス"
             else
               @rank = "親衛隊長クラス"
             end
@@ -158,6 +166,9 @@ class CheckController < ApplicationController
           elsif
             @star = "☆☆☆☆☆"
             @rank = "雑魚クラス"
+            if result == 0.5
+              @rank = "三下クラス"
+            end
           end
 
           #　結果を反映
@@ -250,10 +261,10 @@ class CheckController < ApplicationController
         puts "  【#{face_detail.emotions[7].type}】"
         puts "    #{face_detail.emotions[7].confidence}"
         puts ""
-        puts params[:base].to_f
-        puts @eye_result
-        puts emotion_power
-        puts @emotion_result
+        puts "眼力：#{params[:base].to_f}"
+        puts @eye_star
+        puts "感情値：#{emotion_power}"
+        puts @emotion_star
         puts "------------"
         puts ""
       end
