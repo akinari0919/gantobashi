@@ -10,7 +10,11 @@ html
     = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application', media: 'all'
     
-    = render './google_analytics'
+    - if Rails.env.production?
+      script[async src="https://www.googletagmanager.com/gtag/js?id=G-HS044M2L1V"]
+      script
+        |  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HS044M2L1V'); 
+
 
   body
     script[src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"]
