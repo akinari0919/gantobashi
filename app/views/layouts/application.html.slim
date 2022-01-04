@@ -11,9 +11,7 @@ html
     = stylesheet_pack_tag 'application', media: 'all'
     
     - if Rails.env.production?
-      script[async src="https://www.googletagmanager.com/gtag/js?id=G-HS044M2L1V"]
-      script
-        |  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HS044M2L1V'); 
+      = render 'layouts/google_analytics'
 
 
   body
