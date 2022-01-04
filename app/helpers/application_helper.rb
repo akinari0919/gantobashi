@@ -2,7 +2,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'メンチキッター',
-      title: 'メンチキッター 〜ガン飛ばしてちょいワル気分〜',
+      title: 'メンチキッター(プレリリース版)〜ガン飛ばしてちょいワル気分〜',
       reverse: true,
       charset: 'utf-8',
       description: 'カメラに向かってガン飛ばすだけ！「たまにはちょっと悪ぶりたい(-"-#)」そんな少しやんちゃな想いを叶えるサービスです◎',
