@@ -215,8 +215,33 @@ footer {
   justify-content: center;
 }
 
-footer p {
+footer ul {
+  color:rgba(255,255,255, 0.8);
   position: fixed;
+  bottom: 8px;
+  padding: 0;
+}
+
+footer li {
+  font-size: 10px;
+  min-width: 200px;
+  display: inline;
+}
+
+.link2 {
+  text-decoration: none;
+  color:rgba(255,255,255, 0.8);
+  margin: 0px 10px;
+}
+.link2:hover {
+  color:rgb(255,255,255)
+}
+
+
+footer p {
+  font-size: 10px;
+  position: fixed;
+  margin: 5px;
   bottom: 0;
   min-width: 200px;
   display: flex;
@@ -427,6 +452,12 @@ header a {
   }
 
   .link {
+    text-align: center; 
+    color:rgb(255,255,255);
+    margin: 0px;
+  }
+
+  .link2 {
     text-align: center; 
     color:rgb(255,255,255);
     margin: 0px;
