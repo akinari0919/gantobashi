@@ -134,7 +134,7 @@ class CheckController < ApplicationController
             elsif result < 60
               @rank = "副隊長クラス"  
             else
-              @rank = "患部クラス"
+              @rank = "幹部クラス"
             end
           elsif result_star >= 2
             @star = "★★☆☆☆"
