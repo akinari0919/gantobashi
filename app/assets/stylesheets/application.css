@@ -86,6 +86,7 @@ header {
   height: 10px;
   font-size: 13px;
   color: brown;
+  font-weight: 600;
 }
 
 .how_to p {
