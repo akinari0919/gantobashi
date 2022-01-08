@@ -176,6 +176,17 @@ main {
   line-height: 1.5rem;
 }
 
+.advise {
+  padding-top: 15px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
 .result {
   display: flex;
   justify-content: center;
