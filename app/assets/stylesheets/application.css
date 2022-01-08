@@ -82,6 +82,21 @@ header {
   padding-bottom: 20px;
 }
 
+.spot2 {
+  height: 10px;
+  font-size: 13px;
+  color: brown;
+  font-weight: 600;
+}
+
+.how_to p {
+  height: 17px;
+}
+
+span {
+  font-size: 10px;
+}
+
 .header-logo {
   max-width: 170px;
   max-height: 100%;
