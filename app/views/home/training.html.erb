@@ -129,7 +129,7 @@
       labelContainer.innerHTML = "★★★★☆";
     }
 
-    if (prediction[0].probability * 100 > 99.99999){
+    if (prediction[0].probability * 100 === 99.999){
       labelContainer.innerHTML = "★★★★★";
       // canvasに静止画を入れる
       var canvas = document.getElementById("canvas")
