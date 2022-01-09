@@ -89,47 +89,47 @@
     //予測は、画像、ビデオ、またはキャンバスのhtml要素を取り込むことができます
     const prediction = await model.predict(canvas);
 
-    if (prediction[0].probability * 100 > 0){
+    if (prediction[0].probability.toFixed(5) > 0){
       labelContainer.innerHTML = "・・・・・";
     }
 
-    if (prediction[0].probability * 100 > 10){
+    if (prediction[0].probability.toFixed(5) > 0.1){
       labelContainer.innerHTML = "☆・・・・";
     }
 
-    if (prediction[0].probability * 100 > 20){
+    if (prediction[0].probability.toFixed(5) > 0.2){
       labelContainer.innerHTML = "☆☆・・・";
     }
 
-    if (prediction[0].probability * 100 > 30){
+    if (prediction[0].probability.toFixed(5) > 0.3){
       labelContainer.innerHTML = "☆☆☆・・";
     }
 
-    if (prediction[0].probability * 100 > 50){
+    if (prediction[0].probability.toFixed(5) > 0.5){
       labelContainer.innerHTML = "☆☆☆☆・";
     }
 
-    if (prediction[0].probability * 100 > 65){
+    if (prediction[0].probability.toFixed(5) > 0.65){
       labelContainer.innerHTML = "☆☆☆☆☆";
     }
 
-    if (prediction[0].probability * 100 > 75){
+    if (prediction[0].probability.toFixed(5) > 0.75){
       labelContainer.innerHTML = "★☆☆☆☆";
     }
 
-    if (prediction[0].probability * 100 > 97.5){
+    if (prediction[0].probability.toFixed(5) > 0.975){
       labelContainer.innerHTML = "★★☆☆☆";
     }
 
-    if (prediction[0].probability * 100 > 98.5){
+    if (prediction[0].probability.toFixed(5) > 0.985){
       labelContainer.innerHTML = "★★★☆☆";
     }
 
-    if (prediction[0].probability * 100 > 99.8){
+    if (prediction[0].probability.toFixed(5) > 0.998){
       labelContainer.innerHTML = "★★★★☆";
     }
 
-    if (prediction[0].probability * 100.0 > 99.99 ){
+    if (prediction[0].probability.toFixed(5) > 0.9999){
       labelContainer.innerHTML = "★★★★★";
       // canvasに静止画を入れる
       var canvas = document.getElementById("canvas")
