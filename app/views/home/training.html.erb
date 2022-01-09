@@ -13,6 +13,7 @@
     <p class="advise" id="advise">☆を全て塗りつぶそう！</p>
     <div class="btn-2">
       <p class="button-40" id="shatter" onclick="init()">訓練開始</p>
+      <p class="button-40" id="retry" onclick="init()">もう一度</p>
       <%= form_with url: '/show', name: 'submit' do |f| %>
         <%= f.hidden_field :body, id: "body", value: "" %>
         <%= f.hidden_field :star, id: "star", value: "" %>
@@ -30,6 +31,7 @@
   $('#canvas').hide();
   $('#dummy').hide();
   $('#advise').hide();
+  $('#retry').hide();
   $('#detail').hide();
   // カメラ設定
   const constraints = {
@@ -59,9 +61,11 @@
 
   async function init() {
     document.getElementById('shatter').disabled = true;
+    $('#retry').hide();
     $('#shatter').hide();
     $('#result').hide();
     $('#label-container').html("まもなく開始されます。");
+    $('#label-container').show();
     $('#advise').show();
     $(this).html( $(this).data('loading-text') );
 
@@ -133,7 +137,11 @@
       canvas.getContext("2d").drawImage(video, 0, 0, 300, 300)
       $('#video').hide();
       $('#canvas').show();
-      $('#label-container').html("成功！");
+      $('#label-container').hide();
+      $('#advise').hide();
+      $('#result').html("成功!!!");
+      $('#result').show();
+      $('#retry').show();
       window.cancelAnimationFrame();
     }
 
