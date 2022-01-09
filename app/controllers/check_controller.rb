@@ -289,6 +289,45 @@ class CheckController < ApplicationController
     @rank = params[:rank]
   end
 
+  def judge
+    # AWSレスポンス取得
+    credentials = Aws::Credentials.new(
+      ENV['AWS_ACCESS_KEY_ID'],
+      ENV['AWS_SECRET_ACCESS_KEY']
+    )
+    photo = Base64.decode64(params[:image])
+    client = Aws::Rekognition::Client.new credentials: credentials
+    attrs = {
+      image: { 
+        bytes: photo
+      },
+      attributes: ['ALL']
+    }
+
+    response = client.detect_faces attrs
+
+    # 顔写真が撮れているか
+    if response.face_details != []
+      response.face_details.each do |face_detail|
+        # 目が開いているかつ笑顔ではない
+        if face_detail.eyes_open.value == true && face_detail.emotions[0].type != 'HAPPY'
+          @comment = {
+            body: "成功!!"
+          }
+        else
+          @comment = {
+            body: "失敗orz"
+          }
+        end
+      end
+    else
+      @comment = {
+            body: "失敗orz"
+          }
+    end
+    render json: @comment
+  end
+
   def not_user
     if params[:body] == nil
       redirect_to("/select")

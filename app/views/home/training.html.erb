@@ -64,6 +64,7 @@
     $('#retry').hide();
     $('#shatter').hide();
     $('#result').hide();
+    $('#result').empty();
     $('#label-container').html("まもなく開始されます。");
     $('#label-container').show();
     $('#advise').show();
@@ -139,9 +140,28 @@
       $('#canvas').show();
       $('#label-container').hide();
       $('#advise').hide();
-      $('#result').html("成功!!!");
       $('#result').show();
       $('#retry').show();
+
+      const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
+      // alert(base64);
+
+      $.ajax({
+        url: '/judge',
+        type: 'POST',
+        data: {
+            image: base64,
+          },
+        headers: {
+            'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+          },
+        success: function(data) {
+            $('#result').html(data.body)
+          },
+        error: function() {
+            $('#result').html('解析失敗m(_ _)m')
+          }
+      });
       window.cancelAnimationFrame();
     }
 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'show', to: 'check#show'
   get 'show', to: 'check#show'
   get 'training', to: 'home#training'
+  post 'judge', to: 'check#judge'
 
   # 例外
   get '*path', controller: 'application', action: 'render_404'
