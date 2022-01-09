@@ -310,14 +310,18 @@ class CheckController < ApplicationController
     if response.face_details != []
       response.face_details.each do |face_detail|
         # 目が開いているかつ笑顔ではない
-        if face_detail.eyes_open.value == true && face_detail.emotions[0].type != 'HAPPY'
+        if face_detail.eyes_open.confidence >= 90 && face_detail.emotions[0].type != 'HAPPY'
           @comment = {
-            body: "成功!!"
+            body: "成功!!!"
           }
+          puts "  eyes_open.value:        #{face_detail.eyes_open.value}"
+          puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
         else
           @comment = {
             body: "失敗orz"
           }
+          puts "  eyes_open.value:        #{face_detail.eyes_open.value}"
+          puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
         end
       end
     else

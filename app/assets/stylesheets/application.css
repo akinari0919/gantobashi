@@ -58,6 +58,15 @@ header {
   color:rgb(255,255,255)
 }
 
+.twitter {
+  text-decoration: none;
+  color:rgb(255,255,255);
+}
+
+.twitter:hover {
+  color:rgb(255,255,255)
+}
+
 .contents {
   width: 90%;
   margin-top: 100px;

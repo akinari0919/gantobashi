@@ -14,15 +14,9 @@
     <div class="btn-2">
       <p class="button-40" id="shatter" onclick="init()">訓練開始</p>
       <p class="button-40" id="retry" onclick="init()">もう一度</p>
-      <%= form_with url: '/show', name: 'submit' do |f| %>
-        <%= f.hidden_field :body, id: "body", value: "" %>
-        <%= f.hidden_field :star, id: "star", value: "" %>
-        <%= f.hidden_field :photo, id: "photo", value: "" %>
-        <%= f.hidden_field :point1, id: "point1", value: "" %>
-        <%= f.hidden_field :point2, id: "point2", value: "" %>
-        <%= f.hidden_field :rank, id: "rank", value: "" %>
-        <p><%= f.submit "判定詳細", class:"button-40", id:"detail" %></p>
-      <% end %>
+      <p class="button-40" id="twitter" onclick="twitter()">
+        つぶやく
+      </p>
     </div>
   </div>
   
@@ -33,6 +27,7 @@
   $('#advise').hide();
   $('#retry').hide();
   $('#detail').hide();
+  $('#twitter').hide();
   // カメラ設定
   const constraints = {
     video: {
@@ -68,6 +63,7 @@
     $('#label-container').html("まもなく開始されます。");
     $('#label-container').show();
     $('#advise').show();
+    $('#twitter').hide();
     $(this).html( $(this).data('loading-text') );
 
     // teachablemachineのモデルURLを読み込む
@@ -142,6 +138,7 @@
       $('#advise').hide();
       $('#result').show();
       $('#retry').show();
+      $('#twitter').show();
 
       const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
       // alert(base64);
@@ -162,10 +159,15 @@
             $('#result').html('解析失敗m(_ _)m')
           }
       });
+
       window.cancelAnimationFrame();
     }
 
     //処理を継続させるためloopをさせる
     window.requestAnimationFrame(loop);
+  }
+
+  function twitter() {
+    window.open('https://twitter.com/intent/tweet?text=ガン飛ばしの訓練中！%0d%0dhttps://www.gantobashi.com/%0d&hashtags=メンチキッター,ガン飛ばし', '_blank', 'noreferrer');
   }
 </script>
