@@ -140,6 +140,16 @@ main {
   align-items: center;
 }
 
+.select-text-fotter{
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 40px;
+  font-size: 10px;
+}
+
 .create-contents {
   height: 500px;
   position: absolute;
