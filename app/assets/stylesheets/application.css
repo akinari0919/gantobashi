@@ -513,4 +513,8 @@ header a {
   .none {
     display: none;
   }
+
+  .select-text-fotter{
+    bottom: 30px;
+  }
 }
