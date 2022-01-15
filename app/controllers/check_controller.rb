@@ -1,6 +1,6 @@
 class CheckController < ApplicationController
   include AwsRecognition
-  before_action :not_user, {only: :show}
+  before_action :no_photo, {only: :show}
 
   def result
     # AWSレスポンス取得
@@ -259,7 +259,7 @@ class CheckController < ApplicationController
     render json: @comment
   end
 
-  def not_user
+  def no_photo
     if params[:body] == nil
       redirect_to("/select")
     end
