@@ -1,10 +1,7 @@
-class CheckController < ApplicationController
+class ResponseController < ApplicationController
   include AwsRecognition
-  before_action :no_photo, {only: :show}
 
-  def new; end
-
-  def result
+  def check
     # AWSレスポンス取得
     response = check_face
 
@@ -220,16 +217,7 @@ class CheckController < ApplicationController
     end
   end
 
-  def show
-    @body = params[:body]
-    @star = params[:star]
-    @photo = params[:photo]
-    @point1 = params[:point1]
-    @point2 = params[:point2]
-    @rank = params[:rank]
-  end
-
-  def judge
+  def training
     # AWSレスポンス取得
     response = check_face
 
@@ -262,12 +250,6 @@ class CheckController < ApplicationController
   end
 
   private
-
-  def no_photo
-    if params[:body] == nil
-      redirect_to("/mode")
-    end
-  end
 
   # レスポンス確認用
   def check_response
