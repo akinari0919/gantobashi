@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'info', to: 'home#info'
   get 'service', to: 'home#service'
   get 'privacy', to: 'home#privacy'
-  get 'select', to: 'home#select'
+  get 'mode', to: 'mode#index'
   get 'create', to: 'home#create'
   post 'check', to: 'check#result'
   post 'show', to: 'check#show'

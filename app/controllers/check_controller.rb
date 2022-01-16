@@ -2,6 +2,8 @@ class CheckController < ApplicationController
   include AwsRecognition
   before_action :no_photo, {only: :show}
 
+  def new; end
+
   def result
     # AWSレスポンス取得
     response = check_face
@@ -259,16 +261,16 @@ class CheckController < ApplicationController
     render json: @comment
   end
 
+  private
+
   def no_photo
     if params[:body] == nil
-      redirect_to("/select")
+      redirect_to("/mode")
     end
   end
 
-  private
-
   # レスポンス確認用
-  def response_check
+  def check_response
     puts "------------"
     puts ""
     puts "The detected face is between: #{face_detail.age_range.low} and #{face_detail.age_range.high} years old"
