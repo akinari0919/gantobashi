@@ -36,3 +36,4 @@ yarn-debug.log*
 .yarn-integrity
 /vendor/bundle
 /.env
+/er_diagram.dio
