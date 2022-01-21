@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     get 'check', to: 'check#new'
     get 'check/show', to: 'check#show'
     post 'check/show', to: 'check#show'
+    post 'response/check', to: 'response#check'
     get 'training', to: 'training#new'
+    post 'response/training', to: 'response#training'
   end
-  post 'response/check', to: 'response#check'
-  post 'response/training', to: 'response#training'
 
   # 例外
   get '*path', controller: 'application', action: 'render_404'

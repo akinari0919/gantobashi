@@ -94,7 +94,7 @@
     const eye_power = prediction[0].probability * 100
     // alert(eye_power);
     $.ajax({
-      url: '/response/check',
+      url: './response/check',
       type: 'POST',
       data: {
           image: base64,

@@ -1,11 +1,10 @@
-class ResponseController < ApplicationController
+class Mode::ResponseController < ApplicationController
   include AwsRecognition
 
   def check
     # AWSレスポンス取得
     response = check_face
 
-    # HACK: 切り分けする
     # 判定ロジック
     # 顔写真が撮れているか
     if response.face_details != []
@@ -160,7 +159,7 @@ class ResponseController < ApplicationController
             end
           end
 
-          #　結果を反映
+          # 結果を反映
           if result.floor > 100
             @comment = { 
               body: "#{result.floor}人をひよらせた!!!",
@@ -206,6 +205,56 @@ class ResponseController < ApplicationController
 
         render json: @comment
 
+        # レスポンス確認用
+        puts "------------"
+        puts ""
+        puts "The detected face is between: #{face_detail.age_range.low} and #{face_detail.age_range.high} years old"
+        puts ""
+        puts "  eyes_open.value:        #{face_detail.eyes_open.value}"
+        puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
+        puts "  smile.value:            #{face_detail.smile.value}"
+        puts "  smile.confidence:       #{face_detail.smile.confidence}"
+        puts ""
+        puts "------------"
+        puts ""
+        puts "  eyeglasses.value:       #{face_detail.eyeglasses.value}"
+        puts "  eyeglasses.confidence:  #{face_detail.eyeglasses.confidence}"
+        puts "  sunglasses.value:       #{face_detail.sunglasses.value}"
+        puts "  sunglasses.confidence:  #{face_detail.sunglasses.confidence}"
+        puts "  mouth_open.value:       #{face_detail.mouth_open.value}"
+        puts "  mouth_open.confidence:  #{face_detail.mouth_open.confidence}"
+        puts ""
+        puts "------------"
+        puts ""
+        puts "  quality.brightness:     #{face_detail.quality.brightness}"
+        puts "  quality.sharpness:      #{face_detail.quality.sharpness}"
+        puts "  confidence:             #{face_detail.confidence}"
+        puts ""
+        puts "------------"
+        puts ""
+        puts "  【#{face_detail.emotions[0].type}】"
+        puts "    #{face_detail.emotions[0].confidence}"
+        puts "  【#{face_detail.emotions[1].type}】"
+        puts "    #{face_detail.emotions[1].confidence}"
+        puts "  【#{face_detail.emotions[2].type}】"
+        puts "    #{face_detail.emotions[2].confidence}"
+        puts "  【#{face_detail.emotions[3].type}】"
+        puts "    #{face_detail.emotions[3].confidence}"
+        puts "  【#{face_detail.emotions[4].type}】"
+        puts "    #{face_detail.emotions[4].confidence}"
+        puts "  【#{face_detail.emotions[5].type}】"
+        puts "    #{face_detail.emotions[5].confidence}"
+        puts "  【#{face_detail.emotions[6].type}】"
+        puts "    #{face_detail.emotions[6].confidence}"
+        puts "  【#{face_detail.emotions[7].type}】"
+        puts "    #{face_detail.emotions[7].confidence}"
+        puts ""
+        puts "眼力：#{params[:base].to_f}"
+        puts @eye_star
+        puts "感情値：#{emotion_power}"
+        puts @emotion_star
+        puts "------------"
+        puts ""
       end
     else
       render json: {
@@ -248,60 +297,5 @@ class ResponseController < ApplicationController
           }
     end
     render json: @comment
-  end
-
-  private
-
-  # レスポンス確認用
-  def check_response
-    puts "------------"
-    puts ""
-    puts "The detected face is between: #{face_detail.age_range.low} and #{face_detail.age_range.high} years old"
-    puts ""
-    puts "  eyes_open.value:        #{face_detail.eyes_open.value}"
-    puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
-    puts "  smile.value:            #{face_detail.smile.value}"
-    puts "  smile.confidence:       #{face_detail.smile.confidence}"
-    puts ""
-    puts "------------"
-    puts ""
-    puts "  eyeglasses.value:       #{face_detail.eyeglasses.value}"
-    puts "  eyeglasses.confidence:  #{face_detail.eyeglasses.confidence}"
-    puts "  sunglasses.value:       #{face_detail.sunglasses.value}"
-    puts "  sunglasses.confidence:  #{face_detail.sunglasses.confidence}"
-    puts "  mouth_open.value:       #{face_detail.mouth_open.value}"
-    puts "  mouth_open.confidence:  #{face_detail.mouth_open.confidence}"
-    puts ""
-    puts "------------"
-    puts ""
-    puts "  quality.brightness:     #{face_detail.quality.brightness}"
-    puts "  quality.sharpness:      #{face_detail.quality.sharpness}"
-    puts "  confidence:             #{face_detail.confidence}"
-    puts ""
-    puts "------------"
-    puts ""
-    puts "  【#{face_detail.emotions[0].type}】"
-    puts "    #{face_detail.emotions[0].confidence}"
-    puts "  【#{face_detail.emotions[1].type}】"
-    puts "    #{face_detail.emotions[1].confidence}"
-    puts "  【#{face_detail.emotions[2].type}】"
-    puts "    #{face_detail.emotions[2].confidence}"
-    puts "  【#{face_detail.emotions[3].type}】"
-    puts "    #{face_detail.emotions[3].confidence}"
-    puts "  【#{face_detail.emotions[4].type}】"
-    puts "    #{face_detail.emotions[4].confidence}"
-    puts "  【#{face_detail.emotions[5].type}】"
-    puts "    #{face_detail.emotions[5].confidence}"
-    puts "  【#{face_detail.emotions[6].type}】"
-    puts "    #{face_detail.emotions[6].confidence}"
-    puts "  【#{face_detail.emotions[7].type}】"
-    puts "    #{face_detail.emotions[7].confidence}"
-    puts ""
-    puts "眼力：#{params[:base].to_f}"
-    puts @eye_star
-    puts "感情値：#{emotion_power}"
-    puts @emotion_star
-    puts "------------"
-    puts ""
   end
 end
