@@ -5,6 +5,7 @@ class ResponseController < ApplicationController
     # AWSレスポンス取得
     response = check_face
 
+    # HACK: 切り分けする
     # 判定ロジック
     # 顔写真が撮れているか
     if response.face_details != []

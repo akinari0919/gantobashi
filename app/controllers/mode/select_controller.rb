@@ -1,4 +1,4 @@
-class ModeController < ApplicationController
+class Mode::SelectController < ApplicationController
   before_action :no_photo, {only: :check_show}
 
   def index; end
@@ -20,7 +20,7 @@ class ModeController < ApplicationController
 
   def no_photo
     if params[:body] == nil
-      redirect_to mode_index_path
+      redirect_to mode_select_path
     end
   end
 end
