@@ -1,0 +1,16 @@
+<main>
+  <div class = 'top-contents'>
+    <%= form_with model: @user, local: true do |f| %>
+      <%= f.label :email, 'メールアドレス' %>
+      <%= f.text_field :email  %>
+
+      <%= f.label :password, 'パスワード' %>
+      <%= f.password_field :password  %>  
+
+      <%= f.label :password_confirmation, 'パスワード確認' %>
+      <%= f.password_field :password_confirmation  %>
+
+      <%= f.submit '登録' %>  
+    <% end %>
+  </div>
+</main>

@@ -69,3 +69,5 @@ gem 'dotenv-rails'
 gem 'aws-sdk-rekognition'
 # meta
 gem 'meta-tags'
+# sorcery
+gem 'sorcery'
