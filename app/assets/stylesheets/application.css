@@ -26,6 +26,7 @@ body {
   flex-direction: column;
   height: 100vh;
 }
+
 body:before{
   content: "";
   display: block;
