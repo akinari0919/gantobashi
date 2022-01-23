@@ -1,20 +1,19 @@
 class SessionsController < ApplicationController
 
-  def index
+  def new
     @user = User.new
   end
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to(hoge_url, notice: 'ログインしました')
+      redirect_back_or_to mode_select_path
     else
-      flash[:alert] = 'ログイン失敗'
       render :new
     end
   end
 
-  def destory
+  def destroy
     logout
-    redirect_to(root_url, notice: 'ログアウトしました')
+    redirect_to root_path
   end
 end
