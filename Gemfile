@@ -49,6 +49,8 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  # コンソールを見易く
+  gem 'awesome_print'
 end
 
 group :test do
@@ -71,3 +73,4 @@ gem 'aws-sdk-rekognition'
 gem 'meta-tags'
 # sorcery
 gem 'sorcery'
+

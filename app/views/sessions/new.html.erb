@@ -1,9 +1,16 @@
-<%= form_with url: sessions_path, local: true do |f| %>
-  <%= f.label :email, 'メールアドレス' %>
-  <%= f.text_field :email  %>
-
-  <%= f.label :password, 'パスワード' %>
-  <%= f.password_field :password  %>
-
-  <%= f.submit "ログイン" %>
-<% end %>
+<main>
+  <div class='top-contents'>
+    <%= form_with url: login_path, local: true do |f| %>
+      <%= f.label :email, 'メールアドレス' %>
+      <br>
+      <%= f.text_field :email  %>
+      <br>
+      <%= f.label :password, 'パスワード' %>
+      <br>
+      <%= f.password_field :password  %>
+      <br>
+      <%= f.submit "ログイン" %>
+    <% end %>
+    <%= link_to 'ユーザー登録', new_user_path %>
+  </div>
+</main>
