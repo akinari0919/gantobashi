@@ -1,6 +1,10 @@
 <main>
   <div class = 'top-contents'>
     <%= form_with model: @user, local: true do |f| %>
+      <%= f.label :name, 'ニックネーム' %>
+      <br>
+      <%= f.text_field :name %>
+      <br>
       <%= f.label :email, 'メールアドレス' %>
       <br>
       <%= f.text_field :email  %>
