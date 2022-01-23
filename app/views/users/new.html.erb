@@ -2,14 +2,17 @@
   <div class = 'top-contents'>
     <%= form_with model: @user, local: true do |f| %>
       <%= f.label :email, 'メールアドレス' %>
+      <br>
       <%= f.text_field :email  %>
-
+      <br>
       <%= f.label :password, 'パスワード' %>
+      <br>
       <%= f.password_field :password  %>  
-
+      <br>
       <%= f.label :password_confirmation, 'パスワード確認' %>
+      <br>
       <%= f.password_field :password_confirmation  %>
-
+      <br>
       <%= f.submit '登録' %>  
     <% end %>
   </div>
