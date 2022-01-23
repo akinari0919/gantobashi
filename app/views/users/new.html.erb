@@ -7,13 +7,14 @@
       <br>
       <%= f.label :password, 'パスワード' %>
       <br>
-      <%= f.password_field :password  %>  
+      <%= f.password_field :password  %>
       <br>
       <%= f.label :password_confirmation, 'パスワード確認' %>
       <br>
       <%= f.password_field :password_confirmation  %>
       <br>
-      <%= f.submit '登録' %>  
+      <%= f.submit '登録' %>
     <% end %>
+    <%= link_to '戻る', login_path %>
   </div>
 </main>
