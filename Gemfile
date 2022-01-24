@@ -49,10 +49,13 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  # コンソールを見易く
+  gem 'awesome_print'
 end
 
 group :test do
   gem 'capybara'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -69,3 +72,6 @@ gem 'dotenv-rails'
 gem 'aws-sdk-rekognition'
 # meta
 gem 'meta-tags'
+# sorcery
+gem 'sorcery'
+

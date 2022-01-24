@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     post 'response/training', to: 'response#training'
   end
 
+  resources :users, only: %i[new index create]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
   # 例外
   get '*path', controller: 'application', action: 'render_404'
 end
