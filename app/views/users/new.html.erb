@@ -1,24 +1,24 @@
 <main>
   <div class = 'top-contents'>
     <%= form_with model: @user, local: true do |f| %>
-      <%= f.label :name, 'ニックネーム' %>
+      <%= f.label :name, 'Name' %>
       <br>
       <%= f.text_field :name %>
       <br>
-      <%= f.label :email, 'メールアドレス' %>
+      <%= f.label :email, 'Email' %>
       <br>
       <%= f.text_field :email  %>
       <br>
-      <%= f.label :password, 'パスワード' %>
+      <%= f.label :password, 'Password' %>
       <br>
       <%= f.password_field :password  %>
       <br>
-      <%= f.label :password_confirmation, 'パスワード確認' %>
+      <%= f.label :password_confirmation, 'Password confirmation' %>
       <br>
       <%= f.password_field :password_confirmation  %>
       <br>
-      <%= f.submit '登録' %>
+      <%= f.submit 'SignUp' %>
     <% end %>
-    <%= link_to '戻る', login_path %>
+    <%= link_to 'Back', login_path %>
   </div>
 </main>
