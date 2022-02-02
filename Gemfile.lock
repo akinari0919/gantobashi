@@ -310,10 +310,6 @@ GEM
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
-    slim-rails (3.3.0)
-      actionpack (>= 3.1)
-      railties (>= 3.1)
-      slim (>= 3.0, < 5.0)
     sorcery (0.16.2)
       bcrypt (~> 3.1)
       oauth (~> 0.5, >= 0.5.5)
@@ -384,7 +380,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
-  slim-rails
+  slim
   sorcery
   spring
   tzinfo-data
