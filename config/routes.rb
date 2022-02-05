@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  resource :profile, only: %i[show edit update]
+
   # 例外
   get '*path', controller: 'application', action: 'render_404'
 end
