@@ -14,9 +14,7 @@
     <div class="btn-2">
       <p class="button-40" id="shatter" onclick="init()">訓練開始</p>
       <p class="button-40" id="retry" onclick="init()">もう一度</p>
-      <p class="button-40" id="twitter" onclick="twitter()">
-        つぶやく
-      </p>
+      <p class="button-40" id="back" onclick="back()">　戻る　</p>
     </div>
   </div>
   
@@ -27,7 +25,7 @@
   $('#advise').hide();
   $('#retry').hide();
   $('#detail').hide();
-  $('#twitter').hide();
+  $('#back').hide();
   // カメラ設定
   const constraints = {
     video: {
@@ -65,7 +63,7 @@
     $('#label-container').html("まもなく開始します...");
     $('#label-container').show();
     $('#advise').show();
-    $('#twitter').hide();
+    $('#back').hide();
     $(this).html( $(this).data('loading-text') );
 
     // teachablemachineのモデルURLを読み込む
@@ -140,7 +138,7 @@
       $('#advise').hide();
       $('#result').show();
       $('#retry').show();
-      $('#twitter').show();
+      $('#back').show();
 
       const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
       // alert(base64);
@@ -169,7 +167,7 @@
     window.requestAnimationFrame(loop);
   }
 
-  function twitter() {
-    window.open('https://twitter.com/intent/tweet?text=ガン飛ばしの訓練中！%0d%0dhttps://www.gantobashi.com/%0d&hashtags=メンチキッター,ガン飛ばし', '_blank', 'noreferrer');
+  function back() {
+    window.location.href = 'select';
   }
 </script>
