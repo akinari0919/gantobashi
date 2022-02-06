@@ -4,7 +4,7 @@
       <p>モード選択</p>
     </div>
     <div class="btn-3">
-    <%= link_to "ガン飛ばし診断", mode_check_path, class:"button-40 link" %>
+      <%= link_to "ガン飛ばし診断", mode_check_path, class:"button-40 link" %>
     </div>
     <div class="select-text">
       <p>貴方のガン飛ばしを客観的に分析できます。</p>
@@ -16,10 +16,14 @@
       <p>ガン飛ばしの基本「眼力」を身に付けます。</p>
     </div>
     <div class="btn-3">
-      <%= link_to "　　工事中　　", '#', class:"button-40 link" %>
+      <% if logged_in? %>
+        <%= link_to "ガン飛ばし決闘", mode_battle_index_path, class:"button-40 link" %>
+      <% else %>
+        <%= link_to "ガン飛ばし決闘", login_path, class:"button-40 link" %>
+      <% end %>
     </div>
     <div class="select-text">
-      <p>リリースお楽しみに！</p>
+      <p>他のユーザーとガン飛ばしで決闘できます。</p>
     </div>
   </div>
   <div class="select-text-fotter">

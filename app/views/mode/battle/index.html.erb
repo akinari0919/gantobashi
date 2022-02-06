@@ -1,0 +1,8 @@
+<main>
+  <div class = 'top-contents' >
+    <% @users.each do |user| %>
+      <%= user.name %>
+      <%= link_to 'battle', mode_battle_path(user) %>
+    <% end %>
+  </div>
+</main>
