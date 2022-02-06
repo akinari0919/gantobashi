@@ -3,6 +3,7 @@
     <% @users.each do |user| %>
       <%= user.name %>
       <%= link_to 'battle', mode_battle_path(user) %>
+      <br>
     <% end %>
   </div>
 </main>
