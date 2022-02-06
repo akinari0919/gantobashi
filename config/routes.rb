@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   resource :profile, only: %i[show edit update]
+  resources :glaring_face_photos, only: %i[new create index]
+  post 'glaring_face_photos/check', to: 'glaring_face_photos#check'
+
 
   # 例外
   get '*path', controller: 'application', action: 'render_404'
