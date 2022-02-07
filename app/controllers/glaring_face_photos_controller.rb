@@ -1,5 +1,6 @@
 class GlaringFacePhotosController < ApplicationController
   before_action :login_user
+  before_action :find_glaring_face_photo, only: :destroy
   include AwsRecognition
 
   def new
@@ -17,6 +18,11 @@ class GlaringFacePhotosController < ApplicationController
 
   def index
     @glaring_face_photos = GlaringFacePhoto.all
+  end
+
+  def destroy
+    @glaring_face_photo.destroy!
+    redirect_to glaring_face_photos_path
   end
 
   def check
@@ -78,6 +84,10 @@ class GlaringFacePhotosController < ApplicationController
     unless logged_in?
       redirect_to login_path
     end
+  end
+
+  def find_glaring_face_photo
+    @glaring_face_photo = current_user.glaring_face_photos.find(params[:id])
   end
 
   def glaring_face_photo_params
