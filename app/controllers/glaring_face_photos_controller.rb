@@ -4,7 +4,11 @@ class GlaringFacePhotosController < ApplicationController
   include AwsRecognition
 
   def new
-    @glaring_face_photo = GlaringFacePhoto.new
+    if current_user.glaring_face_photos.count >= 3
+      redirect_to glaring_face_photos_path
+    else
+       @glaring_face_photo = GlaringFacePhoto.new
+    end
   end
 
   def create
