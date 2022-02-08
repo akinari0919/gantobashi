@@ -103,9 +103,9 @@ class Mode::ResponseController < ApplicationController
             elsif result == 80
               @rank = "(仮)総長クラス"
             elsif result == 84
-              @rank = "総参謀クラス" 
+              @rank = "総参謀クラス"
             elsif result == 96
-              @rank = "裏総長クラス" 
+              @rank = "裏総長クラス"
             else
               @rank = "総長代理クラス"
             end
@@ -119,7 +119,7 @@ class Mode::ResponseController < ApplicationController
             elsif result < 50
               @rank = "隊長代理クラス"
             elsif result < 60
-              @rank = "副隊長クラス"  
+              @rank = "副隊長クラス"
             else
               @rank = "幹部クラス"
             end
@@ -151,17 +151,18 @@ class Mode::ResponseController < ApplicationController
               @rank = "親衛隊クラス"
               result *= 2
             end
-          elsif
+          else
             @star = "☆☆☆☆☆"
-            @rank = "雑魚クラス"
-            if result == 0.5
+            if result == 0
+              @rank = "雑魚クラス"
+            else
               @rank = "三下クラス"
             end
           end
 
           # 結果を反映
           if result.floor > 100
-            @comment = { 
+            @comment = {
               body: "#{result.floor}人をひよらせた!!!",
               star: @star,
               point1: "眼力：#{@eye_result}",
@@ -169,7 +170,7 @@ class Mode::ResponseController < ApplicationController
               rank: "総長クラス"
             }
           elsif result.floor == 100
-            @comment = { 
+            @comment = {
               body: "#{result.floor}人をひよらせた!!",
               star: @star,
               point1: "眼力：#{@eye_result}",
@@ -177,7 +178,7 @@ class Mode::ResponseController < ApplicationController
               rank: "副総長クラス"
             }
           elsif result.floor >= 1
-            @comment = { 
+            @comment = {
               body: "#{result.floor}人をひよらせた！",
               star: @star,
               point1: "眼力：#{@eye_result}",
@@ -197,72 +198,21 @@ class Mode::ResponseController < ApplicationController
           @comment = {
             body: "ガン飛んでないorz",
             star: "☆☆☆☆☆",
-            point1:"目閉じてない？",
-            point2:"笑ってない？",
+            point1: "目閉じてない？",
+            point2: "笑ってない？",
             rank: "モブ以下"
           }
         end
 
         render json: @comment
-
-        # レスポンス確認用
-        puts "------------"
-        puts ""
-        puts "The detected face is between: #{face_detail.age_range.low} and #{face_detail.age_range.high} years old"
-        puts ""
-        puts "  eyes_open.value:        #{face_detail.eyes_open.value}"
-        puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
-        puts "  smile.value:            #{face_detail.smile.value}"
-        puts "  smile.confidence:       #{face_detail.smile.confidence}"
-        puts ""
-        puts "------------"
-        puts ""
-        puts "  eyeglasses.value:       #{face_detail.eyeglasses.value}"
-        puts "  eyeglasses.confidence:  #{face_detail.eyeglasses.confidence}"
-        puts "  sunglasses.value:       #{face_detail.sunglasses.value}"
-        puts "  sunglasses.confidence:  #{face_detail.sunglasses.confidence}"
-        puts "  mouth_open.value:       #{face_detail.mouth_open.value}"
-        puts "  mouth_open.confidence:  #{face_detail.mouth_open.confidence}"
-        puts ""
-        puts "------------"
-        puts ""
-        puts "  quality.brightness:     #{face_detail.quality.brightness}"
-        puts "  quality.sharpness:      #{face_detail.quality.sharpness}"
-        puts "  confidence:             #{face_detail.confidence}"
-        puts ""
-        puts "------------"
-        puts ""
-        puts "  【#{face_detail.emotions[0].type}】"
-        puts "    #{face_detail.emotions[0].confidence}"
-        puts "  【#{face_detail.emotions[1].type}】"
-        puts "    #{face_detail.emotions[1].confidence}"
-        puts "  【#{face_detail.emotions[2].type}】"
-        puts "    #{face_detail.emotions[2].confidence}"
-        puts "  【#{face_detail.emotions[3].type}】"
-        puts "    #{face_detail.emotions[3].confidence}"
-        puts "  【#{face_detail.emotions[4].type}】"
-        puts "    #{face_detail.emotions[4].confidence}"
-        puts "  【#{face_detail.emotions[5].type}】"
-        puts "    #{face_detail.emotions[5].confidence}"
-        puts "  【#{face_detail.emotions[6].type}】"
-        puts "    #{face_detail.emotions[6].confidence}"
-        puts "  【#{face_detail.emotions[7].type}】"
-        puts "    #{face_detail.emotions[7].confidence}"
-        puts ""
-        puts "眼力：#{params[:base].to_f}"
-        puts @eye_star
-        puts "感情値：#{emotion_power}"
-        puts @emotion_star
-        puts "------------"
-        puts ""
       end
     else
       render json: {
         body: '解析失敗m(_ _)m',
         star: "↓要確認↓",
-        point1:"2人以上写っている場合や、",
-        point2:"誰も写ってない場合など。",
-        rank:"撮影不備の可能性あり"
+        point1: "2人以上写っている場合や、",
+        point2: "誰も写ってない場合など。",
+        rank: "撮影不備の可能性あり"
       }
     end
   end
@@ -279,22 +229,16 @@ class Mode::ResponseController < ApplicationController
           @comment = {
             body: "成功◎その調子!!"
           }
-          puts "  eyes_open.value:        #{face_detail.eyes_open.value}"
-          puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
-          puts "  #{face_detail.emotions[0].type}"
         else
           @comment = {
             body: "失敗orz(惜しい！)"
           }
-          puts "  eyes_open.value:        #{face_detail.eyes_open.value}"
-          puts "  eyes_open.confidence:   #{face_detail.eyes_open.confidence}"
-          puts "  #{face_detail.emotions[0].type}"
         end
       end
     else
       @comment = {
-            body: "失敗orz"
-          }
+        body: "失敗orz"
+      }
     end
     render json: @comment
   end

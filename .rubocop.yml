@@ -47,8 +47,14 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
+Style/SymbolArray:
+  Enabled: true
+
 # クラスにコメントを残さない
 Style/Documentation:
+  Enabled: false
+
+Style/RedundantReturn:
   Enabled: false
 
 # コントローラのメソッド名に「set_」「get_」を許可
@@ -67,6 +73,8 @@ Layout/LineLength:
 Metrics/MethodLength:
   CountComments: false
   Max: 20
+  Exclude:
+    - "app/helpers/*.rb"
 
 # ABC sizeは緩めにする
 Metrics/AbcSize:

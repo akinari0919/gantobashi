@@ -1,5 +1,5 @@
 class Mode::CheckController < ApplicationController
-  before_action :no_photo, {only: :show}
+  before_action :no_photo, { only: :show }
 
   def new; end
 
