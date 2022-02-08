@@ -25,6 +25,7 @@ AllCops:
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
   DisplayCopNames: true
+  NewCops: enable
 
 # 日本語でのコメントを許可
 Style/AsciiComments:
@@ -55,9 +56,9 @@ Naming/AccessorMethodName:
   Exclude:
     - "app/controllers/**/*"
 
-# 一行の長さは100字まで。コメントは制限しない
-Metrics/LineLength:
-  Max: 100
+# 一行の長さは120字まで。コメントは制限しない
+Layout/LineLength:
+  Max: 120
   IgnoredPatterns: ['\A#']
   Exclude:
     - "db/migrate/*.rb"
@@ -70,3 +71,4 @@ Metrics/MethodLength:
 # ABC sizeは緩めにする
 Metrics/AbcSize:
   Max: 30 # default 15
+
