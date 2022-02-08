@@ -95,15 +95,16 @@ class Mode::ResponseController < ApplicationController
             @star = "★★★★★"
           elsif result_star >= 4
             @star = "★★★★☆"
-            @rank = if result == 70
+            @rank = case result
+                    when 70
                       "参謀クラス"
-                    elsif result == 72
+                    when 72
                       "隊長クラス"
-                    elsif result == 80
+                    when 80
                       "(仮)総長クラス"
-                    elsif result == 84
+                    when 84
                       "総参謀クラス"
-                    elsif result == 96
+                    when 96
                       "裏総長クラス"
                     else
                       "総長代理クラス"
@@ -148,7 +149,7 @@ class Mode::ResponseController < ApplicationController
             end
           else
             @star = "☆☆☆☆☆"
-            @rank = if result == 0
+            @rank = if result.zero?
                       "雑魚クラス"
                     else
                       "三下クラス"

@@ -80,3 +80,5 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Max: 30 # default 15
 
+Metrics/BlockNesting:
+ Max: 5
