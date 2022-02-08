@@ -7,9 +7,16 @@ class Mode::ResponseController < ApplicationController
 
     # 判定ロジック
     # 顔写真が撮れているか
-    if response.face_details != []
+    if response.face_details == []
+      render json: {
+        body: '解析失敗m(_ _)m',
+        star: "↓要確認↓",
+        point1: "2人以上写っている場合や、",
+        point2: "誰も写ってない場合など。",
+        rank: "撮影不備の可能性あり"
+      }
+    else
       response.face_details.each do |face_detail|
-
         # 目が開いているかつ笑顔ではない
         if face_detail.eyes_open.value == true && face_detail.emotions[0].type != 'HAPPY'
 
@@ -43,18 +50,10 @@ class Mode::ResponseController < ApplicationController
 
           # 感情値の取得
           (0..7).each do |i|
-            if face_detail.emotions[i].type == 'ANGRY'
-              @angry = face_detail.emotions[i].confidence
-            end
-            if face_detail.emotions[i].type == 'SAD'
-              @sad = face_detail.emotions[i].confidence
-            end
-            if face_detail.emotions[i].type == 'CONFUSED'
-              @confused = face_detail.emotions[i].confidence
-            end
-            if face_detail.emotions[i].type == 'CALM'
-              @calm = face_detail.emotions[i].confidence * 0.1
-            end
+            @angry = face_detail.emotions[i].confidence if face_detail.emotions[i].type == 'ANGRY'
+            @sad = face_detail.emotions[i].confidence if face_detail.emotions[i].type == 'SAD'
+            @confused = face_detail.emotions[i].confidence if face_detail.emotions[i].type == 'CONFUSED'
+            @calm = face_detail.emotions[i].confidence * 0.1 if face_detail.emotions[i].type == 'CALM'
           end
 
           emotion_power = (@angry + @sad + @confused + @calm) / 4
@@ -96,50 +95,46 @@ class Mode::ResponseController < ApplicationController
             @star = "★★★★★"
           elsif result_star >= 4
             @star = "★★★★☆"
-            if result == 70
-              @rank = "参謀クラス"
-            elsif result == 72
-              @rank = "隊長クラス"
-            elsif result == 80
-              @rank = "(仮)総長クラス"
-            elsif result == 84
-              @rank = "総参謀クラス"
-            elsif result == 96
-              @rank = "裏総長クラス"
-            else
-              @rank = "総長代理クラス"
-            end
+            @rank = if result == 70
+                      "参謀クラス"
+                    elsif result == 72
+                      "隊長クラス"
+                    elsif result == 80
+                      "(仮)総長クラス"
+                    elsif result == 84
+                      "総参謀クラス"
+                    elsif result == 96
+                      "裏総長クラス"
+                    else
+                      "総長代理クラス"
+                    end
           elsif result_star >= 3
             @star = "★★★☆☆"
-            if result <= 30
-              result = 32
-            end
-            if result < 40
-              @rank = "特攻隊長クラス"
-            elsif result < 50
-              @rank = "隊長代理クラス"
-            elsif result < 60
-              @rank = "副隊長クラス"
-            else
-              @rank = "幹部クラス"
-            end
+            result = 32 if result <= 30
+            @rank = if result < 40
+                      "特攻隊長クラス"
+                    elsif result < 50
+                      "隊長代理クラス"
+                    elsif result < 60
+                      "副隊長クラス"
+                    else
+                      "幹部クラス"
+                    end
           elsif result_star >= 2
             @star = "★★☆☆☆"
-            if result == 6 && @emotion_star > @eye_star
-              result = 20
-            end
+            result = 20 if result == 6 && @emotion_star > @eye_star
             if result <= 5
               result *= 3
             elsif result <= 10
               result *= 2
             end
-            if result < 20
-              @rank = "特攻隊クラス"
-            elsif result == 20
-              @rank = "相談役クラス"
-            else
-              @rank = "親衛隊長クラス"
-            end
+            @rank = if result < 20
+                      "特攻隊クラス"
+                    elsif result == 20
+                      "相談役クラス"
+                    else
+                      "親衛隊長クラス"
+                    end
           elsif result_star >= 1
             @star = "★☆☆☆☆"
             if @eye_star > @emotion_star
@@ -153,47 +148,47 @@ class Mode::ResponseController < ApplicationController
             end
           else
             @star = "☆☆☆☆☆"
-            if result == 0
-              @rank = "雑魚クラス"
-            else
-              @rank = "三下クラス"
-            end
+            @rank = if result == 0
+                      "雑魚クラス"
+                    else
+                      "三下クラス"
+                    end
           end
 
           # 結果を反映
-          if result.floor > 100
-            @comment = {
-              body: "#{result.floor}人をひよらせた!!!",
-              star: @star,
-              point1: "眼力：#{@eye_result}",
-              point2: "感情値：#{@emotion_result}",
-              rank: "総長クラス"
-            }
-          elsif result.floor == 100
-            @comment = {
-              body: "#{result.floor}人をひよらせた!!",
-              star: @star,
-              point1: "眼力：#{@eye_result}",
-              point2: "感情値：#{@emotion_result}",
-              rank: "副総長クラス"
-            }
-          elsif result.floor >= 1
-            @comment = {
-              body: "#{result.floor}人をひよらせた！",
-              star: @star,
-              point1: "眼力：#{@eye_result}",
-              point2: "感情値：#{@emotion_result}",
-              rank: @rank
-            }
-          else
-            @comment = {
-              body: "誰一人ひよらない(泣)",
-              star: @star,
-              point1: "眼力：#{@eye_result}",
-              point2: "感情値：#{@emotion_result}",
-              rank: @rank
-            }
-          end
+          @comment = if result.floor > 100
+                       {
+                         body: "#{result.floor}人をひよらせた!!!",
+                         star: @star,
+                         point1: "眼力：#{@eye_result}",
+                         point2: "感情値：#{@emotion_result}",
+                         rank: "総長クラス"
+                       }
+                     elsif result.floor == 100
+                       {
+                         body: "#{result.floor}人をひよらせた!!",
+                         star: @star,
+                         point1: "眼力：#{@eye_result}",
+                         point2: "感情値：#{@emotion_result}",
+                         rank: "副総長クラス"
+                       }
+                     elsif result.floor >= 1
+                       {
+                         body: "#{result.floor}人をひよらせた！",
+                         star: @star,
+                         point1: "眼力：#{@eye_result}",
+                         point2: "感情値：#{@emotion_result}",
+                         rank: @rank
+                       }
+                     else
+                       {
+                         body: "誰一人ひよらない(泣)",
+                         star: @star,
+                         point1: "眼力：#{@eye_result}",
+                         point2: "感情値：#{@emotion_result}",
+                         rank: @rank
+                       }
+                     end
         else
           @comment = {
             body: "ガン飛んでないorz",
@@ -206,14 +201,6 @@ class Mode::ResponseController < ApplicationController
 
         render json: @comment
       end
-    else
-      render json: {
-        body: '解析失敗m(_ _)m',
-        star: "↓要確認↓",
-        point1: "2人以上写っている場合や、",
-        point2: "誰も写ってない場合など。",
-        rank: "撮影不備の可能性あり"
-      }
     end
   end
 
@@ -222,23 +209,23 @@ class Mode::ResponseController < ApplicationController
     response = check_face
 
     # 顔写真が撮れているか
-    if response.face_details != []
-      response.face_details.each do |face_detail|
-        # 目が開いているかつ笑顔ではない
-        if face_detail.eyes_open.confidence >= 85 && face_detail.emotions[0].type != 'HAPPY'
-          @comment = {
-            body: "成功◎その調子!!"
-          }
-        else
-          @comment = {
-            body: "失敗orz(惜しい！)"
-          }
-        end
-      end
-    else
+    if response.face_details == []
       @comment = {
         body: "失敗orz"
       }
+    else
+      response.face_details.each do |face_detail|
+        # 目が開いているかつ笑顔ではない
+        @comment = if face_detail.eyes_open.confidence >= 85 && face_detail.emotions[0].type != 'HAPPY'
+                     {
+                       body: "成功◎その調子!!"
+                     }
+                   else
+                     {
+                       body: "失敗orz(惜しい！)"
+                     }
+                   end
+      end
     end
     render json: @comment
   end
