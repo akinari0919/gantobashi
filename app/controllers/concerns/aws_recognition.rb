@@ -9,12 +9,12 @@ module AwsRecognition
     photo = Base64.decode64(params[:image])
     client = Aws::Rekognition::Client.new credentials: credentials
     attrs = {
-      image: { 
+      image: {
         bytes: photo
       },
       attributes: ['ALL']
     }
 
-    response = client.detect_faces attrs
+    return client.detect_faces attrs
   end
 end

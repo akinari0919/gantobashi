@@ -76,4 +76,3 @@ gem 'aws-sdk-rekognition'
 gem 'meta-tags'
 # sorcery
 gem 'sorcery'
-

@@ -1,5 +1,5 @@
 class Mode::CheckController < ApplicationController
-  before_action :no_photo, {only: :show}
+  before_action :no_photo, { only: :show }
 
   def new; end
 
@@ -15,8 +15,6 @@ class Mode::CheckController < ApplicationController
   private
 
   def no_photo
-    if params[:body] == nil
-      redirect_to mode_select_path
-    end
+    redirect_to mode_select_path if params[:body].nil?
   end
 end
