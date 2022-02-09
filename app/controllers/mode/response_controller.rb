@@ -149,10 +149,10 @@ class Mode::ResponseController < ApplicationController
             end
           else
             @star = "☆☆☆☆☆"
-            @rank = if result.zero?
-                      "雑魚クラス"
-                    else
+            @rank = if result > 0.4
                       "三下クラス"
+                    else
+                      "雑魚クラス"
                     end
           end
 
