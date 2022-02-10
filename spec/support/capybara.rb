@@ -3,3 +3,6 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
   end
 end
+
+Selenium::WebDriver.logger.ignore(:browser_options)
+
