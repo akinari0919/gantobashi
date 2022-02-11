@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @glaring_face_photos = current_user.glaring_face_photos.where(main_choiced: false)
+    @glaring_face_photos = current_user.glaring_face_photos.where(main_choiced: true)
   end
 
   private
