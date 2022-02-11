@@ -21,10 +21,10 @@ module ApplicationHelper
         type: 'website',
         url: request.original_url,
         image: image_url('image-card.png'),
-        locale: 'ja_JP',
+        locale: 'ja_JP'
       },
       twitter: {
-        card: 'summary_large_image',
+        card: 'summary_large_image'
       }
     }
   end

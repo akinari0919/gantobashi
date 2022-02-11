@@ -57,6 +57,7 @@ end
 group :test do
   gem 'capybara'
   gem 'webdrivers'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -75,4 +76,3 @@ gem 'aws-sdk-rekognition'
 gem 'meta-tags'
 # sorcery
 gem 'sorcery'
-

@@ -1,10 +1,12 @@
 <main>
   <div class = 'top-contents'>
     <%= current_user.name %>
-    <br>
-    <%= current_user.email %>
-    <br>
     <%= link_to 'Edit', edit_profile_path %>
+    <br>
+    <% @glaring_face_photos.each do |gfp| %>
+      <img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" />
+      <%= gfp.battle_win_count %>
+    <% end %>
     <br>
     <%= link_to 'GlaringFacePhotos', glaring_face_photos_path %>
   </div>

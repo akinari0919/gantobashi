@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   resource :profile, only: %i[show edit update]
-  resources :glaring_face_photos, only: %i[new create index destroy]
+  resources :glaring_face_photos, only: %i[new create index update destroy]
   post 'glaring_face_photos/check', to: 'glaring_face_photos#check'
 
 

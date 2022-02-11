@@ -1,11 +1,11 @@
 class UserSessionsController < ApplicationController
-
   def new
     @user = User.new
   end
 
   def create
-    if @user = login(params[:email], params[:password])
+    @user = login(params[:email], params[:password])
+    if @user
       redirect_back_or_to mode_select_path
     else
       render :new

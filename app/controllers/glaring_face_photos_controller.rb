@@ -1,10 +1,14 @@
 class GlaringFacePhotosController < ApplicationController
   before_action :login_user
-  before_action :find_glaring_face_photo, only: :destroy
+  before_action :find_glaring_face_photo, only: [:update, :destroy]
   include AwsRecognition
 
   def new
-    @glaring_face_photo = GlaringFacePhoto.new
+    if current_user.glaring_face_photos.count >= 3
+      redirect_to glaring_face_photos_path
+    else
+      @glaring_face_photo = GlaringFacePhoto.new
+    end
   end
 
   def create
@@ -17,7 +21,15 @@ class GlaringFacePhotosController < ApplicationController
   end
 
   def index
-    @glaring_face_photos = GlaringFacePhoto.all
+    @glaring_face_photos = current_user.glaring_face_photos.order(id: :asc)
+  end
+
+  def update
+    @glaring_face_photo.update(main_choiced: true)
+    current_user.glaring_face_photos.where.not(id: params[:id]).each do |gfp|
+     gfp.update(main_choiced: false)
+    end
+    redirect_to profile_path
   end
 
   def destroy

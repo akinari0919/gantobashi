@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: [:edit, :update]
 
   def edit; end
 
@@ -11,7 +11,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @glaring_face_photos = current_user.glaring_face_photos.where(main_choiced: true)
+  end
 
   private
 
