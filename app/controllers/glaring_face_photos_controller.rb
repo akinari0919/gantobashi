@@ -21,7 +21,7 @@ class GlaringFacePhotosController < ApplicationController
   end
 
   def index
-    @glaring_face_photos = GlaringFacePhoto.all.order(id: :asc)
+    @glaring_face_photos = current_user.glaring_face_photos.order(id: :asc)
   end
 
   def update
