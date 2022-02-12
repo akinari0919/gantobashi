@@ -4,10 +4,12 @@
       <% gfp = user.glaring_face_photos.find_by(main_choiced: true) %>
       <% if gfp.present? %>
         <%= user.name %>
+        <br>
         <img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" />
+        <%= "☆×#{gfp.battle_win_count}" %>
         <%= link_to 'battle', mode_battle_path(user) %>
+        <br>
       <% end %>
-      <br>
     <% end %>
   </div>
 </main>
