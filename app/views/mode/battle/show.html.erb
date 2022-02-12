@@ -4,7 +4,7 @@
     <br>
     <img src="data:image/jpeg;base64,<%="#{@photo.image}"%>" width="100" height="100" />
     <%= "☆×#{@photo.battle_win_count}" %>
-    <%= link_to 'battle', '#' %>
+    <%= link_to 'battle', edit_mode_battle_path(@user) %>
     <br>
     <%= link_to 'back', mode_battle_index_path %>
   </div>
