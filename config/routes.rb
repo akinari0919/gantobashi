@@ -17,14 +17,20 @@ Rails.application.routes.draw do
     # 訓練モード
     get 'training', to: 'training#new'
     post 'response/training', to: 'response#training'
+
+    # 決闘モード
+    resources :battle, only: %i[index show]
   end
 
-  resources :users, only: %i[new index create]
+  resources :users, only: %i[new create]
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
   resource :profile, only: %i[show edit update]
+  resources :glaring_face_photos, only: %i[new create index update destroy]
+  post 'glaring_face_photos/check', to: 'glaring_face_photos#check'
+
 
   # 例外
   get '*path', controller: 'application', action: 'render_404'

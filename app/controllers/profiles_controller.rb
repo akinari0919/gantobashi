@@ -11,7 +11,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @glaring_face_photos = current_user.glaring_face_photos.where(main_choiced: true)
+  end
 
   private
 
