@@ -1,7 +1,11 @@
 <main>
   <div class = 'top-contents' >
     <%= @user.name %>
+    <br>
+    <img src="data:image/jpeg;base64,<%="#{@photo.image}"%>" width="100" height="100" />
+    <%= "☆×#{@photo.battle_win_count}" %>
     <%= link_to 'battle', '#' %>
+    <br>
     <%= link_to 'back', mode_battle_index_path %>
   </div>
 </main>

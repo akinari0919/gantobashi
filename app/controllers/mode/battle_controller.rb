@@ -6,6 +6,7 @@ class Mode::BattleController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @photo = @user.glaring_face_photos.find_by(main_choiced: true)
   end
 
   private
