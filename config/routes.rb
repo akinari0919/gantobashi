@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   resource :profile, only: %i[show edit update]
   resources :glaring_face_photos, only: %i[new create index update destroy]
+  get 'glaring_face_photos/hide', to: 'glaring_face_photos#hide'
   post 'glaring_face_photos/check', to: 'glaring_face_photos#check'
 
 

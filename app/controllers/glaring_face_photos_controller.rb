@@ -27,7 +27,15 @@ class GlaringFacePhotosController < ApplicationController
   def update
     @glaring_face_photo.update(main_choiced: true)
     current_user.glaring_face_photos.where.not(id: params[:id]).each do |gfp|
-     gfp.update(main_choiced: false)
+      gfp.update(main_choiced: false)
+    end
+    redirect_to profile_path
+  end
+
+  def hide
+    graring_face_photos = current_user.glaring_face_photos.all
+    graring_face_photos.each do |gfp|
+      gfp.update(main_choiced: false)
     end
     redirect_to profile_path
   end
