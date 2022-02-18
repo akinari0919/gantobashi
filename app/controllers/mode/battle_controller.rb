@@ -14,14 +14,40 @@ class Mode::BattleController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    @gfp = @user.glaring_face_photos.find_by(main_choiced: true)
+    unless params.present?
+      @my_photo = params[:image]
+      @enemy_image = params[:enemy_image]
+      if params[:enemy_score].to_i > params[:face_score].to_i
+        count = @gfp.defense_win_count
+        @gfp.update(defense_win_count: count + 1)
+        render json: { body: "Lose",
+                       count: @gfp.defense_win_count
+                     }
+      else
+        render json: { body: "Win" }
+      end
+    end
   end
 
   def update
-    if @glaring_face_photo.face_score > glaring_face_photo_params[:face_score].to_i
-      count = @glaring_face_photo.battle_win_count
-      @glaring_face_photo.update(battle_win_count: count + 1)
+    redirect_to "/mode/battle/result/#{params[:id]}"
+  end
+
+  def result
+    @enemy_image = params[:enemy_image]
+    @my_photo = params[:image]
+    @gfp = GlaringFacePhoto.find(params[:enemy_id])
+    if params[:enemy_score].to_i > params[:face_score].to_i
+      count = @gfp.defense_win_count
+      @gfp.update(defense_win_count: count + 1)
+      render json: { body: "Lose",
+                     count: @gfp.defense_win_count
+                   }
+    else
+      render json: { body: "Win" }
     end
-    redirect_to mode_battle_index_path
   end
 
   private
@@ -40,9 +66,4 @@ class Mode::BattleController < ApplicationController
   def find_glaring_face_photo
     @glaring_face_photo = GlaringFacePhoto.find(params[:id])
   end
-
-  def glaring_face_photo_params
-    params.require(:glaring_face_photo).permit(:image, :face_score)
-  end
-
 end

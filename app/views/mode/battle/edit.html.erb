@@ -4,7 +4,7 @@
       <div class="camera-bd"></div>
       <video id="video" autoplay playsinline width="300" height="300"></video>
       <canvas id="canvas" width="300" height="300"></canvas>
-    </div>  
+    </div>
     <div class="submit-btn">
       <p class="button-41" id="shatter" onclick="init()">ガン飛ばす</p>
       <p class="button-42" id="dummy">解析中...</p>
@@ -14,14 +14,16 @@
     </div>
     <div class="btn-2">
       <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
-      <%= form_with model: @glaring_face_photo, url: mode_battle_path(@glaring_face_photo), local: true do |f| %>
+      <%= form_with url: mode_battle_result_path, method: :post do |f| %>
         <%= f.hidden_field :face_score, id: "face_score", value: "" %>
         <%= f.hidden_field :image, id: "photo", value: "" %>
+        <%= f.hidden_field :enemy_id, id: "enemy_id", value: @glaring_face_photo.id %>
+        <%= f.hidden_field :enemy_score, id: "enemy_score", value: @glaring_face_photo.face_score %>
+        <%= f.hidden_field :enemy_image, id: "enemy_image", value: @glaring_face_photo.image %>
         <p><%= f.submit "勝負！！", class:"button-40", id:"detail" %></p>
       <% end %>
     </div>
   </div>
-  
 
 <script>
   $('#canvas').hide();
@@ -61,7 +63,7 @@
     $('#canvas').show();
     $('#dummy').show();
     $(this).html( $(this).data('loading-text') );
-    
+
     // canvasに静止画を入れる
     var canvas = document.getElementById("canvas")
     canvas.getContext("2d").drawImage(video, 0, 0, 300, 300)

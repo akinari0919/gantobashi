@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     # 決闘モード
     resources :battle, only: %i[index show edit update]
     post ':id/response/battle', to: 'response#battle'
+    post 'battle/result', to: 'battle#result'
   end
 
   resources :users, only: %i[new create]

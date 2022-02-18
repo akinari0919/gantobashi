@@ -10,7 +10,7 @@
       <% @glaring_face_photos.each do |gfp| %>
         <img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" />
         <%= gfp.face_score %>
-        <%= gfp.battle_win_count %>
+        <%= gfp.defense_win_count %>
         <%= link_to 'Delete', glaring_face_photo_path(gfp), method: :delete %>
         <%= form_with model: gfp, local: true do |f| %>
           <%= f.submit %>
