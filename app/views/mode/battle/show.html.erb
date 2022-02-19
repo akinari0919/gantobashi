@@ -3,7 +3,7 @@
     <%= @user.name %>
     <br>
     <img src="data:image/jpeg;base64,<%="#{@photo.image}"%>" width="100" height="100" />
-    <%= "☆×#{@photo.defense_win_count}" %>
+    <%= "★×#{@photo.defense_win_count}" %>
     <%= link_to 'Battle', edit_mode_battle_path(@user) %>
     <br>
     <%= link_to 'Back', mode_battle_index_path %>

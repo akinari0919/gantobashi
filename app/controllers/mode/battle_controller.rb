@@ -38,8 +38,8 @@ class Mode::BattleController < ApplicationController
     end
 
     render json: { battle_result: @battle_result,
-                   my_win_count: "☆×#{@my_win_result}",
-                   enemy_win_count: "☆×#{@enemy_win_result}",
+                   my_win_count: "★×#{@my_win_result}",
+                   enemy_win_count: "★×#{@enemy_win_result}",
                  }
   end
 
