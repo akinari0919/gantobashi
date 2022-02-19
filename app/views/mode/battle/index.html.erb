@@ -1,23 +1,25 @@
 <main>
-  <div class = 'top-contents' >
+  <div class='top-contents'>
+    <p class='title-contents'>BattleIndex</p>
     <table>
       <tr>
-        <th>Name</th>
-        <th>Image</th>
-        <th>win_count</th>
-        <th></th>
+        <th class='width20'>Name</th>
+        <th class='width30'>Image</th>
+        <th class='width10'>Level</th>
+        <th class='width30'></th>
       </tr>
       <% @users.each do |user| %>
         <% gfp = user.glaring_face_photos.find_by(main_choiced: true) %>
         <% if gfp.present? %>
-          <tr>
+          <tr class='enemy-table'>
             <td><%= user.name %></td>
             <td><img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" /></td>
             <td><%= "☆×#{gfp.defense_win_count}" %></td>
-            <td><%= link_to 'Show', mode_battle_path(user), class:"button-40" %></td>
+            <td><%= link_to 'Show', mode_battle_path(user), class:"button-43" %></td>
           </tr>
         <% end %>
       <% end %>
     </table>
+    <%= paginate @users %>
   </div>
 </main>

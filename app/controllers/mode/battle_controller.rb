@@ -1,10 +1,9 @@
 class Mode::BattleController < ApplicationController
   before_action :login_user
   before_action :set_user, only: :edit
-  include AwsRecognition
 
   def index
-    @users = User.where.not(id: current_user.id)
+    @users = User.where.not(id: current_user.id).joins(:glaring_face_photos).merge(GlaringFacePhoto.where(main_choiced: true)).page(params[:page])
   end
 
   def show
