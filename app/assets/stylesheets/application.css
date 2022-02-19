@@ -141,6 +141,13 @@ main {
   align-items: center;
 }
 
+.info-text {
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .select-text-fotter{
   position: absolute;
   width: 100%;
@@ -419,6 +426,19 @@ footer p {
     padding: .75rem 1.5rem;
   }
 }
+
+.button-44 {
+  background-color: #000000;
+  color: #ffffff;
+  width: 80px;
+  height: 80px;
+  line-height: 73px;
+  border-radius: 50%;
+  border: double 4px #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
 .submit-btn {
   padding-top: 30px;
   display: flex;
@@ -481,6 +501,10 @@ th.width10 {
 .enemy-table {
   border: solid 1px;
   height: 120px;
+}
+
+.table-button {
+  height: 90px;
 }
 
 th {
