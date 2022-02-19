@@ -1,4 +1,5 @@
 <main>
+  <!-- 撮影画面 -->
   <div class="create-contents">
     <div class="camera">
       <div class="camera-bd"></div>
@@ -14,14 +15,36 @@
     </div>
     <div class="btn-2">
       <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
-      <%= form_with url: mode_battle_result_path, method: :post do |f| %>
-        <%= f.hidden_field :face_score, id: "face_score", value: "" %>
-        <%= f.hidden_field :image, id: "photo", value: "" %>
-        <%= f.hidden_field :enemy_id, id: "enemy_id", value: @glaring_face_photo.id %>
-        <%= f.hidden_field :enemy_score, id: "enemy_score", value: @glaring_face_photo.face_score %>
-        <%= f.hidden_field :enemy_image, id: "enemy_image", value: @glaring_face_photo.image %>
-        <p><%= f.submit "勝負！！", class:"button-40", id:"detail" %></p>
-      <% end %>
+      <form>
+        <input type="hidden" name="face_score" id="face_score" value="">
+        <input type="hidden" name="enemy_id" id="enemy_id" value="<%= @user.id %>">
+        <input type="hidden" name="enemy_score" id="enemy_score" value="<%= @glaring_face_photo.face_score %>">
+        <input type="hidden" name="enemy_image" id="enemy_image" value="<%= @glaring_face_photo.image %>">
+        <button class="button-40" id="detail">submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 決闘結果  -->
+  <div class="top-contents" id='battle'>
+    <div class="">
+      <div class="photo-bd"></div>
+
+      <img id="my_image" src="" width="100" height="100"/>
+      <p class="mx-3" id="my_win_count"></p>
+      <p>VS</p>
+      <img src="data:image/jpeg;base64,<%="#{@glaring_face_photo.image}"%>" width="100" height="100"/>
+      <p class="mx-3" id="enemy_win_count"></p>
+
+      <div class="result">
+        <div class="result-body">
+          <p id="battle_result"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-3 mt-4">
+      <%= link_to "決闘一覧", mode_battle_index_path, class:"button-40 link" %>
     </div>
   </div>
 
@@ -30,6 +53,7 @@
   $('#dummy').hide();
   $('#retry').hide();
   $('#detail').hide();
+  $('#battle').hide();
   // カメラ設定
   const constraints = {
     video: {
@@ -86,11 +110,10 @@
     const prediction = await model.predict(canvas);
 
     const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
-    document.getElementById('photo').value = base64;
-    // alert(base64);
+    var my_image = document.getElementById('my_image');
+    my_image.setAttribute('src', `data:image/jpeg;base64,${base64}`);
 
     const eye_power = prediction[0].probability * 100
-    // alert(eye_power);
     $.ajax({
       url: '../response/battle',
       type: 'POST',
@@ -125,4 +148,34 @@
     $('#retry').hide();
     $('#detail').hide();
   }
+
+  $('#detail').on('click', function(event){
+    event.preventDefault();
+    $.ajax({
+        url: '/mode/battle/result',
+        type: 'POST',
+        data: {
+            my_score: document.getElementById('face_score').value,
+            enemy_id: document.getElementById('enemy_id').value,
+            enemy_score: document.getElementById('enemy_score').value
+          },
+        headers: {
+            'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+          },
+        success: function(data) {
+            $('#battle_result').append(data.battle_result)
+            $('#my_win_count').append(data.my_win_count)
+            $('#enemy_win_count').append(data.enemy_win_count)
+          },
+        error: function() {
+            console.log('失敗')
+          }
+      });
+      $('#canvas').hide();
+      $('#dummy').hide();
+      $('#result').hide();
+      $('#retry').hide();
+      $('#detail').hide();
+      $('#battle').show();
+    })
 </script>

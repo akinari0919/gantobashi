@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     post 'response/training', to: 'response#training'
 
     # 決闘モード
-    resources :battle, only: %i[index show edit update]
+    resources :battle, only: %i[index show edit]
     post ':id/response/battle', to: 'response#battle'
     post 'battle/result', to: 'battle#result'
   end

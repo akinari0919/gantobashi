@@ -1,7 +1,6 @@
 class Mode::BattleController < ApplicationController
   before_action :login_user
   before_action :set_user, only: :edit
-  before_action :find_glaring_face_photo, only: :update
   include AwsRecognition
 
   def index
@@ -16,38 +15,33 @@ class Mode::BattleController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @gfp = @user.glaring_face_photos.find_by(main_choiced: true)
-    unless params.present?
-      @my_photo = params[:image]
-      @enemy_image = params[:enemy_image]
-      if params[:enemy_score].to_i > params[:face_score].to_i
-        count = @gfp.defense_win_count
-        @gfp.update(defense_win_count: count + 1)
-        render json: { body: "Lose",
-                       count: @gfp.defense_win_count
-                     }
-      else
-        render json: { body: "Win" }
-      end
-    end
-  end
-
-  def update
-    redirect_to "/mode/battle/result/#{params[:id]}"
   end
 
   def result
-    @enemy_image = params[:enemy_image]
-    @my_photo = params[:image]
-    @gfp = GlaringFacePhoto.find(params[:enemy_id])
-    if params[:enemy_score].to_i > params[:face_score].to_i
-      count = @gfp.defense_win_count
-      @gfp.update(defense_win_count: count + 1)
-      render json: { body: "Lose",
-                     count: @gfp.defense_win_count
-                   }
+    user = User.find(params[:enemy_id])
+    gfp = user.glaring_face_photos.find_by(main_choiced: true)
+    if params[:enemy_score].to_i > params[:my_score].to_i
+      @my_win_result = current_user.offense_win_count
+      count = gfp.defense_win_count
+      gfp.update(defense_win_count: count + 1)
+      @enemy_win_result = gfp.defense_win_count
+      @battle_result = 'LOSE'
+    elsif params[:enemy_score].to_i < params[:my_score].to_i
+      count = current_user.offense_win_count
+      current_user.update(offense_win_count: count + 1)
+      @my_win_result = current_user.offense_win_count
+      @enemy_win_result = gfp.defense_win_count
+      @battle_result = 'WIN'
     else
-      render json: { body: "Win" }
+      @my_win_result = current_user.offense_win_count
+      @enemy_win_result = gfp.defense_win_count
+      @battle_result = 'DRAW'
     end
+
+    render json: { battle_result: @battle_result,
+                   my_win_count: "☆×#{@my_win_result}",
+                   enemy_win_count: "☆×#{@enemy_win_result}",
+                 }
   end
 
   private

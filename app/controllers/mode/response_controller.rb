@@ -1,6 +1,7 @@
 class Mode::ResponseController < ApplicationController
   include AwsRecognition
 
+  # TODO:リファクタリング必須
   def check
     # AWSレスポンス取得
     response = check_face
@@ -129,6 +130,7 @@ class Mode::ResponseController < ApplicationController
             elsif result <= 10
               result *= 2
             end
+            # TODO:好まれない書き方
             @rank = if result < 20
                       "特攻隊クラス"
                     elsif result == 20
