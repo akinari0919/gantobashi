@@ -414,6 +414,16 @@ header a {
   display: none;
 }
 
+/*テーブル*/
+table {
+  width: 100%;
+  border: solid 1px #aaaaaa;
+}
+
+th {
+  color:white; /*文字色*/
+  background-color: black; /*背景色*/
+}
 
 /***********
 スマホ画面対応
