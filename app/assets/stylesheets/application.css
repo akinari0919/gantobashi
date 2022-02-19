@@ -425,6 +425,35 @@ th {
   background-color: black; /*背景色*/
 }
 
+td {
+  border: solid 1px #aaaaaa;
+}
+
+/* ページネーション */
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination span {
+  font-size: 20px;
+  padding:10px 18px;
+  margin: 5px;
+  border:1px #ccc solid;color:#000053;
+}
+
+.pagination span a {
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.current {
+  font-size: 20px;
+  color: white !important;
+  background-color: black;
+}
+
 /***********
 スマホ画面対応
 ************/

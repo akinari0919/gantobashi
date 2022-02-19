@@ -3,9 +3,20 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
+    first: "最初"
+    last: "最後"
+    previous: "前"
+    next: "次"
+    truncate: "..."
   users:
     new:
       to_login_page: 'ログインページへ'
   user_sessions:
     new:
       to_register_page: '登録ページへ'
+  pagination:
+    first: '<<'
+    last: '>>'
+    previous: '<'
+    next: '>'
+    truncate: '...'
