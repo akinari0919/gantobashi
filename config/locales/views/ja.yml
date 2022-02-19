@@ -15,8 +15,6 @@ ja:
     new:
       to_register_page: '登録ページへ'
   pagination:
-    first: '<<'
-    last: '>>'
     previous: '<'
     next: '>'
     truncate: '...'
