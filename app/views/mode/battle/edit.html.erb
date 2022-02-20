@@ -1,6 +1,6 @@
 <main>
   <!-- 撮影画面 -->
-  <div class="create-contents">
+  <div class="create-contents" id='first'>
     <div class="camera">
       <div class="camera-bd"></div>
       <video id="video" autoplay playsinline width="300" height="300"></video>
@@ -20,29 +20,33 @@
         <input type="hidden" name="enemy_id" id="enemy_id" value="<%= @user.id %>">
         <input type="hidden" name="enemy_score" id="enemy_score" value="<%= @glaring_face_photo.face_score %>">
         <input type="hidden" name="enemy_image" id="enemy_image" value="<%= @glaring_face_photo.image %>">
-        <button class="button-40" id="detail">submit</button>
+        <p><button class="button-40" id="detail">Battle！</button></p>
       </form>
     </div>
   </div>
 
   <!-- 決闘結果  -->
   <div class="top-contents" id='battle'>
-    <div class="">
-      <div class="photo-bd"></div>
-
-      <img id="my_image" src="" width="100" height="100"/>
-      <p class="mx-3" id="my_win_count"></p>
-      <p>VS</p>
-      <img src="data:image/jpeg;base64,<%="#{@glaring_face_photo.image}"%>" width="100" height="100"/>
-      <p class="mx-3" id="enemy_win_count"></p>
-
-      <div class="result">
-        <div class="result-body">
-          <p id="battle_result"></p>
-        </div>
-      </div>
-    </div>
-
+    <p class='title-contents mb-3'>RESULT</p>
+    <table class="result-table">
+      <tr>
+        <th class='width30'>YOU</th>
+        <th class='width10'></th>
+        <th class='width30'>ENEMY</th>
+      </tr>
+      <tr class='enemy-table'>
+        <td>
+          <img id="my_image" src="" width="100" height="100"/>
+        </td>
+        <td>
+          <p>VS</p>
+        </td>
+        <td>
+          <img src="data:image/jpeg;base64,<%="#{@glaring_face_photo.image}"%>" width="100" height="100"/>
+        </td>
+      </tr>
+    </table>
+    <p class='title-contents mt-4' id="battle_result"></p>
     <div class="btn-3 mt-4">
       <%= link_to "決闘一覧", mode_battle_index_path, class:"button-40 link" %>
     </div>
@@ -177,5 +181,6 @@
       $('#retry').hide();
       $('#detail').hide();
       $('#battle').show();
+      $('#first').hide();
     })
 </script>

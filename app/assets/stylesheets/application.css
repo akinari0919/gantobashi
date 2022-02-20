@@ -321,6 +321,11 @@ footer p {
   font-size: 40px;
 }
 
+.result-table p {
+  margin: 0;
+}
+
+
 /* ボタン */
 
 .btn-1 {
