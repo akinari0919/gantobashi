@@ -13,7 +13,7 @@ ja:
       to_login_page: 'ログインページへ'
   user_sessions:
     new:
-      to_register_page: '登録ページへ'
+      to_register_page: 'ユーザー登録'
   pagination:
     previous: '<'
     next: '>'

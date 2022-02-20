@@ -1,24 +1,39 @@
 <main>
   <div class = 'top-contents'>
-    <%= form_with model: @user, local: true do |f| %>
-      <%= f.label :name %>
-      <br>
-      <%= f.text_field :name %>
-      <br>
-      <%= f.label :email %>
-      <br>
-      <%= f.text_field :email  %>
-      <br>
-      <%= f.label :password %>
-      <br>
-      <%= f.password_field :password  %>
-      <br>
-      <%= f.label :password_confirmation %>
-      <br>
-      <%= f.password_field :password_confirmation  %>
-      <br>
-      <%= f.submit (t 'defaults.register') %>
-    <% end %>
-    <%= link_to (t '.to_login_page'), login_path %>
+    <p class='title-contents mb-3'>User Register</p>
+    <div class='select-text'>
+      <%= form_with model: @user, local: true do |f| %>
+        <div class='select-text'>
+          <%= f.label :name %>
+        </div>
+        <div class='select-text'>
+          <%= f.text_field :name %>
+        </div>
+        <div class='select-text'>
+          <%= f.label :email %>
+        </div>
+        <div class='select-text'>
+          <%= f.text_field :email  %>
+        </div>
+        <div class='select-text'>
+          <%= f.label :password %>
+        </div>
+        <div class='select-text'>
+          <%= f.password_field :password  %>
+        </div>
+        <div class='select-text'>
+          <%= f.label :password_confirmation %>
+        </div>
+        <div class='select-text'>
+          <%= f.password_field :password_confirmation  %>
+        </div>
+        <div class='select-text mt-4'>
+          <%= f.submit (t 'defaults.register'), class:'button-43' %>
+        </div>
+      <% end %>
+    </div>
+    <div class='select-text mt-3'>
+      <%= link_to (t '.to_login_page'), login_path, class:'button-43' %>
+    </div>
   </div>
 </main>
