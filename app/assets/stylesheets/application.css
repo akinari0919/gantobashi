@@ -142,7 +142,6 @@ main {
 }
 
 .info-text {
-  padding: 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -316,6 +315,10 @@ footer p {
   text-align: center;
   font-weight: bold;
   margin: 0;
+}
+
+.size40 {
+  font-size: 40px;
 }
 
 /* ボタン */
