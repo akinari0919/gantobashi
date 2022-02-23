@@ -37,7 +37,6 @@ class Mode::BattleController < ApplicationController
       @battle_result = 'WIN'
       # 再戦不可にする
       gfp.beats.create(user_id: current_user.id)
-      binding.pry
     else
       @my_win_result = current_user.offense_win_count
       @enemy_win_result = gfp.defense_win_count
