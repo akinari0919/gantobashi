@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path
+      login(user_params[:email], user_params[:password])
+      redirect_to mode_select_path
     else
       render :new
     end
