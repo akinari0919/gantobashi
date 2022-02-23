@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_035443) do
+ActiveRecord::Schema.define(version: 2022_02_23_042948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "glaring_face_photo_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["glaring_face_photo_id"], name: "index_beats_on_glaring_face_photo_id"
+    t.index ["user_id"], name: "index_beats_on_user_id"
+  end
 
   create_table "glaring_face_photos", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -37,5 +46,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_035443) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "beats", "glaring_face_photos"
+  add_foreign_key "beats", "users"
   add_foreign_key "glaring_face_photos", "users"
 end

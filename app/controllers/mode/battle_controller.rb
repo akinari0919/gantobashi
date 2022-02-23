@@ -1,6 +1,6 @@
 class Mode::BattleController < ApplicationController
   before_action :login_user
-  before_action :set_user, only: :edit
+  before_action :set_user, only: [:edit, :show]
 
   def index
     @users = User.where.not(id: current_user.id).joins(:glaring_face_photos).merge(GlaringFacePhoto.where(main_choiced: true)).page(params[:page])
@@ -12,6 +12,9 @@ class Mode::BattleController < ApplicationController
   end
 
   def edit
+    if @glaring_face_photo.beated_by?(current_user)
+      redirect_to mode_battle_path(params[:id])
+    end
     @user = User.find(params[:id])
     @gfp = @user.glaring_face_photos.find_by(main_choiced: true)
   end
@@ -19,6 +22,7 @@ class Mode::BattleController < ApplicationController
   def result
     user = User.find(params[:enemy_id])
     gfp = user.glaring_face_photos.find_by(main_choiced: true)
+    binding.pry
     if params[:enemy_score].to_i > params[:my_score].to_i
       @my_win_result = current_user.offense_win_count
       count = gfp.defense_win_count
@@ -31,6 +35,9 @@ class Mode::BattleController < ApplicationController
       @my_win_result = current_user.offense_win_count
       @enemy_win_result = gfp.defense_win_count
       @battle_result = 'WIN'
+      # 再戦不可にする
+      gfp.beats.create(user_id: current_user.id)
+      binding.pry
     else
       @my_win_result = current_user.offense_win_count
       @enemy_win_result = gfp.defense_win_count
