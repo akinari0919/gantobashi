@@ -3,7 +3,8 @@ class Mode::BattleController < ApplicationController
   before_action :set_user, only: [:edit, :show]
 
   def index
-    @users = User.where.not(id: current_user.id).joins(:glaring_face_photos).merge(GlaringFacePhoto.where(main_choiced: true)).page(params[:page])
+    users = User.where.not(id: current_user.id).joins(:glaring_face_photos).merge(GlaringFacePhoto.where(main_choiced: true))
+    @users = users.order(created_at: :desc).page(params[:page])
   end
 
   def show
