@@ -539,21 +539,11 @@ th {
   margin-top: 8px;
 }
 
-.page {
-  padding: 0;
-}
-
 .pagination span {
   font-size: 20px;
   padding:10px 18px;
+  margin: 0 5px;
   color:#000053;
-}
-
-.pagination span {
-  font-size: 20px;
-  color: black;
-  text-decoration: none;
-  padding:10px 18px;
 }
 
 .pagination span a {
@@ -566,8 +556,6 @@ th {
   font-size: 20px;
   color: white !important;
   background-color: black;
-  padding:10px 18px;
-  margin: 0 18px;
 }
 
 /***********
