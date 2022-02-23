@@ -131,16 +131,20 @@
       success: function(data) {
           $('#result').append(data.body)
           document.getElementById('face_score').value = data.face_score;
+          $('#result').show();
+          $('#dummy').hide();
+          $('#retry').show();
+          if (data.body == '準備OK◎'){
+            $('#detail').show();
+          }
         },
       error: function() {
           $('#result').append('解析失敗m(_ _)m')
+          $('#result').show();
+          $('#dummy').hide();
+          $('#retry').show();
         }
     });
-
-    $('#result').show();
-    $('#dummy').hide();
-    $('#retry').show();
-    $('#detail').show();
   }
 
   function retry(){

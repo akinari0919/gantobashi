@@ -61,7 +61,7 @@
     $('#canvas').show();
     $('#dummy').show();
     $(this).html( $(this).data('loading-text') );
-    
+
     // canvasに静止画を入れる
     var canvas = document.getElementById("canvas")
     canvas.getContext("2d").drawImage(video, 0, 0, 300, 300)
@@ -85,10 +85,8 @@
 
     const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
     document.getElementById('photo').value = base64;
-    // alert(base64);
 
     const eye_power = prediction[0].probability * 100
-    // alert(eye_power);
     $.ajax({
       url: '/glaring_face_photos/check',
       type: 'POST',
@@ -102,16 +100,20 @@
       success: function(data) {
           $('#result').append(data.body)
           document.getElementById('face_score').value = data.face_score;
+          $('#result').show();
+          $('#dummy').hide();
+          $('#retry').show();
+          if (data.body == '成功'){
+            $('#detail').show();
+          }
         },
       error: function() {
           $('#result').append('解析失敗m(_ _)m')
+          $('#result').show();
+          $('#dummy').hide();
+          $('#retry').show();
         }
     });
-
-    $('#result').show();
-    $('#dummy').hide();
-    $('#retry').show();
-    $('#detail').show();
   }
 
   function retry(){
