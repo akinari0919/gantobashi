@@ -22,7 +22,6 @@ class Mode::BattleController < ApplicationController
   def result
     user = User.find(params[:enemy_id])
     gfp = user.glaring_face_photos.find_by(main_choiced: true)
-    binding.pry
     if params[:enemy_score].to_i > params[:my_score].to_i
       @my_win_result = current_user.offense_win_count
       count = gfp.defense_win_count
