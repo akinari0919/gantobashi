@@ -581,6 +581,21 @@ th {
   background-color: black;
 }
 
+/* フラッシュメッセージ */
+.notifications {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.notice {
+  padding: 16px;
+}
+
+.alert {
+  border: 0;
+}
+
+
 /***********
 スマホ画面対応
 ************/

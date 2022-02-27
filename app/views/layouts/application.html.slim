@@ -20,5 +20,8 @@ html
       = render 'shared/after_login_header'
     - else
       = render 'shared/header'
+    .notifications
+      - flash.each do |k, v|
+       = content_tag :div, v, class: k
     = yield
     = render 'shared/footer'
