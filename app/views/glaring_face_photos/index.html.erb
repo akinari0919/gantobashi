@@ -19,7 +19,7 @@
                 <%= f.submit 'Main', class:'button-44' %>
               <% end %>
             </td>
-            <td><%= link_to 'Delete', glaring_face_photo_path(gfp), method: :delete, class:'button-43' %></td>
+            <td><%= link_to 'Delete', glaring_face_photo_path(gfp), method: :delete, class:'button-43', data: {confirm: "削除しますか？"} %></td>
           </tr>
         <% end %>
         <tr class='table-button'>
