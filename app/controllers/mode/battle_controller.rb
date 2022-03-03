@@ -8,16 +8,12 @@ class Mode::BattleController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @photo = @user.glaring_face_photos.find_by(main_choiced: true)
   end
 
   def edit
-    if @glaring_face_photo.beated_by?(current_user)
+    if @gfp.beated_by?(current_user)
       redirect_to mode_battle_path(params[:id])
     end
-    @user = User.find(params[:id])
-    @gfp = @user.glaring_face_photos.find_by(main_choiced: true)
   end
 
   def result
@@ -59,7 +55,7 @@ class Mode::BattleController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    @glaring_face_photo = @user.glaring_face_photos.find_by(main_choiced: true)
+    @gfp = @user.glaring_face_photos.find_by(main_choiced: true)
   end
 
   def find_glaring_face_photo

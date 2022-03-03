@@ -18,8 +18,8 @@
       <form>
         <input type="hidden" name="face_score" id="face_score" value="">
         <input type="hidden" name="enemy_id" id="enemy_id" value="<%= @user.id %>">
-        <input type="hidden" name="enemy_score" id="enemy_score" value="<%= @glaring_face_photo.face_score %>">
-        <input type="hidden" name="enemy_image" id="enemy_image" value="<%= @glaring_face_photo.image %>">
+        <input type="hidden" name="enemy_score" id="enemy_score" value="<%= @gfp.face_score %>">
+        <input type="hidden" name="enemy_image" id="enemy_image" value="<%= @gfp.image %>">
         <p><button class="button-40" id="detail">Battle！</button></p>
       </form>
     </div>
@@ -42,7 +42,7 @@
           <p>VS</p>
         </td>
         <td>
-          <img src="data:image/jpeg;base64,<%="#{@glaring_face_photo.image}"%>" width="100" height="100"/>
+          <img src="data:image/jpeg;base64,<%="#{@gfp.image}"%>" width="100" height="100"/>
         </td>
       </tr>
     </table>

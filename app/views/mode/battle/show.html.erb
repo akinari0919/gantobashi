@@ -15,9 +15,9 @@
         <th class='width30'></th>
       </tr>
       <tr class='enemy-table'>
-        <td><img src="data:image/jpeg;base64,<%="#{@photo.image}"%>" width="100" height="100" /></td>
-        <td><%= "★×#{@photo.defense_win_count}"  %></td>
-        <% if @glaring_face_photo.beated_by?(current_user) %>
+        <td><img src="data:image/jpeg;base64,<%="#{@gfp.image}"%>" width="100" height="100" /></td>
+        <td><%= "★×#{@gfp.defense_win_count}" %></td>
+        <% if @gfp.beated_by?(current_user) %>
           <td>Win</td>
         <% else %>
           <td><%= link_to 'Battle', edit_mode_battle_path(@user), class:'button-43' %></td>
