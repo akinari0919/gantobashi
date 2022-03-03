@@ -54,8 +54,8 @@ class Mode::BattleController < ApplicationController
   end
 
   def set_user
-    if current_user.id == params[:id]
-      redirect_back(fallback_location: root_path)
+    if current_user.id == params[:id].to_i
+      redirect_back(fallback_location: mode_battle_index_path)
     end
     @user = User.find(params[:id])
     @gfp = @user.glaring_face_photos.find_by(main_choiced: true)
