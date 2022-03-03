@@ -26,6 +26,20 @@
             <td><%= "★×#{gfp.defense_win_count}" %></td>
             <td><%= link_to 'Change', glaring_face_photos_path, class: 'button-43' %></td>
           </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class='select-text mt-3'>
+                <a class='button-43'
+                   href="https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d%0dhttps://www.gantobashi.com/mode/battle/<%="#{gfp.id}"%>%0d&hashtags=メンチキッター,ガン飛ばし"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Twitter
+                </a>
+              </div>
+            </td>
+            <td></td>
+          </tr>
         <% end %>
       </table>
     <% else %>
