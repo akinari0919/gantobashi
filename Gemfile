@@ -52,6 +52,8 @@ group :development do
   gem 'rubocop-rspec', require: false
   # コンソールを見易く
   gem 'awesome_print'
+  # cron
+  gem 'whenever', require: false
 end
 
 group :test do
