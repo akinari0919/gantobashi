@@ -54,7 +54,7 @@ class Mode::BattleController < ApplicationController
   end
 
   def set_user
-    if current_user.id == params[:id].to_i
+    if current_user.id.to_s == params[:id]
       redirect_back(fallback_location: mode_battle_index_path)
     end
     @user = User.find(params[:id])
