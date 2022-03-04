@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_04_135410) do
+ActiveRecord::Schema.define(version: 2022_03_04_143926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "beats", force: :cascade do |t|
-    t.bigint "glaring_face_photo_id", null: false
+  create_table "beats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "user_id", null: false
+    t.uuid "glaring_face_photo_id", null: false
     t.index ["glaring_face_photo_id"], name: "index_beats_on_glaring_face_photo_id"
     t.index ["user_id"], name: "index_beats_on_user_id"
   end
 
-  create_table "glaring_face_photos", force: :cascade do |t|
+  create_table "glaring_face_photos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "image", null: false
     t.integer "face_score", null: false
     t.integer "defense_win_count", default: 0, null: false
