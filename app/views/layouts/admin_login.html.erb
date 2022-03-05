@@ -10,9 +10,11 @@
     <%= stylesheet_link_tag 'admin', media: 'all' %>
 
   </head>
-  <body class="hold-transition login-page">
-    <div>
+  <body class='hold-transition'>
+    <%= render 'admin/shared/before_login_header' %>
+    <div class='main-contents'>
       <%= yield %>
     </div>
+    <%= render 'admin/shared/footer' %>
   </body>
 </html>

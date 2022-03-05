@@ -27,3 +27,59 @@ body:before{
   background-size: cover;
 }
 
+header {
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  background-image: url('header4.jpg');
+  background-size: cover;
+  z-index: 999;/*最前面へ*/
+  box-shadow:0 7px 20px 1px rgba(0,0,0,0.5);
+}
+
+.header-logo {
+  max-width: 170px;
+  max-height: 100%;
+  position: absolute;
+  top: 20px;
+  padding-left: 20px;
+}
+
+.main-contents {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-size: cover;
+  z-index: 999;/*最前面へ*/
+  box-shadow: 0 0 50px 30px rgba(0,0,0,0.9);
+  min-width: 200px;
+  display: flex;
+  color: #FFFFFF;
+  justify-content: center;
+}
+
+footer ul {
+  color:rgba(255,255,255, 0.8);
+  position: fixed;
+  bottom: 8px;
+  padding: 0;
+  margin: 0;
+}
+
+footer li {
+  font-size: 13px;
+  min-width: 200px;
+  display: inline;
+  justify-content: flex-end;
+  margin: 0px 10px;
+}
