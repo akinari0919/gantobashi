@@ -16,10 +16,9 @@
 <!--▽▽ハンバーガーメニューのリスト▽▽-->
   <nav class="sm">
     <ul>
-      <!-- <li><%= link_to 'トップページ', '/', class:"link" %></li> -->
-      <li><%= link_to "トップページ", '/', class:"link" %></li>
-      <li><%= link_to "遊び方", about_path, class:"link" %></li>
+      <li><%= link_to "プロフィール", profile_path, class:"link" %></li>
       <li><%= link_to "モード選択", mode_select_path, class:"link" %></li>
+      <li><%= link_to "ログアウト", logout_path, method: :delete, class:"link" %></li>
       <li>-</li>
       <li><%= link_to '利用規約', service_path, class:"link" %></li>
       <li><%= link_to 'プライバシーポリシー', privacy_path, class:"link" %></li>
@@ -31,10 +30,10 @@
 <!--▽▽ヘッダーリスト▽▽-->
   <nav class="pc">  <!--pcクラスを追記-->
     <ul>
-      <li><%= link_to "トップページ", '/', class:"link head" %></li>
-      <li><%= link_to "遊び方", about_path, class:"link head" %></li>
+      <li><%= link_to "プロフィール", profile_path, class:"link head" %></li>
       <li><%= link_to "モード選択", mode_select_path, class:"link head" %></li>
-    </ul>
+      <li><%= link_to "ログアウト", logout_path, method: :delete, class:"link head" %></li>
+   </ul>
   </nav>
 <!--△△ヘッダーリスト△△-->
 

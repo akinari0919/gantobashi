@@ -1,0 +1,190 @@
+<main>
+  <!-- 撮影画面 -->
+  <div class="create-contents" id='first'>
+    <div class="camera">
+      <div class="camera-bd"></div>
+      <video id="video" autoplay playsinline width="300" height="300"></video>
+      <canvas id="canvas" width="300" height="300"></canvas>
+    </div>
+    <div class="submit-btn">
+      <p class="button-41" id="shatter" onclick="init()">ガン飛ばす</p>
+      <p class="button-42" id="dummy">解析中...</p>
+    </div>
+    <div class="comment">
+      <p id="result"></p>
+    </div>
+    <div class="btn-2">
+      <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
+      <form>
+        <input type="hidden" name="face_score" id="face_score" value="">
+        <input type="hidden" name="enemy_id" id="enemy_id" value="<%= @user.id %>">
+        <input type="hidden" name="enemy_score" id="enemy_score" value="<%= @gfp.face_score %>">
+        <input type="hidden" name="enemy_image" id="enemy_image" value="<%= @gfp.image %>">
+        <p><button class="button-40" id="detail">Battle！</button></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- 決闘結果  -->
+  <div class="top-contents" id='battle'>
+    <p class='title-contents mb-3'>RESULT</p>
+    <table class="result-table">
+      <tr>
+        <th class='width30'>YOU</th>
+        <th class='width10'></th>
+        <th class='width30'>ENEMY</th>
+      </tr>
+      <tr class='enemy-table'>
+        <td>
+          <img id="my_image" src="" width="100" height="100"/>
+        </td>
+        <td>
+          <p>VS</p>
+        </td>
+        <td>
+          <img src="data:image/jpeg;base64,<%="#{@gfp.image}"%>" width="100" height="100"/>
+        </td>
+      </tr>
+    </table>
+    <p class='title-contents mt-4' id="battle_result"></p>
+    <div class="btn-3 mt-4">
+      <%= link_to "決闘一覧", mode_battle_index_path, class:"button-40 link" %>
+    </div>
+  </div>
+
+<script>
+  $('#canvas').hide();
+  $('#dummy').hide();
+  $('#retry').hide();
+  $('#detail').hide();
+  $('#battle').hide();
+  // カメラ設定
+  const constraints = {
+    video: {
+      width: 300,
+      height: 300,
+      facingMode: "user"   // フロントカメラを利用する
+    }
+  };
+
+  // カメラを<video>と同期
+  navigator.mediaDevices.getUserMedia(constraints)
+  .then( (stream) => {
+    video.srcObject = stream;
+    video.onloadedmetadata = (e) => {
+      video.play();
+    };
+  })
+  .catch( (err) => {
+    console.log(err.name + ": " + err.message);
+    window.location.href = "/mode/select";
+  });
+
+  const URL = "https://teachablemachine.withgoogle.com/models/3tSiNOSPs/";
+
+  let model, labelContainer, maxPredictions;
+
+  async function init() {
+    document.getElementById('shatter').disabled = true;
+    $('#video').hide();
+    $('#shatter').hide();
+    $('#canvas').show();
+    $('#dummy').show();
+    $(this).html( $(this).data('loading-text') );
+
+    // canvasに静止画を入れる
+    var canvas = document.getElementById("canvas")
+    canvas.getContext("2d").drawImage(video, 0, 0, 300, 300)
+
+    // teachablemachineのモデルURLを読み込む
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+
+    // モデルのイメージを格納する
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    // 結果を出す為のlavelcontainerをDOMに要素追加する
+    labelContainer = document.getElementById("label-container");
+    window.requestAnimationFrame(loop);
+  }
+
+  async function loop() {
+    // 予測は、画像、ビデオ、またはキャンバスのhtml要素を取り込むことができます
+    const prediction = await model.predict(canvas);
+
+    const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
+    var my_image = document.getElementById('my_image');
+    my_image.setAttribute('src', `data:image/jpeg;base64,${base64}`);
+
+    const eye_power = prediction[0].probability * 100
+    $.ajax({
+      url: '../response/battle',
+      type: 'POST',
+      data: {
+          image: base64,
+          base: eye_power
+        },
+      headers: {
+          'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+        },
+      success: function(data) {
+          $('#result').append(data.body)
+          document.getElementById('face_score').value = data.face_score;
+          $('#result').show();
+          $('#dummy').hide();
+          $('#retry').show();
+          if (data.body == '準備OK◎'){
+            $('#detail').show();
+          }
+        },
+      error: function() {
+          $('#result').append('解析失敗m(_ _)m')
+          $('#result').show();
+          $('#dummy').hide();
+          $('#retry').show();
+        }
+    });
+  }
+
+  function retry(){
+    $('#video').show();
+    $('#shatter').show();
+    $('#canvas').hide();
+    $('#dummy').hide();
+    $('#result').empty();
+    $('#retry').hide();
+    $('#detail').hide();
+  }
+
+  $('#detail').on('click', function(event){
+    event.preventDefault();
+    $.ajax({
+        url: '/mode/battle/result',
+        type: 'POST',
+        data: {
+            my_score: document.getElementById('face_score').value,
+            enemy_id: document.getElementById('enemy_id').value,
+            enemy_score: document.getElementById('enemy_score').value
+          },
+        headers: {
+            'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+          },
+        success: function(data) {
+            $('#battle_result').append(data.battle_result)
+            $('#my_win_count').append(data.my_win_count)
+            $('#enemy_win_count').append(data.enemy_win_count)
+          },
+        error: function() {
+            console.log('失敗')
+          }
+      });
+      $('#canvas').hide();
+      $('#dummy').hide();
+      $('#result').hide();
+      $('#retry').hide();
+      $('#detail').hide();
+      $('#battle').show();
+      $('#first').hide();
+    })
+</script>

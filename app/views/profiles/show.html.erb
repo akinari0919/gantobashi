@@ -1,0 +1,51 @@
+<main>
+  <div class = 'top-contents'>
+    <p class='title-contents mb-3'>Profile</p>
+    <table class='mb-3'>
+      <tr>
+        <th class='width30'>Name</th>
+        <th class='width10'>Level</th>
+        <th class='width30'></th>
+      </tr>
+      <tr class='enemy-table'>
+        <td><%= current_user.name %></td>
+        <td><%= "★×#{current_user.offense_win_count}" %></td>
+        <td><%= link_to 'Edit', edit_profile_path, class:'button-43' %></td>
+      </tr>
+    </table>
+    <% if @glaring_face_photos.present? %>
+      <table>
+        <tr>
+          <th class='width30'>Selected</th>
+          <th class='width10'>Level</th>
+          <th class='width30'></th>
+        </tr>
+        <% @glaring_face_photos.each do |gfp| %>
+          <tr class='enemy-table'>
+            <td><img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" /></td>
+            <td><%= "★×#{gfp.defense_win_count}" %></td>
+            <td><%= link_to 'Change', glaring_face_photos_path, class: 'button-43' %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class='select-text mt-3'>
+                <a class='button-43'
+                   href="https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d%0dhttps://www.gantobashi.com/mode/battle/<%="#{current_user.id}"%>%0d&hashtags=メンチキッター,ガン飛ばし"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Twitter
+                </a>
+              </div>
+            </td>
+            <td></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <div class='select-text mt-3'>
+        <%= link_to 'Set User Gantobashi', glaring_face_photos_path, class: 'button-43' %>
+      </div>
+    <% end %>
+  </div>
+</main>

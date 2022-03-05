@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem 'faker'
   # デバッグ用
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -49,10 +50,16 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  # コンソールを見易く
+  gem 'awesome_print'
+  # cron
+  gem 'whenever', require: false
 end
 
 group :test do
   gem 'capybara'
+  gem 'webdrivers'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -61,7 +68,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 日本語化
 gem 'rails-i18n'
 # slim
-gem 'slim-rails'
+gem 'slim'
 gem 'html2slim'
 # 環境変数を使う
 gem 'dotenv-rails'
@@ -69,3 +76,7 @@ gem 'dotenv-rails'
 gem 'aws-sdk-rekognition'
 # meta
 gem 'meta-tags'
+# sorcery
+gem 'sorcery'
+# kaminari
+gem 'kaminari'

@@ -1,0 +1,59 @@
+<main>
+  <div class = 'top-contents'>
+    <p class='title-contents mb-2 mt-5'>Select Index</p>
+    <% if @glaring_face_photos.present? %>
+      <!-- 登録写真一覧 -->
+      <table>
+        <tr>
+          <th class='width30'>Image</th>
+          <th class='width10'>Level</th>
+          <th class='width30'></th>
+          <th class='width30'></th>
+        </tr>
+        <% @glaring_face_photos.each do |gfp| %>
+          <tr class='enemy-table'>
+            <td><img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" /></td>
+            <td><%= "★×#{gfp.defense_win_count}" %></td>
+            <td>
+              <%= form_with model: gfp, local: true do |f| %>
+                <%= f.submit 'Main', class:'button-44' %>
+              <% end %>
+            </td>
+            <td><%= link_to 'Delete', glaring_face_photo_path(gfp), method: :delete, class:'button-43', data: {confirm: "削除しますか？"} %></td>
+          </tr>
+        <% end %>
+        <tr class='table-button'>
+          <td>
+            <!-- 登録写真は3枚まで -->
+            <% if current_user.glaring_face_photos.count < 3 %>
+              <p><%= link_to 'New', new_glaring_face_photo_path, class:'button-43' %></p>
+            <% end %>
+          </td>
+          <td></td>
+          <td>
+            <p><%= link_to 'AllHide', glaring_face_photos_hide_path, class:'button-43' %></p>
+          </td>
+          <td>
+            <p><%= link_to 'Back', profile_path, class:'button-43' %></p>
+          </td>
+        </tr>
+      </table>
+    <% else %>
+      <div class='info-text mt-4'>
+        <p>①まずはMyメンチ写真を登録しましょう！
+        <br>　※登録できるメンチは３つまでです。
+        <br>
+        <br>②登録したメンチから１枚だけ公開設定できます。
+        <br>
+        <br>③公開されたメンチは他ユーザーからの決闘を受け付けます。
+        <br>
+        <br>④返り討ちにした場合はメンチのLevelが上昇していきます。
+        </p>
+      </div>
+      <div class='select-text mt-4'>
+        <p><%= link_to 'New', new_glaring_face_photo_path, class:'button-43 mx-4' %></p>
+        <p><%= link_to 'Back', profile_path, class:'button-43 mx-4' %></p>
+      </div>
+    <% end %>
+  </div>
+</main>

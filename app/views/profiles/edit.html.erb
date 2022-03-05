@@ -1,0 +1,27 @@
+<main>
+  <div class = 'top-contents'>
+    <p class='title-contents mb-3'>User Edit</p>
+    <div class='select-text'>
+      <%= form_with model: @user, url: profile_path, local: true do |f| %>
+        <div class='select-text'>
+          <%= f.label :name, 'Name' %>
+        </div>
+        <div class='select-text'>
+          <%= f.text_field :name %>
+        </div>
+        <div class='select-text'>
+          <%= f.label :email, 'Email' %>
+        </div>
+        <div class='select-text'>
+          <%= f.text_field :email  %>
+        </div>
+        <div class='select-text mt-4'>
+          <%= f.submit 'Update', class:'button-43' %>
+        </div>
+      <% end %>
+    </div>
+    <div class='select-text mt-3'>
+      <%= link_to 'Back', profile_path, class:'button-43' %>
+    </div>
+  </div>
+</main>

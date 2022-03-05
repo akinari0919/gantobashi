@@ -25,6 +25,7 @@ AllCops:
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
   DisplayCopNames: true
+  NewCops: enable
 
 # 日本語でのコメントを許可
 Style/AsciiComments:
@@ -46,8 +47,14 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
+Style/SymbolArray:
+  Enabled: true
+
 # クラスにコメントを残さない
 Style/Documentation:
+  Enabled: false
+
+Style/RedundantReturn:
   Enabled: false
 
 # コントローラのメソッド名に「set_」「get_」を許可
@@ -55,9 +62,9 @@ Naming/AccessorMethodName:
   Exclude:
     - "app/controllers/**/*"
 
-# 一行の長さは100字まで。コメントは制限しない
-Metrics/LineLength:
-  Max: 100
+# 一行の長さは120字まで。コメントは制限しない
+Layout/LineLength:
+  Max: 120
   IgnoredPatterns: ['\A#']
   Exclude:
     - "db/migrate/*.rb"
@@ -66,7 +73,12 @@ Metrics/LineLength:
 Metrics/MethodLength:
   CountComments: false
   Max: 20
+  Exclude:
+    - "app/helpers/*.rb"
 
 # ABC sizeは緩めにする
 Metrics/AbcSize:
   Max: 30 # default 15
+
+Metrics/BlockNesting:
+ Max: 5

@@ -1,0 +1,51 @@
+<header>
+  <%= link_to root_path do %>
+    <%= image_tag 'logo_white.png', class:'header-logo' %>
+  <% end %>
+
+<!--▽▽ハンバーガーメニュー▽▽-->
+  <div id="hamburger">
+      <div class="icon">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </div>
+<!--△△ハンバーガーメニュー△△-->
+
+<!--▽▽ハンバーガーメニューのリスト▽▽-->
+  <nav class="sm">
+    <ul>
+      <li><%= link_to "トップページ", '/', class:"link" %></li>
+      <li><%= link_to "遊び方", about_path, class:"link" %></li>
+      <li><%= link_to "モード選択", mode_select_path, class:"link" %></li>
+      <li><%= link_to "ログイン", login_path, class:"link" %>
+      <li>-</li>
+      <li><%= link_to '利用規約', service_path, class:"link" %></li>
+      <li><%= link_to 'プライバシーポリシー', privacy_path, class:"link" %></li>
+      <li><%= link_to 'お問い合わせ', info_path, class:"link" %></li>
+    </ul>
+  </nav>
+<!--△△ハンバーガーメニューのリスト△△-->
+
+<!--▽▽ヘッダーリスト▽▽-->
+  <nav class="pc">  <!--pcクラスを追記-->
+    <ul>
+      <li><%= link_to "トップページ", '/', class:"link head" %></li>
+      <li><%= link_to "遊び方", about_path, class:"link head" %></li>
+      <li><%= link_to "モード選択", mode_select_path, class:"link head" %></li>
+      <li><%= link_to "ログイン", login_path, class:"link head" %>
+   </ul>
+  </nav>
+<!--△△ヘッダーリスト△△-->
+
+
+<!--▽▽jQuery▽▽-->
+  <script>
+    $('#hamburger').on('click', function(){
+    $('.icon').toggleClass('close');
+    $('.sm').slideToggle();
+    });
+  </script>
+<!--△△jQuery△△-->
+</header>
