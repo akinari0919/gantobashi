@@ -11,7 +11,6 @@ import '@fortawesome/fontawesome-free/js/all'
 import '../stylesheets/application.scss'
 
 require('jquery')
-require("admin-lte")
 
 Rails.start()
 ActiveStorage.start()
