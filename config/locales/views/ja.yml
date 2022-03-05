@@ -18,3 +18,8 @@ ja:
     previous: '<'
     next: '>'
     truncate: '...'
+
+  admin:
+    user_sessions:
+      new:
+        title: '管理者ログイン'
