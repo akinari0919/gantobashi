@@ -1,6 +1,11 @@
 @import 'admin-lte/plugins/fontawesome-free/css/all.min.css';
 @import 'admin-lte/dist/css/adminlte.css';
 
+* {
+  box-sizing: border-box;
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E","ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
+}
+
 body {
   margin: 0;
   padding: 0;
