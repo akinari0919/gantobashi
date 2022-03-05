@@ -34,6 +34,13 @@ Rails.application.routes.draw do
   get 'glaring_face_photos/hide', to: 'glaring_face_photos#hide'
   post 'glaring_face_photos/check', to: 'glaring_face_photos#check'
 
+  #Admin
+  namespace :admin do
+    root to: 'dashboards#index'
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
+  end
 
   # 例外
   get '*path', controller: 'application', action: 'render_404'
