@@ -9,9 +9,7 @@ environment.plugins.prepend('Provide',
     new webpack.ProvidePlugin({
         $: 'jquery/src/jquery',
         jQuery: 'jquery/src/jquery',
-        Popper: ['popper.js', 'default'],
-        $: 'admin-lte/plugins/jquery/jquery',
-        jQuery: 'admin-lte/plugins/jquery/jquery'
+        Popper: ['popper.js', 'default']
     })
 )
 
