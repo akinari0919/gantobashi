@@ -55,6 +55,12 @@ header {
   align-items: center;
 }
 
+.center-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 footer {
   position: fixed;
   bottom: 0;
@@ -82,4 +88,34 @@ footer li {
   display: inline;
   justify-content: flex-end;
   margin: 0px 10px;
+}
+
+.def-btn {
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: .75rem;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: .75rem 1.2rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  touch-action: manipulation;
+  width: 200px;
+  border: double 4px #ffffff;
+}
+.def-btn:hover {
+  background-color: #2e2e2e;
+}
+.def-btn:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+@media (min-width: 768px) {
+  .def-btn {
+    padding: .75rem 1.5rem;
+  }
 }
