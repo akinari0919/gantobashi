@@ -6,7 +6,6 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-
       <%= form_with url: admin_login_path, local: true do |f| %>
         <%= f.label :email, User.human_attribute_name(:email) %>
         <div class="input-group mb-3">
