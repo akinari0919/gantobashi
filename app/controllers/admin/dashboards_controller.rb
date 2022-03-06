@@ -1,5 +1,5 @@
 class Admin::DashboardsController < Admin::BaseController
   def index
-    def index; end
+    @users_count = User.all.count
   end
 end
