@@ -43,6 +43,12 @@ body:before{
   align-items: center;
 }
 
+.admin-content-wrapper {
+  background-color: white;
+  margin-left: 250px;
+  padding: 12px;
+}
+
 /* ヘッダー */
 header {
   position: fixed;
@@ -117,11 +123,6 @@ footer li {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-@media (min-width: 768px) {
-  .def-btn {
-    padding: .75rem 1.5rem;
-  }
-}
 
 /* フラッシュメッセージ */
 .notifications {
@@ -135,4 +136,23 @@ footer li {
 
 .alert {
   border: 0;
+}
+
+
+/***********
+スマホ画面対応
+************/
+@media (max-width: 768px) {
+  /* 管理画面用 */
+  .admin-content-wrapper {
+    margin-left: 0;
+    padding: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* ボタン */
+  .def-btn {
+    padding: .75rem 1.5rem;
+  }
 }
