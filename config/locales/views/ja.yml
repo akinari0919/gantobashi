@@ -23,3 +23,6 @@ ja:
     user_sessions:
       new:
         title: '管理者ログイン'
+    users:
+      index:
+        title: 'ユーザー一覧'
