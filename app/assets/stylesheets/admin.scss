@@ -27,6 +27,23 @@ body:before{
   background-size: cover;
 }
 
+.main-contents {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ヘッダー */
 header {
   position: fixed;
   height: 70px;
@@ -45,22 +62,7 @@ header {
   padding-left: 20px;
 }
 
-.main-contents {
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.center-side {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* フッター */
 footer {
   position: fixed;
   bottom: 0;
@@ -90,6 +92,7 @@ footer li {
   margin: 0px 10px;
 }
 
+/* ボタン */
 .def-btn {
   color: #ffffff;
   background-color: #000000;
@@ -118,4 +121,18 @@ footer li {
   .def-btn {
     padding: .75rem 1.5rem;
   }
+}
+
+/* フラッシュメッセージ */
+.notifications {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.notice {
+  padding: 16px;
+}
+
+.alert {
+  border: 0;
 }

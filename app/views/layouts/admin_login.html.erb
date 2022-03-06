@@ -12,6 +12,10 @@
   </head>
   <body class='hold-transition'>
     <%= render 'admin/shared/before_login_header' %>
+    <div class='notifications'>
+      <% flash.each do |k, v| %>
+        <%= content_tag :div, v, class: k %>
+      <% end %>
     <div class='main-contents'>
       <%= yield %>
     </div>
