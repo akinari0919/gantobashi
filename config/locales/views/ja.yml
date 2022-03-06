@@ -8,6 +8,11 @@ ja:
     previous: "前"
     next: "次"
     truncate: "..."
+    show: '詳細'
+    edit: '編集'
+    delete: '削除'
+    back: '戻る'
+    not_set: '未設定'
   users:
     new:
       to_login_page: 'ログインページへ'
@@ -20,9 +25,17 @@ ja:
     truncate: '...'
 
   admin:
+    shared:
+      sidebar:
+        title: '管理者画面'
     user_sessions:
       new:
         title: '管理者ログイン'
     users:
       index:
         title: 'ユーザー一覧'
+      show:
+        title: 'ユーザー詳細情報'
+      edit:
+        title: 'ユーザー編集'
+
