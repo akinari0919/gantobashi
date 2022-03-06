@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta lang='ja'>
+    <meta name="robots" content="noindex, nofollow">
+    <title><%= page_title(yield(:title), admin: true) %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'admin', media: 'all' %>
+    <%= stylesheet_pack_tag 'admin', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  </head>
+
+  <body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <%= render 'admin/shared/header' %>
+    <%= render 'admin/shared/sidebar' %>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="admin-content-wrapper">
+      <%= yield %>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <%= render 'admin/shared/footer' %>
+
+  </div>
+  </body>
+</html>
