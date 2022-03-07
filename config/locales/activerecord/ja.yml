@@ -4,8 +4,14 @@ ja:
       user: 'ユーザー'
     attributes:
       user:
+        id: 'ユーザーID'
         name: 'ユーザー名'
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+        offense_win_count: 'チャレンジ勝利数'
+        role: '権限'
+        created_at: '登録日時'
 
+        image: '公開イメージ'
+        defense_win_count: '返り討ち数'

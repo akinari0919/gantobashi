@@ -1,4 +1,5 @@
 class Mode::CheckController < ApplicationController
+  skip_before_action :require_login
   before_action :no_photo, { only: :show }
 
   def new; end

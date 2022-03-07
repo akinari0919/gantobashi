@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex, nofollow">
+    <title><%= page_title(yield(:title), admin: true) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'admin', media: 'all' %>
+
+  </head>
+  <body class='hold-transition'>
+    <%= render 'admin/shared/before_login_header' %>
+    <div class='notifications'>
+      <% flash.each do |k, v| %>
+        <%= content_tag :div, v, class: k %>
+      <% end %>
+    <div class='main-contents'>
+      <%= yield %>
+    </div>
+    <%= render 'admin/shared/footer' %>
+  </body>
+</html>

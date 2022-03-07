@@ -1,0 +1,34 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <%= link_to admin_root_path, class:"brand-link td-none" do %>
+    <%= image_tag 'icon.ico', class: 'brand-image' %>
+    <span class="brand-text font-weight-light"><%= t('.title') %></span>
+  <% end %>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="info">
+        <%= link_to current_user.name, admin_user_path(current_user), class:"d-block td-none" %>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <%= link_to admin_users_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-user"></i>
+            <p>
+              <%= t('admin.users.index.title') %>
+            </p>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
