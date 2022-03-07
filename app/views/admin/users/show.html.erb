@@ -21,6 +21,10 @@
           <td><%= @user.name %></td>
         </tr>
         <tr>
+          <th scope="row"><%= User.human_attribute_name(:email) %></th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
           <th scope="row"><%= User.human_attribute_name(:offense_win_count) %></th>
           <td><%= @user.offense_win_count %></td>
         </tr>
