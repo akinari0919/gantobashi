@@ -18,6 +18,7 @@ ja:
       to_login_page: 'ログインページへ'
   user_sessions:
     new:
+      title: 'ログイン'
       to_register_page: 'ユーザー登録'
   pagination:
     previous: '<'
