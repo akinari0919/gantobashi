@@ -8,14 +8,14 @@
             <%= form_with model: @user, local: true do |f| %>
               <div class="my-2">
                 <i class="fas fa-user"></i>
-              <%= f.label :user, User.human_attribute_name(:name) %>
+                <%= f.label :user, User.human_attribute_name(:name) %>
               </div>
               <div class="input-group mb-3">
                 <%= f.text_field :name, class: 'form-control', placeholder: :name %>
               </div>
 
               <div class="my-2">
-              <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope"></i>
                 <%= f.label :email, User.human_attribute_name(:email) %>
               </div>
               <div class="input-group mb-3">
@@ -23,7 +23,7 @@
               </div>
 
               <div class="my-2">
-              <i class="fas fa-lock"></i>
+                <i class="fas fa-lock"></i>
                 <%= f.label :password, User.human_attribute_name(:password) %>
               </div>
               <div class="input-group mb-3">
@@ -31,17 +31,15 @@
               </div>
 
               <div class="my-2">
-              <i class="fas fa-lock"></i>
+                <i class="fas fa-lock"></i>
                 <%= f.label :password, User.human_attribute_name(:password_confirmation) %>
               </div>
               <div class="input-group mb-3">
                 <%= f.password_field :password_confirmation, class: 'form-control', placeholder: :password_confirmation %>
               </div>
 
-              <div class="row">
-                <div class="col-12 center-side my-2">
-                  <%= f.submit (t '.register'), class: 'btn-block def-btn w-100' %>
-                </div>
+              <div class="row m-0 my-2">
+                <%= f.submit (t '.register'), class: 'button-43 w-100' %>
               </div>
             <% end %>
           </div>
