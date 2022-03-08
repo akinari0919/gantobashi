@@ -1,6 +1,6 @@
 <main>
   <div class='top-contents'>
-  <p class='title-contents mb-3'><%= t '.title' %></p>
+  <p class='title-contents mt-4'><%= t('.title') %></p>
     <div class='select-text'>
       <div class="login-box">
         <div class="card">
@@ -39,7 +39,7 @@
         <div class="card mt-3">
           <div class="card-body login-card-body mt-1">
             <div class="row m-0">
-              <p class='text-center'>ユーザー未登録の方はこちらから</p>
+              <p class='text-center'><%= t('.no_register') %></p>
                 <%= link_to (t '.to_register_page'), new_user_path, class:'button-43 mb-2' %>
             </div>
           </div>
