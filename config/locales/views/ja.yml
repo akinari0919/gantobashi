@@ -23,6 +23,13 @@ ja:
       title: 'ログイン'
       no_register: '未登録の方はコチラから'
       to_register_page: 'ユーザー登録'
+  profiles:
+    show:
+      title: 'プロフィール'
+      edit: '編集'
+      change: '変更'
+      twitter: '挑戦状'
+
   pagination:
     previous: '<'
     next: '>'

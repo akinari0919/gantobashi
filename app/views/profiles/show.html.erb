@@ -1,6 +1,6 @@
 <main>
   <div class = 'top-contents'>
-    <p class='title-contents mb-3'>Profile</p>
+    <p class='title-contents mb-3'><%= t '.title' %></p>
     <table class='mb-3'>
       <tr>
         <th class='width30'>Name</th>
@@ -10,7 +10,7 @@
       <tr class='enemy-table'>
         <td><%= current_user.name %></td>
         <td><%= "★×#{current_user.offense_win_count}" %></td>
-        <td><%= link_to 'Edit', edit_profile_path, class:'button-43' %></td>
+        <td><%= link_to (t '.edit'), edit_profile_path, class:'button-43' %></td>
       </tr>
     </table>
     <% if @glaring_face_photos.present? %>
@@ -24,24 +24,15 @@
           <tr class='enemy-table'>
             <td><img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" /></td>
             <td><%= "★×#{gfp.defense_win_count}" %></td>
-            <td><%= link_to 'Change', glaring_face_photos_path, class: 'button-43' %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class='select-text mt-3'>
-                <a class='button-43'
-                   href="https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d%0dhttps://www.gantobashi.com/mode/battle/<%="#{current_user.id}"%>%0d&hashtags=メンチキッター,ガン飛ばし"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                  Twitter
-                </a>
-              </div>
-            </td>
-            <td></td>
+            <td><%= link_to (t '.change'), glaring_face_photos_path, class: 'button-43' %></td>
           </tr>
         <% end %>
       </table>
+      <div class='select-text mt-3'>
+        <%= link_to "https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d挑戦求む!!%0d%0dhttps://www.gantobashi.com/mode/battle/#{current_user.id}%0d&hashtags=メンチキッター,ガン飛ばし", target: '_blank', rel: 'noopener noreferrer', class: 'button-43' do %>
+          <i class='fab fa-twitter'></i> 挑戦求む
+        <% end %>
+      </div>
     <% else %>
       <div class='select-text mt-3'>
         <%= link_to 'Set User Gantobashi', glaring_face_photos_path, class: 'button-43' %>
