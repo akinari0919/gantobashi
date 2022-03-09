@@ -1,4 +1,3 @@
-ガン飛ばし挑戦アプリ
 # メンチキッター
 
 <br>
@@ -18,7 +17,6 @@
 ## ■ユーザーが抱える課題
 - 相手によっては舐められてしまう  
 - 威圧的な人に動揺してしまうことがある  
-（"ひよってるやつ"に該当する）
 
 <br>
 
@@ -118,42 +116,27 @@ https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 
 ---
 ## ■テーブル設計・ER図
-[![Image from Gyazo](https://i.gyazo.com/fdacf2564563134eccb0090294fd2d4c.png)](https://gyazo.com/fdacf2564563134eccb0090294fd2d4c)
-
-### 【Enemiesテーブル】
-→100人切り用のキャラクター作成する為のテーブルです。
-- face_score  
-「○○人がひよった！」の〇〇人を記録します。 
-- emotion  
-怒り・軽蔑・嫌悪うち、ベースになっている感情をenumを使用して記録します。
-- gaze  
-睨む視線の角度をenumを使って記録します。
+[![Image from Gyazo](https://i.gyazo.com/dcdd6e50ac22635cf21e42b9171c098e.png)](https://gyazo.com/dcdd6e50ac22635cf21e42b9171c098e)
 
 <br>
 
 ### 【Usersテーブル】
-→ログイン機能実装の際に作成するテーブルです。
-- comfirm_face_photo  
-ガン飛ばし写真を登録する際に本人確認する為の写真を記録します。
 - role  
 管理者(Admin)権限をenumを使用して管理します。
-- user_photo_show  
-ユーザーイメージ画像の表示非表示の設定を管理します。
-- image_count  
-ユーザーイメージの登録可能数を管理します（デフォルト1枚で殿堂入りする毎に1枚追加させる予定）
-- challenge_best_record  
-100人ギリの戦績のベストを記録します。
+- offense_win_count
+他ユーザーに挑戦した決闘に勝利した数を記録します。
 
 <br>
 
 ### 【Glaring_face_photosテーブル】
 → ユーザーのガン飛ばし写真を登録するためのテーブルです。
-- king  
-殿堂入りしている写真なのかを管理します。
-- battle_win_count  
-他ユーザーとの戦歴（勝ち星）を記録します。（0〜100）
+- face_score
+戦闘力。他ユーザーと比較するために登録されます。
+- defense_win_count
+他ユーザーに挑戦された決闘で返り討ちした数を記録します。
 
 <br>
 
-### 【Flinchesテーブル】
-→ 他ユーザーのガン飛ばし写真にlikeボタン的ビビるボタンを押した管理をするための中間テーブルです。
+### 【Beats(打ち負かし)テーブル】
+→ 他ユーザーに挑戦して勝った場合は再戦できないようにロックするための中間テーブルです。
+※毎日０時にリセットされ再戦可能になります。
