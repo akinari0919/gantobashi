@@ -1,27 +1,45 @@
 <main>
   <div class='top-contents'>
-    <p class='title-contents mb-3'>Login</p>
+  <p class='title-contents mt-4'><%= t('.title') %></p>
     <div class='select-text'>
-      <%= form_with url: login_path, local: true do |f| %>
-        <div class='select-text'>
-          <%= f.label :email, User.human_attribute_name(:email) %>
+      <div class="login-box">
+        <div class="card">
+          <div class="card-body login-card-body">
+            <%= form_with url: login_path, local: true do |f| %>
+              <div class="text-center my-2">
+                <i class="fas fa-envelope"></i>
+                <%= f.label :email, User.human_attribute_name(:email) %>
+              </div>
+              <div class="input-group mb-3">
+                <%= f.text_field :email, class: 'form-control', placeholder: :email %>
+              </div>
+
+              <div class="text-center my-2">
+                <i class="fas fa-lock"></i>
+                <%= f.label :password, User.human_attribute_name(:password) %>
+              </div>
+              <div class="input-group mb-3">
+                <%= f.password_field :password, class: 'form-control', placeholder: :password %>
+              </div>
+
+              <div class="row m-0 my-2">
+                <%= f.submit (t 'defaults.login'), class: 'button-43 w-100' %>
+              </div>
+
+            <% end %>
+          </div>
         </div>
-        <div class='select-text'>
-          <%= f.text_field :email  %>
+
+        <div class="card mt-3">
+          <div class="card-body login-card-body mt-1">
+            <div class="row m-0">
+              <p class='text-center'><%= t('.no_register') %></p>
+              <%= link_to (t '.to_register_page'), new_user_path, class:'button-43 mb-2' %>
+            </div>
+          </div>
         </div>
-        <div class='select-text'>
-          <%= f.label :password, User.human_attribute_name(:password) %>
-        </div>
-        <div class='select-text'>
-          <%= f.password_field :password  %>
-        </div>
-        <div class='select-text mt-4'>
-          <%= f.submit (t 'defaults.login'), class:'button-43' %>
-        </div>
-      <% end %>
-    </div>
-    <div class='select-text mt-3'>
-      <%= link_to (t '.to_register_page'), new_user_path, class:'button-43' %>
+      </div>
     </div>
   </div>
 </main>
+

@@ -15,10 +15,22 @@ ja:
     not_set: '未設定'
   users:
     new:
+      title: 'ユーザー登録'
+      register: '登録'
       to_login_page: 'ログインページへ'
   user_sessions:
     new:
+      title: 'ログイン'
+      no_register: '未登録の方はコチラから'
       to_register_page: 'ユーザー登録'
+  profiles:
+    show:
+      title: 'プロフィール'
+      edit: '編集'
+      change: '変更'
+      set: 'Myメンチを登録する'
+      twitter: '挑戦状'
+
   pagination:
     previous: '<'
     next: '>'
