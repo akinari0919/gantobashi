@@ -2,7 +2,6 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :glaring_face_photos, dependent: :destroy
   has_many :beats, dependent: :destroy
-  has_many :battle_fistories
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
