@@ -19,24 +19,36 @@ class Mode::BattleController < ApplicationController
   def result
     user = User.find(params[:enemy_id])
     gfp = user.glaring_face_photos.find_by(main_choiced: true)
+
+    battle_history = BattleHistory.new(user_id: current_user.id,
+                                       challenger_score: params[:my_score].to_i,
+                                       glaring_face_photo_id: gfp.id
+                                      )
+
     if params[:enemy_score].to_i > params[:my_score].to_i
       @my_win_result = current_user.offense_win_count
       count = gfp.defense_win_count
       gfp.update(defense_win_count: count + 1)
       @enemy_win_result = gfp.defense_win_count
       @battle_result = 'LOSE'
+      # 勝敗履歴更新
+      battle_history.update(result: 1)
     elsif params[:enemy_score].to_i < params[:my_score].to_i
       count = current_user.offense_win_count
       current_user.update(offense_win_count: count + 1)
       @my_win_result = current_user.offense_win_count
       @enemy_win_result = gfp.defense_win_count
       @battle_result = 'WIN'
+      # 勝敗履歴更新
+      battle_history.update(result: 0)
       # 再戦不可にする
       gfp.beats.create(user_id: current_user.id)
     else
       @my_win_result = current_user.offense_win_count
       @enemy_win_result = gfp.defense_win_count
       @battle_result = 'DRAW'
+      # 勝敗履歴更新
+      battle_history.update(result: 2)
     end
 
     render json: { battle_result: @battle_result,
