@@ -1,0 +1,61 @@
+<% content_for(:title, t('.title')) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <div class="text-right mb-3">
+        <%= link_to t('defaults.edit'), edit_admin_user_path(@user), class: 'btn btn-success' %>
+        <%= link_to t('defaults.delete'), admin_user_path(@user), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:id) %></th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:role) %></th>
+          <td><%= @user.role %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:name) %></th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:email) %></th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:offense_win_count) %></th>
+          <td><%= @user.offense_win_count %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:image) %></th>
+          <td>
+            <% if @user.glaring_face_photos.find_by(main_choiced: true).present? %>
+              <img src="data:image/jpeg;base64,<%= @user.glaring_face_photos.find_by(main_choiced: true).image %>" width="100" height="100" />
+            <% else %>
+              <%= t('defaults.not_set') %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:defense_win_count) %></th>
+          <td>
+            <% if @user.glaring_face_photos.find_by(main_choiced: true).present? %>
+              <%= @user.glaring_face_photos.find_by(main_choiced: true).defense_win_count %>
+            <% else %>
+              -
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><%= User.human_attribute_name(:created_at) %></th>
+          <td><%= l @user.created_at, format: :long %></td>
+        </tr>
+      </table>
+      <div class="text-left mb-3">
+        <%= link_to t('defaults.back'), admin_users_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>

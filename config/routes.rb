@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
     resources :users, only: %i[index edit update show destroy]
+    resources :battle_histories, only: %i[index]
   end
 
   # 例外
