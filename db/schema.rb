@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2022_03_12_050838) do
   create_table "battle_histories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "glaring_face_photo_id", null: false
-    t.integer "challenger_score"
-    t.integer "result"
+    t.integer "challenger_score", null: false
+    t.integer "result", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["glaring_face_photo_id"], name: "index_battle_histories_on_glaring_face_photo_id"
