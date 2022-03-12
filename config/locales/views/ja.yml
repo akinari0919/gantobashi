@@ -71,4 +71,7 @@ ja:
         title: 'ユーザー詳細情報'
       edit:
         title: 'ユーザー編集'
+    battle_histories:
+      index:
+        title: '決闘履歴'
 
