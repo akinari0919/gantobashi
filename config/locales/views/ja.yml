@@ -1,48 +1,69 @@
 ja:
   defaults:
-    login: 'ログイン'
-    register: '登録'
-    logout: 'ログアウト'
+    login: "ログイン"
+    register: "登録"
+    logout: "ログアウト"
     first: "最初"
     last: "最後"
     previous: "前"
     next: "次"
     truncate: "..."
-    show: '詳細'
-    edit: '編集'
-    delete: '削除'
-    back: '戻る'
-    not_set: '未設定'
+    show: "詳細"
+    edit: "編集"
+    delete: "削除"
+    back: "戻る"
+    not_set: "未設定"
   users:
     new:
-      title: 'ユーザー登録'
-      register: '登録'
-      to_login_page: 'ログインページへ'
+      title: "ユーザー登録"
+      register: "登録"
+      to_login_page: "ログインページへ"
   user_sessions:
     new:
-      title: 'ログイン'
-      no_register: '未登録の方はコチラから'
-      to_register_page: 'ユーザー登録'
+      title: "ログイン"
+      no_register: "未登録の方はコチラから"
+      to_register_page: "ユーザー登録"
   profiles:
     show:
-      title: 'プロフィール'
-      edit: '編集'
-      change: '変更'
-      set: 'Myメンチを登録する'
-      twitter: '挑戦状'
+      title: "プロフィール"
+      edit: "編集"
+      change: "変更"
+      set: "Myメンチを登録する"
+      twitter: "挑戦状"
+  mode:
+    battle:
+      index:
+        title: "決闘上等!!"
+        name: "決闘者"
+        image: "メンチ"
+        level: "LEVEL"
+        done: "WIN"
+        show: "詳細"
+      show:
+        image: "メンチ"
+        level: "LEVEL"
+        battle: "決闘"
+      edit:
+        shatter: "ガン飛ばす"
+        dummy: "解析中..."
+        retry: "取り直す"
+        battle: "挑む！！"
+        result: "結果"
+        to_index: "決闘一覧"
+
 
   pagination:
-    previous: '<'
-    next: '>'
-    truncate: '...'
+    previous: "<"
+    next: ">"
+    truncate: "..."
 
   admin:
     shared:
       sidebar:
-        title: '管理者画面'
+        title: "管理者画面"
     user_sessions:
       new:
-        title: '管理者ログイン'
+        title: "管理者ログイン"
     users:
       index:
         title: 'ユーザー一覧'

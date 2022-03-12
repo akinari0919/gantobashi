@@ -1,40 +1,40 @@
 <main>
   <!-- 撮影画面 -->
-  <div class="create-contents" id='first'>
+  <div class="create-contents" id="first">
     <div class="camera">
       <div class="camera-bd"></div>
       <video id="video" autoplay playsinline width="300" height="300"></video>
       <canvas id="canvas" width="300" height="300"></canvas>
     </div>
     <div class="submit-btn">
-      <p class="button-41" id="shatter" onclick="init()">ガン飛ばす</p>
-      <p class="button-42" id="dummy">解析中...</p>
+      <p class="button-41" id="shatter" onclick="init()"><%= t ".shatter" %></p>
+      <p class="button-42" id="dummy"><%= t ".dummy" %></p>
     </div>
     <div class="comment">
       <p id="result"></p>
     </div>
     <div class="btn-2">
-      <p class="button-40" id="retry" onclick="retry()">撮り直す</p>
+      <p class="button-40" id="retry" onclick="retry()"><%= t ".retry" %></p>
       <form>
         <input type="hidden" name="face_score" id="face_score" value="">
         <input type="hidden" name="enemy_id" id="enemy_id" value="<%= @user.id %>">
         <input type="hidden" name="enemy_score" id="enemy_score" value="<%= @gfp.face_score %>">
         <input type="hidden" name="enemy_image" id="enemy_image" value="<%= @gfp.image %>">
-        <p><button class="button-40" id="detail">Battle！</button></p>
+        <p><button class="button-40" id="detail"><%= t ".battle" %></button></p>
       </form>
     </div>
   </div>
 
   <!-- 決闘結果  -->
-  <div class="top-contents" id='battle'>
-    <p class='title-contents mb-3'>RESULT</p>
+  <div class="top-contents" id="battle">
+    <p class="title-contents mb-3"><%= t ".result" %></p>
     <table class="result-table">
       <tr>
-        <th class='width30'>YOU</th>
-        <th class='width10'></th>
-        <th class='width30'>ENEMY</th>
+        <th class="width30">YOU</th>
+        <th class="width10"></th>
+        <th class="width30">ENEMY</th>
       </tr>
-      <tr class='enemy-table'>
+      <tr class="enemy-table">
         <td>
           <img id="my_image" src="" width="100" height="100"/>
         </td>
@@ -46,9 +46,9 @@
         </td>
       </tr>
     </table>
-    <p class='title-contents mt-4' id="battle_result"></p>
+    <p class="title-contents mt-4" id="battle_result"></p>
     <div class="btn-3 mt-4">
-      <%= link_to "決闘一覧", mode_battle_index_path, class:"button-40 link" %>
+      <%= link_to (t ".to_index"), mode_battle_index_path, class:"button-40 link" %>
     </div>
   </div>
 
