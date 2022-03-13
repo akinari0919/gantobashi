@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
 
   def show
     @glaring_face_photos = current_user.glaring_face_photos.where(main_choiced: true)
-    @battle_histories = BattleHistory.all.order(created_at: :desc)
+    @battle_histories = BattleHistory.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   private
