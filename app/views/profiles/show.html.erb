@@ -28,11 +28,28 @@
           </tr>
         <% end %>
       </table>
-      <div class='select-text mt-3'>
+      <div class='select-text my-3'>
         <%= link_to "https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d挑戦求む!!%0d%0dhttps://www.gantobashi.com/mode/battle/#{current_user.id}%0d&hashtags=メンチキッター,ガン飛ばし", target: '_blank', rel: 'noopener noreferrer', class: 'button-43' do %>
           <i class='fab fa-twitter'></i> 挑戦求む
         <% end %>
       </div>
+
+      <table>
+        <tr>
+          <th class='width30'>Challenger</th>
+          <th class='width10'></th>
+          <th class='width30'></th>
+          <th class='width30'></th>
+        </tr>
+        <% @battle_histories.each do |battle_history| %>
+          <tr>
+            <td class='align-middle'><%= User.find_by(id: battle_history.user_id).name %></td>
+            <td class='align-middle'>V S</td>
+            <td class='align-middle'><%= battle_history.result %></td>
+            <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
+          </tr>
+        <% end %>
+      </table>
     <% else %>
       <div class='select-text mt-3'>
         <%= link_to (t '.set'), glaring_face_photos_path, class: 'button-43' %>
