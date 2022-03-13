@@ -74,9 +74,9 @@
               <td class='align-middle'>V S</td>
               <td class='align-middle'><%= User.find_by(id: battle_history.user_id).name %></td>
               <% if battle_history.result == "challenger" %>
-                <td class='align-middle'>WIN</td>
-              <% else %>
                 <td class='align-middle'>LOSE</td>
+              <% else %>
+                <td class='align-middle'>WIN</td>
               <% end %>
             </tr>
           <% end %>
