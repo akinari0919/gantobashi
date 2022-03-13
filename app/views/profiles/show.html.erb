@@ -1,5 +1,5 @@
 <main>
-  <div class = 'contents mb-5'>
+  <div class = 'main-contents'>
     <p class='title-contents mb-3'>プロフィール</p>
     <table class='mb-3'>
       <tr>
@@ -15,7 +15,7 @@
     </table>
 
     <% if @offense_battles.present? %>
-      <p class='title-contents'>挑んだ決闘の記録</p>
+      <p class='select-text'>挑んだ決闘の記録</p>
       <table>
         <tr>
           <th class='width30'></th>
@@ -60,7 +60,7 @@
       </table>
 
       <% if @defense_battles.present? %>
-        <p class='title-contents'>挑まれた決闘の記録</p>
+        <p class='select-text'>挑まれた決闘の記録</p>
         <table class='mb-3'>
           <tr>
             <th class='width30'></th>
