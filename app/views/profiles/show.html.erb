@@ -1,6 +1,6 @@
 <main>
-  <div class = 'top-contents'>
-    <p class='title-contents mb-3'><%= t '.title' %></p>
+  <div class = 'contents mb-5'>
+    <p class='title-contents mb-3'>プロフィール</p>
     <table class='mb-3'>
       <tr>
         <th class='width30'>Name</th>
@@ -13,8 +13,38 @@
         <td><%= link_to (t '.edit'), edit_profile_path, class:'button-43' %></td>
       </tr>
     </table>
-    <% if @glaring_face_photos.present? %>
+
+    <% if @offense_battles.present? %>
+      <p class='title-contents'>挑んだ決闘の記録</p>
       <table>
+        <tr>
+          <th class='width30'></th>
+          <th class='width10'></th>
+          <th class='width30'>Enemy</th>
+          <th class='width30'>Result</th>
+        </tr>
+        <% @offense_battles.each do |battle_history| %>
+          <tr>
+            <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
+            <td class='align-middle'>V S</td>
+            <td class='align-middle'><%= User.find_by(id: GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).user_id).name %></td>
+            <% if battle_history.result == "challenger" %>
+              <td class='align-middle'>WIN</td>
+            <% else %>
+              <td class='align-middle'>LOSE</td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+
+    <div class='select-text my-3'>
+      <%= link_to "決闘を挑む", mode_battle_index_path, class: 'button-43' %>
+    </div>
+
+    <p class='title-contents mt-5'>Myメンチ</p>
+    <% if @glaring_face_photos.present? %>
+      <table class='mb-3'>
         <tr>
           <th class='width30'>Selected</th>
           <th class='width10'>Level</th>
@@ -28,32 +58,37 @@
           </tr>
         <% end %>
       </table>
-      <div class='select-text my-3'>
+
+      <% if @defense_battles.present? %>
+        <p class='title-contents'>挑まれた決闘の記録</p>
+        <table class='mb-3'>
+          <tr>
+            <th class='width30'></th>
+            <th class='width10'></th>
+            <th class='width30'>Enemy</th>
+            <th class='width30'>Result</th>
+          </tr>
+          <% @defense_battles.each do |battle_history| %>
+            <tr>
+              <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
+              <td class='align-middle'>V S</td>
+              <td class='align-middle'><%= User.find_by(id: battle_history.user_id).name %></td>
+              <% if battle_history.result == "challenger" %>
+                <td class='align-middle'>WIN</td>
+              <% else %>
+                <td class='align-middle'>LOSE</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+
+      <div class='select-text mb-5'>
         <%= link_to "https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d挑戦求む!!%0d%0dhttps://www.gantobashi.com/mode/battle/#{current_user.id}%0d&hashtags=メンチキッター,ガン飛ばし", target: '_blank', rel: 'noopener noreferrer', class: 'button-43' do %>
-          <i class='fab fa-twitter'></i> 挑戦求む
+          <i class='fab fa-twitter'></i> 決闘を求む
         <% end %>
       </div>
 
-      <table>
-        <tr>
-          <th class='width30'></th>
-          <th class='width10'>Enemy</th>
-          <th class='width30'>Result</th>
-          <th class='width30'></th>
-        </tr>
-        <% @battle_histories.each do |battle_history| %>
-          <tr>
-            <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
-            <td class='align-middle'>V S</td>
-            <td class='align-middle'><%= User.find_by(id: GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).user_id).name %></td>
-            <% if battle_history.result == "challenger" %>
-              <td class='align-middle'>WIN</td>
-            <% else %>
-              <td class='align-middle'>LOSE</td>
-            <% end %>
-          </tr>
-        <% end %>
-      </table>
     <% else %>
       <div class='select-text mt-3'>
         <%= link_to (t '.set'), glaring_face_photos_path, class: 'button-43' %>
