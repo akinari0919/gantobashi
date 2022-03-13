@@ -8,6 +8,8 @@ class Mode::BattleController < ApplicationController
   end
 
   def show
+    defense_battles = BattleHistory.where(glaring_face_photo_id: GlaringFacePhoto.find_by(user_id: @user.id, main_choiced: true), result: 1)
+    @defense_battles = defense_battles.order(created_at: :desc)
   end
 
   def edit

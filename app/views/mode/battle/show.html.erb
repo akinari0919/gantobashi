@@ -1,5 +1,5 @@
 <main>
-  <div class = "top-contents" >
+  <div class = "main-contents" >
     <table class="mt-5">
       <tr>
         <th>V S</th>
@@ -24,8 +24,25 @@
         <% end %>
       </tr>
     </table>
-    <div class="select-text mt-3">
+    <div class="select-text my-3">
       <%= link_to (t "defaults.back"), mode_battle_index_path, class:"button-43" %>
     </div>
+
+    <% if @defense_battles.present? %>
+      <p class='select-text mt-5'>返り討ち</p>
+      <table class=''>
+        <tr>
+          <th class='width30'></th>
+          <th class='width30'>Challenger</th>
+        </tr>
+        <% @defense_battles.each do |battle_history| %>
+          <tr>
+            <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
+            <td class='align-middle'><%= User.find_by(id: battle_history.user_id).name %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+
   </div>
 </main>
