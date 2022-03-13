@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <%= link_to admin_root_path, class:"brand-link td-none" do %>
-    <%= image_tag 'icon.ico', class: 'brand-image' %>
-    <span class="brand-text font-weight-light"><%= t('.title') %></span>
+    <%= image_tag "icon.ico", class: "brand-image" %>
+    <span class="brand-text font-weight-light"><%= t(".title") %></span>
   <% end %>
 
   <!-- Sidebar -->
@@ -22,7 +22,15 @@
           <%= link_to admin_users_path, class: "nav-link" do %>
             <i class="nav-icon far fa-user"></i>
             <p>
-              <%= t('admin.users.index.title') %>
+              <%= t("admin.users.index.title") %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_battle_histories_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-clock"></i>
+            <p>
+              <%= t("admin.battle_histories.index.title") %>
             </p>
           <% end %>
         </li>

@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_032115) do
+ActiveRecord::Schema.define(version: 2022_03_12_050838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "battle_histories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "glaring_face_photo_id", null: false
+    t.integer "challenger_score", null: false
+    t.integer "result", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["glaring_face_photo_id"], name: "index_battle_histories_on_glaring_face_photo_id"
+    t.index ["user_id"], name: "index_battle_histories_on_user_id"
+  end
 
   create_table "beats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -48,6 +59,8 @@ ActiveRecord::Schema.define(version: 2022_03_05_032115) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "battle_histories", "glaring_face_photos"
+  add_foreign_key "battle_histories", "users"
   add_foreign_key "beats", "glaring_face_photos"
   add_foreign_key "beats", "users"
   add_foreign_key "glaring_face_photos", "users"
