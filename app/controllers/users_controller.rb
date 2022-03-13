@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(user_params[:email], user_params[:password])
-      redirect_to mode_select_path, notice: 'success'
+      redirect_to profile_path, notice: 'success'
     else
       flash.now[:alert] = 'failure'
       render :new
