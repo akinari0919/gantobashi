@@ -1,9 +1,9 @@
-<tr>
-  <td class='align-middle'><%= User.find_by(id: battle_history.user_id).name %></td>
-  <td class='align-middle'><%= battle_history.challenger_score %></td>
-  <td class='align-middle'>V S</td>
-  <td class='align-middle'><%= User.find_by(id: GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).user_id).name %></td>
-  <td class='align-middle'><%= GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).face_score %></td>
-  <td class='align-middle'><%= battle_history.result %></td>
-  <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
+<tr class="td-pe-none">
+  <td class="align-middle"><%= User.find_by(id: battle_history.user_id).name %></td>
+  <td class="align-middle"><%= battle_history.challenger_score %></td>
+  <td class="align-middle">V S</td>
+  <td class="align-middle"><%= User.find_by(id: GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).user_id).name %></td>
+  <td class="align-middle"><%= GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).face_score %></td>
+  <td class="align-middle"><%= battle_history.result %></td>
+  <td class="align-middle"><%= l battle_history.created_at, format: :long %></td>
 </tr>

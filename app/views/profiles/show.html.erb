@@ -1,97 +1,97 @@
 <main>
-  <div class = 'main-contents'>
-    <p class='title-contents mb-3'>プロフィール</p>
-    <table class='text-center mb-3'>
+  <div class = "main-contents">
+    <p class="title-contents mb-3">プロフィール</p>
+    <table class="text-center mb-3">
       <tr>
-        <th class='width30'>Name</th>
-        <th class='width10'>Level</th>
-        <th class='width30'></th>
+        <th class="width30">Name</th>
+        <th class="width10">Level</th>
+        <th class="width30"></th>
       </tr>
-      <tr class='enemy-table'>
-        <td><%= current_user.name %></td>
+      <tr class="enemy-table">
+        <td class="td-pe-none"><%= current_user.name %></td>
         <td><%= "★×#{current_user.offense_win_count}" %></td>
-        <td><%= link_to (t '.edit'), edit_profile_path, class:'button-43' %></td>
+        <td><%= link_to (t ".edit"), edit_profile_path, class:"button-43" %></td>
       </tr>
     </table>
 
     <% if @offense_battles.present? %>
-      <p class='select-text'>挑んだ決闘の記録</p>
+      <p class="select-text">挑んだ決闘の記録</p>
       <table class="text-center">
         <tr>
-          <th class='width30'></th>
-          <th class='width10'></th>
-          <th class='width30'>Enemy</th>
-          <th class='width30'>Result</th>
+          <th class="width30"></th>
+          <th class="width10"></th>
+          <th class="width30">Enemy</th>
+          <th class="width30">Result</th>
         </tr>
         <% @offense_battles.each do |battle_history| %>
-          <tr>
-            <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
-            <td class='align-middle'>V S</td>
-            <td class='align-middle'><%= User.find_by(id: GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).user_id).name %></td>
+          <tr class="pe-pd-none">
+            <td class="align-middle"><%= l battle_history.created_at, format: :long %></td>
+            <td class="align-middle">V S</td>
+            <td class="align-middle"><%= User.find_by(id: GlaringFacePhoto.find_by(id: battle_history.glaring_face_photo_id).user_id).name %></td>
             <% if battle_history.result == "challenger" %>
-              <td class='align-middle'>WIN</td>
+              <td class="align-middle">WIN</td>
             <% else %>
-              <td class='align-middle'>LOSE</td>
+              <td class="align-middle">LOSE</td>
             <% end %>
           </tr>
         <% end %>
       </table>
     <% end %>
 
-    <div class='select-text my-3'>
-      <%= link_to "決闘を挑む", mode_battle_index_path, class: 'button-43' %>
+    <div class="select-text my-3">
+      <%= link_to "決闘を挑む", mode_battle_index_path, class: "button-43" %>
     </div>
 
-    <p class='title-contents mt-5'>Myメンチ</p>
+    <p class="title-contents mt-5">Myメンチ</p>
     <% if @glaring_face_photos.present? %>
-      <table class='text-center mb-3'>
+      <table class="text-center mb-3">
         <tr>
-          <th class='width30'>Selected</th>
-          <th class='width10'>Level</th>
-          <th class='width30'></th>
+          <th class="width30">Selected</th>
+          <th class="width10">Level</th>
+          <th class="width30"></th>
         </tr>
         <% @glaring_face_photos.each do |gfp| %>
-          <tr class='enemy-table'>
+          <tr class="enemy-table">
             <td><img src="data:image/jpeg;base64,<%="#{gfp.image}"%>" width="100" height="100" /></td>
             <td><%= "★×#{gfp.defense_win_count}" %></td>
-            <td><%= link_to (t '.change'), glaring_face_photos_path, class: 'button-43' %></td>
+            <td><%= link_to (t ".change"), glaring_face_photos_path, class: "button-43" %></td>
           </tr>
         <% end %>
       </table>
 
       <% if @defense_battles.present? %>
-        <p class='select-text'>挑まれた決闘の記録</p>
-        <table class='text-center mb-3'>
+        <p class="select-text">挑まれた決闘の記録</p>
+        <table class="text-center mb-3">
           <tr>
-            <th class='width30'></th>
-            <th class='width10'></th>
-            <th class='width30'>Enemy</th>
-            <th class='width30'>Result</th>
+            <th class="width30"></th>
+            <th class="width10"></th>
+            <th class="width30">Enemy</th>
+            <th class="width30">Result</th>
           </tr>
           <% @defense_battles.each do |battle_history| %>
-            <tr>
-              <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
-              <td class='align-middle'>V S</td>
-              <td class='align-middle'><%= User.find_by(id: battle_history.user_id).name %></td>
+            <tr class="pe-pd-none">
+              <td class="align-middle"><%= l battle_history.created_at, format: :long %></td>
+              <td class="align-middle">V S</td>
+              <td class="align-middle"><%= User.find_by(id: battle_history.user_id).name %></td>
               <% if battle_history.result == "challenger" %>
-                <td class='align-middle'>LOSE</td>
+                <td class="align-middle">LOSE</td>
               <% else %>
-                <td class='align-middle'>WIN</td>
+                <td class="align-middle">WIN</td>
               <% end %>
             </tr>
           <% end %>
         </table>
       <% end %>
 
-      <div class='select-text mb-5'>
-        <%= link_to "https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d挑戦求む!!%0d%0dhttps://www.gantobashi.com/mode/battle/#{current_user.id}%0d&hashtags=メンチキッター,ガン飛ばし", target: '_blank', rel: 'noopener noreferrer', class: 'button-43' do %>
-          <i class='fab fa-twitter'></i> 決闘を求む
+      <div class="select-text mb-5">
+        <%= link_to "https://twitter.com/intent/tweet?text=Myメンチ登録完了!!%0d睨みを利かせて待機中!!%0d挑戦求む!!%0d%0dhttps://www.gantobashi.com/mode/battle/#{current_user.id}%0d&hashtags=メンチキッター,ガン飛ばし", target: "_blank", rel: "noopener noreferrer", class: "button-43" do %>
+          <i class="fab fa-twitter"></i> 決闘を求む
         <% end %>
       </div>
 
     <% else %>
-      <div class='select-text mt-3'>
-        <%= link_to (t '.set'), glaring_face_photos_path, class: 'button-43' %>
+      <div class="select-text mt-3">
+        <%= link_to (t ".set"), glaring_face_photos_path, class: "button-43" %>
       </div>
     <% end %>
   </div>

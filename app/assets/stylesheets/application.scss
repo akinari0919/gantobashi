@@ -357,6 +357,18 @@ footer p {
   text-decoration: none;
 }
 
+.td-pe-none a {
+  color: black;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.td-pe-none-w a {
+  color: white;
+  text-decoration: none;
+  pointer-events: none;
+}
+
 
 /* ボタン */
 
@@ -572,8 +584,10 @@ th.width10 {
 }
 
 th {
-  color:white;
+  text-decoration: none;
+  color: white;
   background-color: black;
+  pointer-events: none;
 }
 
 /* ページネーション */
