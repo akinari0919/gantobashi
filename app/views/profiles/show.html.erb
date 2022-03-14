@@ -1,7 +1,7 @@
 <main>
   <div class = 'main-contents'>
     <p class='title-contents mb-3'>プロフィール</p>
-    <table class='mb-3'>
+    <table class='text-center mb-3'>
       <tr>
         <th class='width30'>Name</th>
         <th class='width10'>Level</th>
@@ -16,7 +16,7 @@
 
     <% if @offense_battles.present? %>
       <p class='select-text'>挑んだ決闘の記録</p>
-      <table>
+      <table class="text-center">
         <tr>
           <th class='width30'></th>
           <th class='width10'></th>
@@ -44,7 +44,7 @@
 
     <p class='title-contents mt-5'>Myメンチ</p>
     <% if @glaring_face_photos.present? %>
-      <table class='mb-3'>
+      <table class='text-center mb-3'>
         <tr>
           <th class='width30'>Selected</th>
           <th class='width10'>Level</th>
@@ -61,7 +61,7 @@
 
       <% if @defense_battles.present? %>
         <p class='select-text'>挑まれた決闘の記録</p>
-        <table class='mb-3'>
+        <table class='text-center mb-3'>
           <tr>
             <th class='width30'></th>
             <th class='width10'></th>

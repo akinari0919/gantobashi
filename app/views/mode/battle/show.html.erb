@@ -1,6 +1,6 @@
 <main>
   <div class = "main-contents" >
-    <table class="mt-5">
+    <table class="text-center mt-5">
       <tr>
         <th>V S</th>
       </tr>
@@ -8,7 +8,7 @@
         <td class="size30"><%= @user.name %></td>
       </tr>
     </table>
-    <table class="mb-3">
+    <table class="text-center mb-3">
       <tr>
         <th class="width30"><%= t ".image" %></th>
         <th class="width10"><%= t ".level" %></th>
@@ -29,16 +29,16 @@
     </div>
 
     <% if @defense_battles.present? %>
-      <p class='select-text mt-5'>返り討ち</p>
-      <table class=''>
+      <p class="select-text mt-5">返り討ち</p>
+      <table class="text-center">
         <tr>
-          <th class='width30'></th>
-          <th class='width30'>Challenger</th>
+          <th class="width30"></th>
+          <th class="width30">Challenger</th>
         </tr>
         <% @defense_battles.each do |battle_history| %>
           <tr>
-            <td class='align-middle'><%= l battle_history.created_at, format: :long %></td>
-            <td class='align-middle'><%= User.find_by(id: battle_history.user_id).name %></td>
+            <td class="align-middle"><%= l battle_history.created_at, format: :long %></td>
+            <td class="align-middle"><%= User.find_by(id: battle_history.user_id).name %></td>
           </tr>
         <% end %>
       </table>
