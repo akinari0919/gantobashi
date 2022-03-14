@@ -30,6 +30,12 @@ ja:
       change: "変更"
       set: "Myメンチを登録する"
       twitter: "挑戦状"
+  glaring_face_photos:
+    index:
+      title: "Myメンチ一覧"
+      add: "追加"
+      main: "選択"
+      add_hide: "非公開"
   mode:
     battle:
       index:

@@ -169,6 +169,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
 }
 
 .select-text-fotter{
@@ -484,13 +485,16 @@ footer p {
 .button-44 {
   background-color: #000000;
   color: #ffffff;
-  width: 80px;
-  height: 80px;
-  line-height: 73px;
+  width: 70px;
+  height: 70px;
+  line-height: 63px;
   border-radius: 50%;
   border: double 4px #ffffff;
   text-align: center;
   cursor: pointer;
+}
+.button-44:hover {
+  animation: scale .3s ease-in-out;
 }
 
 .button-45 {
