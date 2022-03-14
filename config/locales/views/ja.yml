@@ -39,6 +39,7 @@ ja:
         level: "LEVEL"
         done: "WIN"
         show: "詳細"
+        to_profile: "プロフィールへ"
       show:
         image: "メンチ"
         level: "LEVEL"

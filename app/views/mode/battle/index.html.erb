@@ -1,6 +1,6 @@
 <main>
-  <div class="main-contents mt-3">
-    <p class="title-contents mb-2"><%= t ".title" %></p>
+  <div class="main-contents mt-4">
+    <p class="title-contents mb-3"><%= t ".title" %></p>
     <% @users.each do |user| %>
       <% gfp = user.glaring_face_photos.find_by(main_choiced: true) %>
       <% if gfp.present? %>
@@ -22,8 +22,10 @@
         </table>
       <% end %>
     <% end %>
-    <%= paginate @users %>
-    <div class="text-center mt-4">
+    <div class="mt-4">
+      <%= paginate @users %>
+    </div>
+    <div class="text-center mt-5">
       <%= link_to (t ".to_profile"), profile_path, class:"button-40 link mx-3" %>
     </div>
   </div>
