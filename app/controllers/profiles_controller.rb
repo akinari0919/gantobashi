@@ -13,10 +13,10 @@ class ProfilesController < ApplicationController
 
   def show
     @glaring_face_photos = current_user.glaring_face_photos.where(main_choiced: true)
-    @battle_histories = BattleHistory.all.order(created_at: :desc)
-    @offense_battles = BattleHistory.where(user_id: current_user.id).order(created_at: :desc).limit(5)
+    battle_histories = BattleHistory.includes(:user, :glaring_face_photo)
+    @offense_battles = battle_histories.where(user_id: current_user.id).order(created_at: :desc).limit(5)
     gfp_id = GlaringFacePhoto.find_by(user_id: current_user.id, main_choiced: true)
-    @defense_battles = BattleHistory.where(glaring_face_photo_id: gfp_id).order(created_at: :desc).limit(5)
+    @defense_battles = battle_histories.where(glaring_face_photo_id: gfp_id).order(created_at: :desc).limit(5)
   end
 
   private

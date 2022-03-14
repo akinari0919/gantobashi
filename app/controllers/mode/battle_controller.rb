@@ -3,12 +3,15 @@ class Mode::BattleController < ApplicationController
   before_action :set_user, only: [:edit, :show]
 
   def index
-    users = User.where.not(id: current_user.id).joins(:glaring_face_photos).merge(GlaringFacePhoto.where(main_choiced: true))
+    users = User.includes(:glaring_face_photos).where.not(id: current_user.id)
+    users = users.joins(:glaring_face_photos).merge(GlaringFacePhoto.where(main_choiced: true))
     @users = users.order(created_at: :desc).page(params[:page])
   end
 
   def show
-    defense_battles = BattleHistory.where(glaring_face_photo_id: GlaringFacePhoto.find_by(user_id: @user.id, main_choiced: true), result: 1)
+    gfp_id = GlaringFacePhoto.find_by(user_id: @user.id, main_choiced: true)
+    battle_histories = BattleHistory.includes(:user, :glaring_face_photo)
+    defense_battles = battle_histories.where(glaring_face_photo_id: gfp_id, result: 1)
     @defense_battles = defense_battles.order(created_at: :desc).limit(5)
   end
 
