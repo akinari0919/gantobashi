@@ -50,6 +50,7 @@ ja:
         battle: "挑む！！"
         result: "結果"
         to_index: "決闘一覧"
+        to_show: "相手詳細"
 
 
   pagination:
