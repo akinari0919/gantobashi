@@ -357,6 +357,7 @@ footer p {
   text-decoration: none;
 }
 
+
 /* ボタン */
 
 .btn-1 {
@@ -454,11 +455,13 @@ footer p {
 }
 .button-43:hover {
   background-color: #2e2e2e;
+  color: #ffffff;
 }
 .button-43:focus {
   box-shadow: none;
   outline: 2px solid transparent;
   outline-offset: 2px;
+  color: #ffffff;
 }
 @media (min-width: 768px) {
   .button-43 {
