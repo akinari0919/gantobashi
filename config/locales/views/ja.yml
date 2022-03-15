@@ -30,6 +30,9 @@ ja:
       change: "変更"
       set: "Myメンチを登録する"
       twitter: "挑戦状"
+    edit:
+      title: "プロフィール編集"
+      update: "更新"
   glaring_face_photos:
     index:
       title: "Myメンチ一覧"
