@@ -22,17 +22,19 @@
 
     <p class="mt-1"><%= @point1 %></p>
     <p><%= @point2 %></p>
+
+    <!-- 解析出来た場合 -->
     <% if @body != "解析失敗m(_ _)m" %>
-      <a class='button-43' 
-         href="https://twitter.com/intent/tweet?text=私のガン飛ばしは“<%="#{@rank}"%>”%0d<%="#{@body}"%>%0d%0dhttps://www.gantobashi.com/%0d&hashtags=メンチキッター,ガン飛ばし"
-         target="_blank"
-         rel="noopener noreferrer">
-        Twitter
-      </a>
+      <%= link_to "https://twitter.com/intent/tweet?text=私のガン飛ばしは“#{@rank}”%0d#{@body}%0d%0dhttps://www.gantobashi.com/%0d&hashtags=メンチキッター,ガン飛ばし", class: 'button-43 mt-2', target: "_blank", rel: "noopener noreferrer" do %>
+        <i class="fab fa-twitter"></i> つぶやく
+      <% end %>
     <% end %>
   </div>
 
-  <div class="btn-3 mt-4">
-    <%= link_to "撮り直す", mode_check_path, class:"button-40 link" %>
+  <div class="btn-3 mt-3">
+    <%= link_to mode_check_path, class:"button-40 link mx-3" do %>
+      <i class="fas fa-camera"></i> 撮り直す
+    <% end %>
+    <%= link_to (t ".to_mode_select"), mode_select_path, class:"button-40 link mx-3" %>
   </div>
 </div>

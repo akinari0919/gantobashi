@@ -40,6 +40,9 @@ ja:
       main: "選択"
       add_hide: "非公開"
   mode:
+    check:
+      show:
+        to_mode_select: "モード選択"
     battle:
       index:
         title: "決闘上等!!"

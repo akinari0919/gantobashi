@@ -166,7 +166,7 @@ class Mode::ResponseController < ApplicationController
                          body: "#{result.floor}人をひよらせた!!!",
                          star: @star,
                          point1: "眼力：#{@eye_result}",
-                         point2: "感情値：#{@emotion_result}",
+                         point2: "感情：#{@emotion_result}",
                          rank: "総長クラス"
                        }
                      elsif result.floor == 100
@@ -174,7 +174,7 @@ class Mode::ResponseController < ApplicationController
                          body: "#{result.floor}人をひよらせた!!",
                          star: @star,
                          point1: "眼力：#{@eye_result}",
-                         point2: "感情値：#{@emotion_result}",
+                         point2: "感情：#{@emotion_result}",
                          rank: "副総長クラス"
                        }
                      elsif result.floor >= 1
@@ -182,7 +182,7 @@ class Mode::ResponseController < ApplicationController
                          body: "#{result.floor}人をひよらせた！",
                          star: @star,
                          point1: "眼力：#{@eye_result}",
-                         point2: "感情値：#{@emotion_result}",
+                         point2: "感情：#{@emotion_result}",
                          rank: @rank
                        }
                      else
@@ -190,7 +190,7 @@ class Mode::ResponseController < ApplicationController
                          body: "誰一人ひよらない(泣)",
                          star: @star,
                          point1: "眼力：#{@eye_result}",
-                         point2: "感情値：#{@emotion_result}",
+                         point2: "感情：#{@emotion_result}",
                          rank: @rank
                        }
                      end
