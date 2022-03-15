@@ -53,6 +53,7 @@ ja:
         image: "メンチ"
         level: "LEVEL"
         battle: "決闘"
+        history: "返り討ち(直近5件)"
       edit:
         shatter: "ガン飛ばす"
         dummy: "解析中..."

@@ -18,7 +18,7 @@
         <td><img src="data:image/jpeg;base64,<%="#{@gfp.image}"%>" width="100" height="100" /></td>
         <td><%= "★×#{@gfp.defense_win_count}" %></td>
         <% if @gfp.beated_by?(current_user) %>
-          <td>Win</td>
+          <td>WIN</td>
         <% else %>
           <td><%= link_to (t ".battle"), edit_mode_battle_path(@user), class:"button-43" %></td>
         <% end %>
@@ -29,7 +29,7 @@
     </div>
 
     <% if @defense_battles.present? %>
-      <p class="select-text mt-5">返り討ち(直近5件)</p>
+      <p class="select-text mt-5"><%= t ".history" %></p>
       <table class="text-center">
         <tr>
           <th class="width30"></th>
@@ -38,7 +38,7 @@
         <% @defense_battles.each do |battle_history| %>
           <tr>
             <td class="align-middle"><%= l battle_history.created_at, format: :long %></td>
-            <td class="align-middle"><%= User.find_by(id: battle_history.user_id).name %></td>
+            <td class="align-middle td-pe-none"><%= User.find_by(id: battle_history.user_id).name %></td>
           </tr>
         <% end %>
       </table>
