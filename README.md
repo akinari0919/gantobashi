@@ -1,10 +1,10 @@
-# メンチキッター
 [![Image from Gyazo](https://i.gyazo.com/900b2d9980232c075a0feb785600a0bf.png)](https://gyazo.com/900b2d9980232c075a0feb785600a0bf)
-
 ## サービスURL
 ### https://www.gantobashi.com/
+
 <br>
 
+---
 ## 概要
 たまには悪ぶってみたい人が  
 相手を威嚇し、ひよらせるという体験を通して  
@@ -13,7 +13,7 @@
 <br>
 
 ## メインのターゲットユーザー
-- 怒りで相手を威嚇するという感情表現を忘れた大人達
+怒りで相手を威嚇するという感情表現を忘れた大人達
 
 <br>
 
@@ -25,91 +25,147 @@
 
 ## 解決方法
 - 自身のガン飛ばし力を可視化して自信を付けてもらう
-- 結果を客観視し、表情に磨きをかけることで自信を持ってもらう
+- 結果を客観視しながら表情に磨きをかけることで、いざという時の備えにしてもらう
 
 <br>
 
 ## サービス開発の背景
-ある日「溝上さんって(営業していて)舐められやすいじゃないですか〜^^」
-と言われたことがありました。「誰にでも優しいってゆう意味ですよ//」とフォローはされましたが、確かに時には自身の意見を貫き通すために”舐められない”という要素は必要だと考えさせられました。
-そこで同じように人から舐められやすいかも？と感じている方向けに、睨みを効かせる相手にも動揺せず、負けずと睨み返すくらいの強い心を養えるサービスを作りたいと思いました。
+ある日「溝上さんって(営業していて)舐められやすいじゃないですか〜^^」と言われたことがありました。「誰にでも優しいってゆう意味ですよ//」とフォローはされましたが、確かに時には自身の意見を貫き通すために”舐められない”という要素は必要だと考えさせられました。そこで同じように人から舐められやすいかも？と感じている方向けに、睨みを効かせる相手にも動揺せず、負けずと睨み返すくらいの強い心を養えるサービスを作りたいと思いました。
 
 <br>
 
+---
 ## 実装済みの機能
-（以下の例は実際のアプリの機能から一部省略しています）
-- 診断モード
-  - カメラにガン飛ばして撮影
-  - 診断結果はAmazon Recognition & Teachable Machines で独自のロジックを構築
-  でのレスポンスに応じて  
-  「〇〇人がひよった！」など個別の結果が表示される    
-  - Twitterで自慢できる（今後表情写真公開選択追加したい)
+ガン飛ばしの判定は`Amazon Recognition` & `Teachable Machines`を使用して独自のロジックを構築しています。  
 
-- 訓練モード
-  - Teachable Machinesで判定している睨み角度のコツを練習できる
+#### `Amazon Recognition`
+目が開いているか閉じているか&感情を判定するため採用
 
-- 決闘モード
-  - ユーザーログインが必要
-  - 他ユーザーの登録メンチに対して決闘を挑んで勝敗を決める
-  - 勝てばユーザーのレベルがあがる
-
-- その他
-  - ログインユーザーはプロフィールからMyメンチを3つまで登録できる
-  - 公開できるのは1枚だけで、挑戦者を返り討ちしたらそのメンチのレベルが上がる
-
-- 管理画面
-  - 登録ユーザー情報を確認・編集できる
-
-- 今後の予定
-  - 対戦履歴を表示する
-  - レベルによってランク名（総長etc.）を表示する
-  - 仮装ユーザーを管理画面から作成する機能追加
-  - ランキング表示
-
+#### `Teachable Machines`
+ガン飛ばしは怒り感情にまとまらないので、表情判定をカバーするために採用
 
 <br>
 
+### 診断モード
+- 「〇〇人がひよった！」など個別の結果が表示される
+- Twitterで自慢できる
+
+|||
+|---|---|
+|[![Image from Gyazo](https://i.gyazo.com/62febbcbfb53a1fa819a1c03ba9cd376.gif)](https://gyazo.com/62febbcbfb53a1fa819a1c03ba9cd376)|[![Image from Gyazo](https://i.gyazo.com/c05ab52c6e8959ac6eeccacc34b8b6d1.png)](https://gyazo.com/c05ab52c6e8959ac6eeccacc34b8b6d1)|
+|
+
+### 訓練モード
+- Teachable Machinesで判定している睨み角度のコツを練習できる
+
+||
+|---|
+|[![Image from Gyazo](https://i.gyazo.com/dda3ae10d9335c8ae52df500403f6f79.gif)](https://gyazo.com/dda3ae10d9335c8ae52df500403f6f79)|
+|
+
+### 決闘モード
+- ユーザーログインが必要
+- プロフィールからMyメンチを3つまで登録、公開できる
+- 公開できるのは1枚だけで、挑戦者を返り討ちしたらそのメンチのレベルが上がる
+- 他ユーザーが公開したメンチに対して決闘を挑んで勝敗を決める
+- 勝敗によりユーザー(or相手メンチ)のレベルがあがる
+
+||||
+|---|---|---|
+|[![Image from Gyazo](https://i.gyazo.com/6a7a16e78420f48ca1944c758b994499.gif)](https://gyazo.com/6a7a16e78420f48ca1944c758b994499)|[![Image from Gyazo](https://i.gyazo.com/5f1d6b368a416570a4814cee422b97e1.gif)](https://gyazo.com/5f1d6b368a416570a4814cee422b97e1)|[![Image from Gyazo](https://i.gyazo.com/9e495f1d51dd3f6f7f199996108cddbb.gif)](https://gyazo.com/9e495f1d51dd3f6f7f199996108cddbb)|
+|
+
+### 管理画面
+- 登録ユーザー情報を確認・編集できる
+- ユーザーの決闘履歴が確認できる
+
+<br>
+
+### ★工夫ポイント★
+- ガン飛ばし判定の精度を上げるため、目が閉じていたり笑顔の場合は失敗判定を出すようにしました。
+
+
+- Myメンチは3つまで登録して公開メンチは選択した1つだけにできるようにしました。
+
+`glaring_face_photo_controller.rb`
+```rb
+def update
+  @glaring_face_photo.update(main_choiced: true)
+  current_user.glaring_face_photos.where.not(id: params[:id]).each do |gfp|
+    gfp.update(main_choiced: false)
+  end
+  redirect_to profile_path
+end
+
+def hide
+  graring_face_photos = current_user.glaring_face_photos.all
+  graring_face_photos.each do |gfp|
+    gfp.update(main_choiced: false)
+  end
+  redirect_to profile_path
+end
+```
+
+- 決闘に勝った場合はリンチ防止の為日付が変わるまで再戦できないようにしました。
+
+`beat.rake`
+```rb
+namespace :beat do
+  desc "全ての勝利ロックをリセットする"
+  task reset_beats: :environment do
+    @glaring_face_photos = GlaringFacePhoto.all
+    @glaring_face_photos.each do |gfp|
+      @beats = gfp.beats.all
+      @beats.each do |beat|
+        beat.destroy
+      end
+    end
+  end
+end
+```
+↑heroku schedulerで定期実行しています。
+
+<br>
+
+### (今後の予定)
+- 機能説明するためのガイド表示
+- レベルによってランク名（総長etc.）を表示
+- ランキング表示
+- ライバル登録
+- Twitter投稿時の動的OGP(公開選択式)
+- 仮装ユーザーを管理画面から作成する機能
+- 100人切りモード
 
 <br>
 
 ---
-## ■画面遷移図（構想段階）
-https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
+## 使用技術
+### バックエンド
+- Ruby(3.0.3)
+- Ruby on Rails(6.1.4.1)
 
-検討中の拡張機能まで実装した場合は以下のようなイメージになります。
-[![Image from Gyazo](https://i.gyazo.com/813b42566280c670ba5cd71f2d9e2d88.png)](https://gyazo.com/813b42566280c670ba5cd71f2d9e2d88)
+### フロントエンド
+- JavaScript
+- jquery
+- HTML
+- CSS
+- Bootstrap
+- Font Awesome
+- AdminLTE
 
-- ユーザー(User)画面  
-  - 基本の診断用のページ遷移
-  - テーマ別練習用のページ遷移（Traning）
-  - 100人切りチャレンジ用のページ遷移（Challenge）
-  - ログイン後の他ユーザー挑戦用のページ遷移（login）
-
-- 管理者（Adomin）画面  
-  - 利用状況を分析する用のページ（Top）
-  - 仮想ユーザーを作成、編集する用のページ遷移
-
-（補足追加）
-- ユーザー編集画面で登録した写真のシェアONOFFの機能を追加
-- 100人切り達成するとユーザー登録した画像がそのまま殿堂入り写真として反映  
-（※写真を変更する場合は戦績がリセット）
-- 非表示設定もユーザー編集画面で可能
-
-[![Image from Gyazo](https://i.gyazo.com/341abe67521d7ebae4958f3677144226.png)](https://gyazo.com/341abe67521d7ebae4958f3677144226)
-
-※診断判定のみの実装では、以下のイメージになります。
-[![Image from Gyazo](https://i.gyazo.com/f2d7ca9b011ef2c6692bbb907e815d6a.png)](https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1)  
-
+### インフラ
+- heroku
+- PostgreSQL
 
 <br>
 
 ---
-## ■テーブル設計・ER図
-[![Image from Gyazo](https://i.gyazo.com/dcdd6e50ac22635cf21e42b9171c098e.png)](https://gyazo.com/dcdd6e50ac22635cf21e42b9171c098e)
+## テーブル設計・ER図
+[![Image from Gyazo](https://i.gyazo.com/75e2ac1ed7243511a5ac137e5f8f651e.png)](https://gyazo.com/75e2ac1ed7243511a5ac137e5f8f651e)
 
 <br>
 
-### 【Usersテーブル】
+### Usersテーブル
 - role  
 管理者(Admin)権限をenumを使用して管理します。
 - offense_win_count
@@ -117,15 +173,21 @@ https://www.figma.com/file/BvZhStLAINqU1i3AnlYgRf/gantobashi?node-id=0%3A1
 
 <br>
 
-### 【Glaring_face_photosテーブル】
-→ ユーザーのガン飛ばし写真を登録するためのテーブルです。
-- face_score
+### Glaring_face_photosテーブル
+ユーザーのガン飛ばし写真(Myメンチ)を登録するためのテーブルです。
+- face_score  
 戦闘力。他ユーザーと比較するために登録されます。
-- defense_win_count
+- defense_win_count  
 他ユーザーに挑戦された決闘で返り討ちした数を記録します。
 
 <br>
 
-### 【Beats(打ち負かし)テーブル】
-→ 他ユーザーに挑戦して勝った場合は再戦できないようにロックするための中間テーブルです。
+### Beats(打ち負かし)テーブル
+他ユーザーに決闘して勝った場合は再戦できないようにロックするための中間テーブルです。  
 ※毎日０時にリセットされ再戦可能になります。
+
+<br>
+
+### BattleHistoriesテーブル
+ユーザー同士の決闘履歴を残すテーブルです。  
+管理画面でのみ戦闘力を表示できるようにしています。
