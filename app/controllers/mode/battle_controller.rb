@@ -1,5 +1,4 @@
 class Mode::BattleController < ApplicationController
-  before_action :login_user
   before_action :set_user, only: [:edit, :show]
 
   def index
@@ -63,12 +62,6 @@ class Mode::BattleController < ApplicationController
   end
 
   private
-
-  def login_user
-    unless logged_in?
-      redirect_to login_path
-    end
-  end
 
   def set_user
     if current_user.id.to_s == params[:id]
