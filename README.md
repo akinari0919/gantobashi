@@ -50,18 +50,16 @@
 - 「〇〇人がひよった！」など個別の結果が表示される
 - Twitterで自慢できる
 
-|||
-|---|---|
-|[![Image from Gyazo](https://i.gyazo.com/62febbcbfb53a1fa819a1c03ba9cd376.gif)](https://gyazo.com/62febbcbfb53a1fa819a1c03ba9cd376)|[![Image from Gyazo](https://i.gyazo.com/c05ab52c6e8959ac6eeccacc34b8b6d1.png)](https://gyazo.com/c05ab52c6e8959ac6eeccacc34b8b6d1)|
-|
+|モード選択|撮影画面|診断詳細|
+|---|---|---|
+|[![Image from Gyazo](https://i.gyazo.com/0951111306b131ad0b44efb565a2cb2b.png)](https://gyazo.com/0951111306b131ad0b44efb565a2cb2b)|[![Image from Gyazo](https://i.gyazo.com/62febbcbfb53a1fa819a1c03ba9cd376.gif)](https://gyazo.com/62febbcbfb53a1fa819a1c03ba9cd376)|[![Image from Gyazo](https://i.gyazo.com/c05ab52c6e8959ac6eeccacc34b8b6d1.png)](https://gyazo.com/c05ab52c6e8959ac6eeccacc34b8b6d1)|
 
 ### 訓練モード
 - Teachable Machinesで判定している睨み角度のコツを練習できる
 
-||
-|---|
-|[![Image from Gyazo](https://i.gyazo.com/dda3ae10d9335c8ae52df500403f6f79.gif)](https://gyazo.com/dda3ae10d9335c8ae52df500403f6f79)|
-|
+|訓練画面|||
+|---|---|---|
+|[![Image from Gyazo](https://i.gyazo.com/dda3ae10d9335c8ae52df500403f6f79.gif)](https://gyazo.com/dda3ae10d9335c8ae52df500403f6f79)|||
 
 ### 決闘モード
 - ユーザーログインが必要
@@ -70,10 +68,9 @@
 - 他ユーザーが公開したメンチに対して決闘を挑んで勝敗を決める
 - 勝敗によりユーザー(or相手メンチ)のレベルがあがる
 
-||||
+|メンチ選択|決闘の流れ|勝敗判定|
 |---|---|---|
 |[![Image from Gyazo](https://i.gyazo.com/6a7a16e78420f48ca1944c758b994499.gif)](https://gyazo.com/6a7a16e78420f48ca1944c758b994499)|[![Image from Gyazo](https://i.gyazo.com/5f1d6b368a416570a4814cee422b97e1.gif)](https://gyazo.com/5f1d6b368a416570a4814cee422b97e1)|[![Image from Gyazo](https://i.gyazo.com/9e495f1d51dd3f6f7f199996108cddbb.gif)](https://gyazo.com/9e495f1d51dd3f6f7f199996108cddbb)|
-|
 
 ### 管理画面
 - 登録ユーザー情報を確認・編集できる
@@ -110,20 +107,14 @@ end
 
 `beat.rake`
 ```rb
+# heroku schedulerで定期実行
 namespace :beat do
   desc "全ての勝利ロックをリセットする"
   task reset_beats: :environment do
-    @glaring_face_photos = GlaringFacePhoto.all
-    @glaring_face_photos.each do |gfp|
-      @beats = gfp.beats.all
-      @beats.each do |beat|
-        beat.destroy
-      end
-    end
+    Beat.all.delete_all
   end
 end
 ```
-↑heroku schedulerで定期実行しています。
 
 <br>
 
