@@ -1,4 +1,4 @@
-module AwsRecognition
+module AwsRekognition
   extend ActiveSupport::Concern
 
   def check_face

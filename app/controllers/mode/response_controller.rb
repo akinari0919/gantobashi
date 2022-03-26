@@ -1,7 +1,7 @@
 class Mode::ResponseController < ApplicationController
   skip_before_action :require_login
 
-  include AwsRecognition
+  include AwsRekognition
 
   # TODO:リファクタリング必須
   def check
