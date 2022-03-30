@@ -1,7 +1,7 @@
 class GlaringFacePhotosController < ApplicationController
   before_action :login_user
   before_action :find_glaring_face_photo, only: [:update, :destroy]
-  include AwsRecognition
+  include AwsRekognition
 
   def new
     if current_user.glaring_face_photos.count >= 3

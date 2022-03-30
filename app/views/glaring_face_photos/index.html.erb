@@ -5,10 +5,10 @@
       <!-- 登録写真一覧 -->
       <table class="text-center mt-4">
         <tr>
-          <th class="width30">Image</th>
-          <th class="width10">Level</th>
           <th class="width30"></th>
+          <th class="width20"><%= t ".win_count" %></th>
           <th class="width30"></th>
+          <th class="width20"></th>
         </tr>
         <% @glaring_face_photos.each do |gfp| %>
           <tr class="enemy-table">
@@ -20,7 +20,9 @@
               <% end %>
             </td>
             <td>
-              <%= link_to (t "defaults.delete"), glaring_face_photo_path(gfp), method: :delete, class:"button-43", data: {confirm: "削除しますか？"} %>
+              <%= link_to glaring_face_photo_path(gfp), method: :delete, class:"button-43", data: {confirm: "削除しますか？"} do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
             </td>
           </tr>
         <% end %>
@@ -36,7 +38,11 @@
             <p><%= link_to (t ".add_hide"), glaring_face_photos_hide_path, class:"button-43" %></p>
           </td>
           <td>
-            <p><%= link_to (t "defaults.back"), profile_path, class:"button-43" %></p>
+            <p>
+              <%= link_to profile_path, class:"button-43" do %>
+                <i class="fas fa-reply"></i>
+              <% end %>
+            </p>
           </td>
         </tr>
       </table>
