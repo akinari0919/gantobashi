@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: gantobashi_production
-  username: gantobashi
+  database: clbhfn38x0009bfquhrm71xml
+  username: clbhfn38w0007bfqu3mopf3wq
   password: <%= ENV['GANTOBASHI_DATABASE_PASSWORD'] %>
